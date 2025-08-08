@@ -22,6 +22,8 @@ import (
 	"github.com/nelkinda/health-go"
 	"github.com/nelkinda/health-go/checks/sendgrid"
 	"github.com/robfig/cron/v3"
+	cache "github.com/victorspringer/http-cache"
+	"github.com/victorspringer/http-cache/adapter/memory"
 )
 
 func InitialMigration() {
@@ -59,6 +61,24 @@ func handleRequests() http.Handler {
 	methodsOk := handlers.AllowedMethods([]string{"GET", "POST", "OPTIONS", "PUT", "HEAD", "DELETE"})
 	apiRouter := myRouter.PathPrefix("/api").Subrouter()
 	apiRouter.Use(middleware.GzipMiddleware)
+
+	memcached, err := memory.NewAdapter(
+		memory.AdapterWithAlgorithm(memory.LRU),
+		memory.AdapterWithStorageCapacity(1000000000), // try 1GB max capacity at first
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	cacheClient, err := cache.NewClient(
+		cache.ClientWithAdapter(memcached),
+		cache.ClientWithTTL(30 * time.Minute),
+		cache.ClientWithRefreshKey("opn"),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	apiRouter.Use(cacheClient.Middleware)
 
 	// Health Controls
 	HealthCheck := health.New(

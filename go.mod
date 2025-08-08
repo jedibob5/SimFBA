@@ -19,6 +19,7 @@ require (
 require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/tkrajina/go-reflector v0.5.5 // indirect
+	github.com/victorspringer/http-cache v0.0.0-20240523143319-7d9f48f8ab91 // indirect
 )
 
 require (
