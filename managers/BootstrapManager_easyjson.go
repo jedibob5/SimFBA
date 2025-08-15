@@ -4,12 +4,13 @@ package managers
 
 import (
 	json "encoding/json"
+	time "time"
+
 	models "github.com/CalebRose/SimFBA/models"
 	structs "github.com/CalebRose/SimFBA/structs"
 	easyjson "github.com/mailru/easyjson"
 	jlexer "github.com/mailru/easyjson/jlexer"
 	jwriter "github.com/mailru/easyjson/jwriter"
-	time "time"
 )
 
 // suppress unused package warning
@@ -2865,7 +2866,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs(out *jwriter.Writer, 
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, out *BootstrapDataTwo) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, out *BootstrapDataThree) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -2884,98 +2885,191 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 			continue
 		}
 		switch key {
-		case "CollegeNews":
+		case "FreeAgentOffers":
 			if in.IsNull() {
 				in.Skip()
-				out.CollegeNews = nil
+				out.FreeAgentOffers = nil
 			} else {
 				in.Delim('[')
-				if out.CollegeNews == nil {
+				if out.FreeAgentOffers == nil {
 					if !in.IsDelim(']') {
-						out.CollegeNews = make([]structs.NewsLog, 0, 0)
+						out.FreeAgentOffers = make([]structs.FreeAgencyOffer, 0, 0)
 					} else {
-						out.CollegeNews = []structs.NewsLog{}
+						out.FreeAgentOffers = []structs.FreeAgencyOffer{}
 					}
 				} else {
-					out.CollegeNews = (out.CollegeNews)[:0]
+					out.FreeAgentOffers = (out.FreeAgentOffers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v18 structs.NewsLog
+					var v18 structs.FreeAgencyOffer
 					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs6(in, &v18)
-					out.CollegeNews = append(out.CollegeNews, v18)
+					out.FreeAgentOffers = append(out.FreeAgentOffers, v18)
 					in.WantComma()
 				}
 				in.Delim(']')
 			}
-		case "AllCollegeGames":
+		case "WaiverWireOffers":
 			if in.IsNull() {
 				in.Skip()
-				out.AllCollegeGames = nil
+				out.WaiverWireOffers = nil
 			} else {
 				in.Delim('[')
-				if out.AllCollegeGames == nil {
+				if out.WaiverWireOffers == nil {
 					if !in.IsDelim(']') {
-						out.AllCollegeGames = make([]structs.CollegeGame, 0, 0)
+						out.WaiverWireOffers = make([]structs.NFLWaiverOffer, 0, 2)
 					} else {
-						out.AllCollegeGames = []structs.CollegeGame{}
+						out.WaiverWireOffers = []structs.NFLWaiverOffer{}
 					}
 				} else {
-					out.AllCollegeGames = (out.AllCollegeGames)[:0]
+					out.WaiverWireOffers = (out.WaiverWireOffers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v19 structs.CollegeGame
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs4(in, &v19)
-					out.AllCollegeGames = append(out.AllCollegeGames, v19)
+					var v19 structs.NFLWaiverOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in, &v19)
+					out.WaiverWireOffers = append(out.WaiverWireOffers, v19)
 					in.WantComma()
 				}
 				in.Delim(']')
 			}
-		case "TeamProfileMap":
+		case "FreeAgents":
+			if in.IsNull() {
+				in.Skip()
+				out.FreeAgents = nil
+			} else {
+				in.Delim('[')
+				if out.FreeAgents == nil {
+					if !in.IsDelim(']') {
+						out.FreeAgents = make([]structs.NFLPlayer, 0, 0)
+					} else {
+						out.FreeAgents = []structs.NFLPlayer{}
+					}
+				} else {
+					out.FreeAgents = (out.FreeAgents)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v20 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v20)
+					out.FreeAgents = append(out.FreeAgents, v20)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "WaiverPlayers":
+			if in.IsNull() {
+				in.Skip()
+				out.WaiverPlayers = nil
+			} else {
+				in.Delim('[')
+				if out.WaiverPlayers == nil {
+					if !in.IsDelim(']') {
+						out.WaiverPlayers = make([]structs.NFLPlayer, 0, 0)
+					} else {
+						out.WaiverPlayers = []structs.NFLPlayer{}
+					}
+				} else {
+					out.WaiverPlayers = (out.WaiverPlayers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v21 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v21)
+					out.WaiverPlayers = append(out.WaiverPlayers, v21)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "NFLDraftees":
+			if in.IsNull() {
+				in.Skip()
+				out.NFLDraftees = nil
+			} else {
+				in.Delim('[')
+				if out.NFLDraftees == nil {
+					if !in.IsDelim(']') {
+						out.NFLDraftees = make([]models.NFLDraftee, 0, 0)
+					} else {
+						out.NFLDraftees = []models.NFLDraftee{}
+					}
+				} else {
+					out.NFLDraftees = (out.NFLDraftees)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v22 models.NFLDraftee
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels(in, &v22)
+					out.NFLDraftees = append(out.NFLDraftees, v22)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "ProNews":
+			if in.IsNull() {
+				in.Skip()
+				out.ProNews = nil
+			} else {
+				in.Delim('[')
+				if out.ProNews == nil {
+					if !in.IsDelim(']') {
+						out.ProNews = make([]structs.NewsLog, 0, 0)
+					} else {
+						out.ProNews = []structs.NewsLog{}
+					}
+				} else {
+					out.ProNews = (out.ProNews)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v23 structs.NewsLog
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs9(in, &v23)
+					out.ProNews = append(out.ProNews, v23)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "NFLDepthChartMap":
 			if in.IsNull() {
 				in.Skip()
 			} else {
 				in.Delim('{')
-				out.TeamProfileMap = make(map[string]*structs.RecruitingTeamProfile)
+				out.NFLDepthChartMap = make(map[uint]structs.NFLDepthChart)
 				for !in.IsDelim('}') {
-					key := string(in.String())
+					key := uint(in.UintStr())
 					in.WantColon()
-					var v20 *structs.RecruitingTeamProfile
-					if in.IsNull() {
-						in.Skip()
-						v20 = nil
-					} else {
-						if v20 == nil {
-							v20 = new(structs.RecruitingTeamProfile)
-						}
-						easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in, v20)
-					}
-					(out.TeamProfileMap)[key] = v20
+					var v24 structs.NFLDepthChart
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v24)
+					(out.NFLDepthChartMap)[key] = v24
 					in.WantComma()
 				}
 				in.Delim('}')
 			}
-		case "CollegeStandings":
+		case "ContractMap":
 			if in.IsNull() {
 				in.Skip()
-				out.CollegeStandings = nil
 			} else {
-				in.Delim('[')
-				if out.CollegeStandings == nil {
-					if !in.IsDelim(']') {
-						out.CollegeStandings = make([]structs.CollegeStandings, 0, 0)
-					} else {
-						out.CollegeStandings = []structs.CollegeStandings{}
-					}
-				} else {
-					out.CollegeStandings = (out.CollegeStandings)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v21 structs.CollegeStandings
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs1(in, &v21)
-					out.CollegeStandings = append(out.CollegeStandings, v21)
+				in.Delim('{')
+				out.ContractMap = make(map[uint]structs.NFLContract)
+				for !in.IsDelim('}') {
+					key := uint(in.UintStr())
+					in.WantColon()
+					var v25 structs.NFLContract
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v25)
+					(out.ContractMap)[key] = v25
 					in.WantComma()
 				}
-				in.Delim(']')
+				in.Delim('}')
+			}
+		case "ExtensionMap":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				in.Delim('{')
+				out.ExtensionMap = make(map[uint]structs.NFLExtensionOffer)
+				for !in.IsDelim('}') {
+					key := uint(in.UintStr())
+					in.WantColon()
+					var v26 structs.NFLExtensionOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in, &v26)
+					(out.ExtensionMap)[key] = v26
+					in.WantComma()
+				}
+				in.Delim('}')
 			}
 		case "ProStandings":
 			if in.IsNull() {
@@ -2993,9 +3087,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 					out.ProStandings = (out.ProStandings)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v22 structs.NFLStandings
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v22)
-					out.ProStandings = append(out.ProStandings, v22)
+					var v27 structs.NFLStandings
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &v27)
+					out.ProStandings = append(out.ProStandings, v27)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3016,9 +3110,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 					out.AllProGames = (out.AllProGames)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v23 structs.NFLGame
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs9(in, &v23)
-					out.AllProGames = append(out.AllProGames, v23)
+					var v28 structs.NFLGame
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &v28)
+					out.AllProGames = append(out.AllProGames, v28)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3032,46 +3126,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 				for !in.IsDelim('}') {
 					key := uint(in.UintStr())
 					in.WantColon()
-					var v24 structs.NFLCapsheet
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &v24)
-					(out.CapsheetMap)[key] = v24
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
-		case "ProRosterMap":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				out.ProRosterMap = make(map[uint][]structs.NFLPlayer)
-				for !in.IsDelim('}') {
-					key := uint(in.UintStr())
-					in.WantColon()
-					var v25 []structs.NFLPlayer
-					if in.IsNull() {
-						in.Skip()
-						v25 = nil
-					} else {
-						in.Delim('[')
-						if v25 == nil {
-							if !in.IsDelim(']') {
-								v25 = make([]structs.NFLPlayer, 0, 0)
-							} else {
-								v25 = []structs.NFLPlayer{}
-							}
-						} else {
-							v25 = (v25)[:0]
-						}
-						for !in.IsDelim(']') {
-							var v26 structs.NFLPlayer
-							easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v26)
-							v25 = append(v25, v26)
-							in.WantComma()
-						}
-						in.Delim(']')
-					}
-					(out.ProRosterMap)[key] = v25
+					var v29 structs.NFLCapsheet
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in, &v29)
+					(out.CapsheetMap)[key] = v29
 					in.WantComma()
 				}
 				in.Delim('}')
@@ -3092,32 +3149,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 					out.RetiredPlayers = (out.RetiredPlayers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v27 structs.NFLRetiredPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in, &v27)
-					out.RetiredPlayers = append(out.RetiredPlayers, v27)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "PracticeSquadPlayers":
-			if in.IsNull() {
-				in.Skip()
-				out.PracticeSquadPlayers = nil
-			} else {
-				in.Delim('[')
-				if out.PracticeSquadPlayers == nil {
-					if !in.IsDelim(']') {
-						out.PracticeSquadPlayers = make([]structs.NFLPlayer, 0, 0)
-					} else {
-						out.PracticeSquadPlayers = []structs.NFLPlayer{}
-					}
-				} else {
-					out.PracticeSquadPlayers = (out.PracticeSquadPlayers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v28 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v28)
-					out.PracticeSquadPlayers = append(out.PracticeSquadPlayers, v28)
+					var v30 structs.NFLRetiredPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs16(in, &v30)
+					out.RetiredPlayers = append(out.RetiredPlayers, v30)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3138,9 +3172,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 					out.TopNFLPassers = (out.TopNFLPassers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v29 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v29)
-					out.TopNFLPassers = append(out.TopNFLPassers, v29)
+					var v31 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v31)
+					out.TopNFLPassers = append(out.TopNFLPassers, v31)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3161,9 +3195,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 					out.TopNFLRushers = (out.TopNFLRushers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v30 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v30)
-					out.TopNFLRushers = append(out.TopNFLRushers, v30)
+					var v32 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v32)
+					out.TopNFLRushers = append(out.TopNFLRushers, v32)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3184,32 +3218,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 					out.TopNFLReceivers = (out.TopNFLReceivers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v31 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v31)
-					out.TopNFLReceivers = append(out.TopNFLReceivers, v31)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "ProInjuryReport":
-			if in.IsNull() {
-				in.Skip()
-				out.ProInjuryReport = nil
-			} else {
-				in.Delim('[')
-				if out.ProInjuryReport == nil {
-					if !in.IsDelim(']') {
-						out.ProInjuryReport = make([]structs.NFLPlayer, 0, 0)
-					} else {
-						out.ProInjuryReport = []structs.NFLPlayer{}
-					}
-				} else {
-					out.ProInjuryReport = (out.ProInjuryReport)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v32 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v32)
-					out.ProInjuryReport = append(out.ProInjuryReport, v32)
+					var v33 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v33)
+					out.TopNFLReceivers = append(out.TopNFLReceivers, v33)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3224,81 +3235,167 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer, in BootstrapDataTwo) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer, in BootstrapDataThree) {
 	out.RawByte('{')
 	first := true
 	_ = first
 	{
-		const prefix string = ",\"CollegeNews\":"
+		const prefix string = ",\"FreeAgentOffers\":"
 		out.RawString(prefix[1:])
-		if in.CollegeNews == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		if in.FreeAgentOffers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v33, v34 := range in.CollegeNews {
-				if v33 > 0 {
+			for v34, v35 := range in.FreeAgentOffers {
+				if v34 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out, v34)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out, v35)
 			}
 			out.RawByte(']')
 		}
 	}
 	{
-		const prefix string = ",\"AllCollegeGames\":"
+		const prefix string = ",\"WaiverWireOffers\":"
 		out.RawString(prefix)
-		if in.AllCollegeGames == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		if in.WaiverWireOffers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v35, v36 := range in.AllCollegeGames {
-				if v35 > 0 {
+			for v36, v37 := range in.WaiverWireOffers {
+				if v36 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs4(out, v36)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out, v37)
 			}
 			out.RawByte(']')
 		}
 	}
 	{
-		const prefix string = ",\"TeamProfileMap\":"
+		const prefix string = ",\"FreeAgents\":"
 		out.RawString(prefix)
-		if in.TeamProfileMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+		if in.FreeAgents == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v38, v39 := range in.FreeAgents {
+				if v38 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v39)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"WaiverPlayers\":"
+		out.RawString(prefix)
+		if in.WaiverPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v40, v41 := range in.WaiverPlayers {
+				if v40 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v41)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"NFLDraftees\":"
+		out.RawString(prefix)
+		if in.NFLDraftees == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v42, v43 := range in.NFLDraftees {
+				if v42 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out, v43)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"ProNews\":"
+		out.RawString(prefix)
+		if in.ProNews == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v44, v45 := range in.ProNews {
+				if v44 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs9(out, v45)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"NFLDepthChartMap\":"
+		out.RawString(prefix)
+		if in.NFLDepthChartMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v37First := true
-			for v37Name, v37Value := range in.TeamProfileMap {
-				if v37First {
-					v37First = false
+			v46First := true
+			for v46Name, v46Value := range in.NFLDepthChartMap {
+				if v46First {
+					v46First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.String(string(v37Name))
+				out.UintStr(uint(v46Name))
 				out.RawByte(':')
-				if v37Value == nil {
-					out.RawString("null")
-				} else {
-					easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out, *v37Value)
-				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v46Value)
 			}
 			out.RawByte('}')
 		}
 	}
 	{
-		const prefix string = ",\"CollegeStandings\":"
+		const prefix string = ",\"ContractMap\":"
 		out.RawString(prefix)
-		if in.CollegeStandings == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
+		if in.ContractMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+			out.RawString(`null`)
 		} else {
-			out.RawByte('[')
-			for v38, v39 := range in.CollegeStandings {
-				if v38 > 0 {
+			out.RawByte('{')
+			v47First := true
+			for v47Name, v47Value := range in.ContractMap {
+				if v47First {
+					v47First = false
+				} else {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs1(out, v39)
+				out.UintStr(uint(v47Name))
+				out.RawByte(':')
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v47Value)
 			}
-			out.RawByte(']')
+			out.RawByte('}')
+		}
+	}
+	{
+		const prefix string = ",\"ExtensionMap\":"
+		out.RawString(prefix)
+		if in.ExtensionMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+			out.RawString(`null`)
+		} else {
+			out.RawByte('{')
+			v48First := true
+			for v48Name, v48Value := range in.ExtensionMap {
+				if v48First {
+					v48First = false
+				} else {
+					out.RawByte(',')
+				}
+				out.UintStr(uint(v48Name))
+				out.RawByte(':')
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out, v48Value)
+			}
+			out.RawByte('}')
 		}
 	}
 	{
@@ -3308,11 +3405,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v40, v41 := range in.ProStandings {
-				if v40 > 0 {
+			for v49, v50 := range in.ProStandings {
+				if v49 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v41)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out, v50)
 			}
 			out.RawByte(']')
 		}
@@ -3324,11 +3421,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v42, v43 := range in.AllProGames {
-				if v42 > 0 {
+			for v51, v52 := range in.AllProGames {
+				if v51 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs9(out, v43)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, v52)
 			}
 			out.RawByte(']')
 		}
@@ -3340,48 +3437,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer
 			out.RawString(`null`)
 		} else {
 			out.RawByte('{')
-			v44First := true
-			for v44Name, v44Value := range in.CapsheetMap {
-				if v44First {
-					v44First = false
+			v53First := true
+			for v53Name, v53Value := range in.CapsheetMap {
+				if v53First {
+					v53First = false
 				} else {
 					out.RawByte(',')
 				}
-				out.UintStr(uint(v44Name))
+				out.UintStr(uint(v53Name))
 				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, v44Value)
-			}
-			out.RawByte('}')
-		}
-	}
-	{
-		const prefix string = ",\"ProRosterMap\":"
-		out.RawString(prefix)
-		if in.ProRosterMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
-			out.RawString(`null`)
-		} else {
-			out.RawByte('{')
-			v45First := true
-			for v45Name, v45Value := range in.ProRosterMap {
-				if v45First {
-					v45First = false
-				} else {
-					out.RawByte(',')
-				}
-				out.UintStr(uint(v45Name))
-				out.RawByte(':')
-				if v45Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-					out.RawString("null")
-				} else {
-					out.RawByte('[')
-					for v46, v47 := range v45Value {
-						if v46 > 0 {
-							out.RawByte(',')
-						}
-						easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v47)
-					}
-					out.RawByte(']')
-				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out, v53Value)
 			}
 			out.RawByte('}')
 		}
@@ -3393,27 +3458,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v48, v49 := range in.RetiredPlayers {
-				if v48 > 0 {
+			for v54, v55 := range in.RetiredPlayers {
+				if v54 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out, v49)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"PracticeSquadPlayers\":"
-		out.RawString(prefix)
-		if in.PracticeSquadPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v50, v51 := range in.PracticeSquadPlayers {
-				if v50 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v51)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs16(out, v55)
 			}
 			out.RawByte(']')
 		}
@@ -3425,11 +3474,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v52, v53 := range in.TopNFLPassers {
-				if v52 > 0 {
+			for v56, v57 := range in.TopNFLPassers {
+				if v56 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v53)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v57)
 			}
 			out.RawByte(']')
 		}
@@ -3441,11 +3490,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v54, v55 := range in.TopNFLRushers {
-				if v54 > 0 {
+			for v58, v59 := range in.TopNFLRushers {
+				if v58 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v55)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v59)
 			}
 			out.RawByte(']')
 		}
@@ -3457,27 +3506,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v56, v57 := range in.TopNFLReceivers {
-				if v56 > 0 {
+			for v60, v61 := range in.TopNFLReceivers {
+				if v60 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v57)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"ProInjuryReport\":"
-		out.RawString(prefix)
-		if in.ProInjuryReport == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v58, v59 := range in.ProInjuryReport {
-				if v58 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v59)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v61)
 			}
 			out.RawByte(']')
 		}
@@ -3486,29 +3519,29 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(out *jwriter.Writer
 }
 
 // MarshalJSON supports json.Marshaler interface
-func (v BootstrapDataTwo) MarshalJSON() ([]byte, error) {
+func (v BootstrapDataThree) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
 	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
-func (v BootstrapDataTwo) MarshalEasyJSON(w *jwriter.Writer) {
+func (v BootstrapDataThree) MarshalEasyJSON(w *jwriter.Writer) {
 	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers1(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
-func (v *BootstrapDataTwo) UnmarshalJSON(data []byte) error {
+func (v *BootstrapDataThree) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
 	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
-func (v *BootstrapDataTwo) UnmarshalEasyJSON(l *jlexer.Lexer) {
+func (v *BootstrapDataThree) UnmarshalEasyJSON(l *jlexer.Lexer) {
 	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers1(l, v)
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in *jlexer.Lexer, out *structs.NFLRetiredPlayer) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs16(in *jlexer.Lexer, out *structs.NFLRetiredPlayer) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -3603,17 +3636,17 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in *jlexer.Lexer, o
 					out.Stats = (out.Stats)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v60 structs.NFLPlayerStats
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &v60)
-					out.Stats = append(out.Stats, v60)
+					var v62 structs.NFLPlayerStats
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v62)
+					out.Stats = append(out.Stats, v62)
 					in.WantComma()
 				}
 				in.Delim(']')
 			}
 		case "SeasonStats":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &out.SeasonStats)
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in, &out.SeasonStats)
 		case "Contract":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in, &out.Contract)
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &out.Contract)
 		case "Offers":
 			if in.IsNull() {
 				in.Skip()
@@ -3630,9 +3663,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in *jlexer.Lexer, o
 					out.Offers = (out.Offers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v61 structs.FreeAgencyOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs16(in, &v61)
-					out.Offers = append(out.Offers, v61)
+					var v63 structs.FreeAgencyOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs6(in, &v63)
+					out.Offers = append(out.Offers, v63)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3645,7 +3678,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in *jlexer.Lexer, o
 				in.Delim('[')
 				if out.WaiverOffers == nil {
 					if !in.IsDelim(']') {
-						out.WaiverOffers = make([]structs.NFLWaiverOffer, 0, 1)
+						out.WaiverOffers = make([]structs.NFLWaiverOffer, 0, 2)
 					} else {
 						out.WaiverOffers = []structs.NFLWaiverOffer{}
 					}
@@ -3653,9 +3686,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in *jlexer.Lexer, o
 					out.WaiverOffers = (out.WaiverOffers)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v62 structs.NFLWaiverOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v62)
-					out.WaiverOffers = append(out.WaiverOffers, v62)
+					var v64 structs.NFLWaiverOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in, &v64)
+					out.WaiverOffers = append(out.WaiverOffers, v64)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3676,9 +3709,9 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in *jlexer.Lexer, o
 					out.Extensions = (out.Extensions)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v63 structs.NFLExtensionOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in, &v63)
-					out.Extensions = append(out.Extensions, v63)
+					var v65 structs.NFLExtensionOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in, &v65)
+					out.Extensions = append(out.Extensions, v65)
 					in.WantComma()
 				}
 				in.Delim(']')
@@ -3823,7 +3856,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out *jwriter.Writer, in structs.NFLRetiredPlayer) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs16(out *jwriter.Writer, in structs.NFLRetiredPlayer) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -3984,11 +4017,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v64, v65 := range in.Stats {
-				if v64 > 0 {
+			for v66, v67 := range in.Stats {
+				if v66 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out, v65)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v67)
 			}
 			out.RawByte(']')
 		}
@@ -3996,12 +4029,12 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out *jwriter.Writer
 	{
 		const prefix string = ",\"SeasonStats\":"
 		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, in.SeasonStats)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out, in.SeasonStats)
 	}
 	{
 		const prefix string = ",\"Contract\":"
 		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out, in.Contract)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, in.Contract)
 	}
 	{
 		const prefix string = ",\"Offers\":"
@@ -4010,11 +4043,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v66, v67 := range in.Offers {
-				if v66 > 0 {
+			for v68, v69 := range in.Offers {
+				if v68 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs16(out, v67)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out, v69)
 			}
 			out.RawByte(']')
 		}
@@ -4026,11 +4059,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v68, v69 := range in.WaiverOffers {
-				if v68 > 0 {
+			for v70, v71 := range in.WaiverOffers {
+				if v70 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v69)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out, v71)
 			}
 			out.RawByte(']')
 		}
@@ -4042,11 +4075,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v70, v71 := range in.Extensions {
-				if v70 > 0 {
+			for v72, v73 := range in.Extensions {
+				if v72 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out, v71)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out, v73)
 			}
 			out.RawByte(']')
 		}
@@ -4347,852 +4380,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in *jlexer.Lexer, out *structs.NFLExtensionOffer) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "NFLPlayerID":
-			out.NFLPlayerID = uint(in.Uint())
-		case "TeamID":
-			out.TeamID = uint(in.Uint())
-		case "SeasonID":
-			out.SeasonID = uint(in.Uint())
-		case "Team":
-			out.Team = string(in.String())
-		case "ContractLength":
-			out.ContractLength = int(in.Int())
-		case "Y1BaseSalary":
-			out.Y1BaseSalary = float64(in.Float64())
-		case "Y1Bonus":
-			out.Y1Bonus = float64(in.Float64())
-		case "Y2BaseSalary":
-			out.Y2BaseSalary = float64(in.Float64())
-		case "Y2Bonus":
-			out.Y2Bonus = float64(in.Float64())
-		case "Y3BaseSalary":
-			out.Y3BaseSalary = float64(in.Float64())
-		case "Y3Bonus":
-			out.Y3Bonus = float64(in.Float64())
-		case "Y4BaseSalary":
-			out.Y4BaseSalary = float64(in.Float64())
-		case "Y4Bonus":
-			out.Y4Bonus = float64(in.Float64())
-		case "Y5BaseSalary":
-			out.Y5BaseSalary = float64(in.Float64())
-		case "Y5Bonus":
-			out.Y5Bonus = float64(in.Float64())
-		case "TotalBonus":
-			out.TotalBonus = float64(in.Float64())
-		case "TotalSalary":
-			out.TotalSalary = float64(in.Float64())
-		case "ContractValue":
-			out.ContractValue = float64(in.Float64())
-		case "BonusPercentage":
-			out.BonusPercentage = float64(in.Float64())
-		case "AAV":
-			out.AAV = float64(in.Float64())
-		case "Rejections":
-			out.Rejections = int(in.Int())
-		case "IsAccepted":
-			out.IsAccepted = bool(in.Bool())
-		case "IsActive":
-			out.IsActive = bool(in.Bool())
-		case "IsRejected":
-			out.IsRejected = bool(in.Bool())
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out *jwriter.Writer, in structs.NFLExtensionOffer) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"NFLPlayerID\":"
-		out.RawString(prefix[1:])
-		out.Uint(uint(in.NFLPlayerID))
-	}
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.TeamID))
-	}
-	{
-		const prefix string = ",\"SeasonID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.SeasonID))
-	}
-	{
-		const prefix string = ",\"Team\":"
-		out.RawString(prefix)
-		out.String(string(in.Team))
-	}
-	{
-		const prefix string = ",\"ContractLength\":"
-		out.RawString(prefix)
-		out.Int(int(in.ContractLength))
-	}
-	{
-		const prefix string = ",\"Y1BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y1BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y1Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y1Bonus))
-	}
-	{
-		const prefix string = ",\"Y2BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y2BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y2Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y2Bonus))
-	}
-	{
-		const prefix string = ",\"Y3BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y3BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y3Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y3Bonus))
-	}
-	{
-		const prefix string = ",\"Y4BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y4BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y4Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y4Bonus))
-	}
-	{
-		const prefix string = ",\"Y5BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y5BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y5Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y5Bonus))
-	}
-	{
-		const prefix string = ",\"TotalBonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.TotalBonus))
-	}
-	{
-		const prefix string = ",\"TotalSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.TotalSalary))
-	}
-	{
-		const prefix string = ",\"ContractValue\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.ContractValue))
-	}
-	{
-		const prefix string = ",\"BonusPercentage\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.BonusPercentage))
-	}
-	{
-		const prefix string = ",\"AAV\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.AAV))
-	}
-	{
-		const prefix string = ",\"Rejections\":"
-		out.RawString(prefix)
-		out.Int(int(in.Rejections))
-	}
-	{
-		const prefix string = ",\"IsAccepted\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsAccepted))
-	}
-	{
-		const prefix string = ",\"IsActive\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsActive))
-	}
-	{
-		const prefix string = ",\"IsRejected\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsRejected))
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in *jlexer.Lexer, out *structs.NFLWaiverOffer) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "TeamID":
-			out.TeamID = uint(in.Uint())
-		case "Team":
-			out.Team = string(in.String())
-		case "WaiverOrder":
-			out.WaiverOrder = uint(in.Uint())
-		case "NFLPlayerID":
-			out.NFLPlayerID = uint(in.Uint())
-		case "IsActive":
-			out.IsActive = bool(in.Bool())
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out *jwriter.Writer, in structs.NFLWaiverOffer) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix[1:])
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.TeamID))
-	}
-	{
-		const prefix string = ",\"Team\":"
-		out.RawString(prefix)
-		out.String(string(in.Team))
-	}
-	{
-		const prefix string = ",\"WaiverOrder\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.WaiverOrder))
-	}
-	{
-		const prefix string = ",\"NFLPlayerID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.NFLPlayerID))
-	}
-	{
-		const prefix string = ",\"IsActive\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsActive))
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs16(in *jlexer.Lexer, out *structs.FreeAgencyOffer) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "NFLPlayerID":
-			out.NFLPlayerID = uint(in.Uint())
-		case "TeamID":
-			out.TeamID = uint(in.Uint())
-		case "Team":
-			out.Team = string(in.String())
-		case "ContractLength":
-			out.ContractLength = int(in.Int())
-		case "Y1BaseSalary":
-			out.Y1BaseSalary = float64(in.Float64())
-		case "Y1Bonus":
-			out.Y1Bonus = float64(in.Float64())
-		case "Y2BaseSalary":
-			out.Y2BaseSalary = float64(in.Float64())
-		case "Y2Bonus":
-			out.Y2Bonus = float64(in.Float64())
-		case "Y3BaseSalary":
-			out.Y3BaseSalary = float64(in.Float64())
-		case "Y3Bonus":
-			out.Y3Bonus = float64(in.Float64())
-		case "Y4BaseSalary":
-			out.Y4BaseSalary = float64(in.Float64())
-		case "Y4Bonus":
-			out.Y4Bonus = float64(in.Float64())
-		case "Y5BaseSalary":
-			out.Y5BaseSalary = float64(in.Float64())
-		case "Y5Bonus":
-			out.Y5Bonus = float64(in.Float64())
-		case "TotalBonus":
-			out.TotalBonus = float64(in.Float64())
-		case "TotalSalary":
-			out.TotalSalary = float64(in.Float64())
-		case "ContractValue":
-			out.ContractValue = float64(in.Float64())
-		case "BonusPercentage":
-			out.BonusPercentage = float64(in.Float64())
-		case "AAV":
-			out.AAV = float64(in.Float64())
-		case "Syncs":
-			out.Syncs = uint8(in.Uint8())
-		case "IsActive":
-			out.IsActive = bool(in.Bool())
-		case "IsRejected":
-			out.IsRejected = bool(in.Bool())
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs16(out *jwriter.Writer, in structs.FreeAgencyOffer) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"NFLPlayerID\":"
-		out.RawString(prefix[1:])
-		out.Uint(uint(in.NFLPlayerID))
-	}
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.TeamID))
-	}
-	{
-		const prefix string = ",\"Team\":"
-		out.RawString(prefix)
-		out.String(string(in.Team))
-	}
-	{
-		const prefix string = ",\"ContractLength\":"
-		out.RawString(prefix)
-		out.Int(int(in.ContractLength))
-	}
-	{
-		const prefix string = ",\"Y1BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y1BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y1Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y1Bonus))
-	}
-	{
-		const prefix string = ",\"Y2BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y2BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y2Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y2Bonus))
-	}
-	{
-		const prefix string = ",\"Y3BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y3BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y3Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y3Bonus))
-	}
-	{
-		const prefix string = ",\"Y4BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y4BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y4Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y4Bonus))
-	}
-	{
-		const prefix string = ",\"Y5BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y5BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y5Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y5Bonus))
-	}
-	{
-		const prefix string = ",\"TotalBonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.TotalBonus))
-	}
-	{
-		const prefix string = ",\"TotalSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.TotalSalary))
-	}
-	{
-		const prefix string = ",\"ContractValue\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.ContractValue))
-	}
-	{
-		const prefix string = ",\"BonusPercentage\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.BonusPercentage))
-	}
-	{
-		const prefix string = ",\"AAV\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.AAV))
-	}
-	{
-		const prefix string = ",\"Syncs\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.Syncs))
-	}
-	{
-		const prefix string = ",\"IsActive\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsActive))
-	}
-	{
-		const prefix string = ",\"IsRejected\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsRejected))
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in *jlexer.Lexer, out *structs.NFLContract) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "PlayerID":
-			out.PlayerID = int(in.Int())
-		case "NFLPlayerID":
-			out.NFLPlayerID = int(in.Int())
-		case "TeamID":
-			out.TeamID = uint(in.Uint())
-		case "Team":
-			out.Team = string(in.String())
-		case "OriginalTeamID":
-			out.OriginalTeamID = uint(in.Uint())
-		case "OriginalTeam":
-			out.OriginalTeam = string(in.String())
-		case "ContractLength":
-			out.ContractLength = int(in.Int())
-		case "Y1BaseSalary":
-			out.Y1BaseSalary = float64(in.Float64())
-		case "Y1Bonus":
-			out.Y1Bonus = float64(in.Float64())
-		case "Y2BaseSalary":
-			out.Y2BaseSalary = float64(in.Float64())
-		case "Y2Bonus":
-			out.Y2Bonus = float64(in.Float64())
-		case "Y3BaseSalary":
-			out.Y3BaseSalary = float64(in.Float64())
-		case "Y3Bonus":
-			out.Y3Bonus = float64(in.Float64())
-		case "Y4BaseSalary":
-			out.Y4BaseSalary = float64(in.Float64())
-		case "Y4Bonus":
-			out.Y4Bonus = float64(in.Float64())
-		case "Y5BaseSalary":
-			out.Y5BaseSalary = float64(in.Float64())
-		case "Y5Bonus":
-			out.Y5Bonus = float64(in.Float64())
-		case "BonusPercentage":
-			out.BonusPercentage = float64(in.Float64())
-		case "ContractType":
-			out.ContractType = string(in.String())
-		case "ContractValue":
-			out.ContractValue = float64(in.Float64())
-		case "SigningValue":
-			out.SigningValue = float64(in.Float64())
-		case "IsActive":
-			out.IsActive = bool(in.Bool())
-		case "IsComplete":
-			out.IsComplete = bool(in.Bool())
-		case "IsExtended":
-			out.IsExtended = bool(in.Bool())
-		case "HasProgressed":
-			out.HasProgressed = bool(in.Bool())
-		case "PlayerRetired":
-			out.PlayerRetired = bool(in.Bool())
-		case "TagType":
-			out.TagType = uint8(in.Uint8())
-		case "IsTagged":
-			out.IsTagged = bool(in.Bool())
-		case "IsCut":
-			out.IsCut = bool(in.Bool())
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out *jwriter.Writer, in structs.NFLContract) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"PlayerID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.PlayerID))
-	}
-	{
-		const prefix string = ",\"NFLPlayerID\":"
-		out.RawString(prefix)
-		out.Int(int(in.NFLPlayerID))
-	}
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.TeamID))
-	}
-	{
-		const prefix string = ",\"Team\":"
-		out.RawString(prefix)
-		out.String(string(in.Team))
-	}
-	{
-		const prefix string = ",\"OriginalTeamID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.OriginalTeamID))
-	}
-	{
-		const prefix string = ",\"OriginalTeam\":"
-		out.RawString(prefix)
-		out.String(string(in.OriginalTeam))
-	}
-	{
-		const prefix string = ",\"ContractLength\":"
-		out.RawString(prefix)
-		out.Int(int(in.ContractLength))
-	}
-	{
-		const prefix string = ",\"Y1BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y1BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y1Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y1Bonus))
-	}
-	{
-		const prefix string = ",\"Y2BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y2BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y2Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y2Bonus))
-	}
-	{
-		const prefix string = ",\"Y3BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y3BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y3Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y3Bonus))
-	}
-	{
-		const prefix string = ",\"Y4BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y4BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y4Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y4Bonus))
-	}
-	{
-		const prefix string = ",\"Y5BaseSalary\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y5BaseSalary))
-	}
-	{
-		const prefix string = ",\"Y5Bonus\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Y5Bonus))
-	}
-	{
-		const prefix string = ",\"BonusPercentage\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.BonusPercentage))
-	}
-	{
-		const prefix string = ",\"ContractType\":"
-		out.RawString(prefix)
-		out.String(string(in.ContractType))
-	}
-	{
-		const prefix string = ",\"ContractValue\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.ContractValue))
-	}
-	{
-		const prefix string = ",\"SigningValue\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.SigningValue))
-	}
-	{
-		const prefix string = ",\"IsActive\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsActive))
-	}
-	{
-		const prefix string = ",\"IsComplete\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsComplete))
-	}
-	{
-		const prefix string = ",\"IsExtended\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsExtended))
-	}
-	{
-		const prefix string = ",\"HasProgressed\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.HasProgressed))
-	}
-	{
-		const prefix string = ",\"PlayerRetired\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.PlayerRetired))
-	}
-	{
-		const prefix string = ",\"TagType\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.TagType))
-	}
-	{
-		const prefix string = ",\"IsTagged\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsTagged))
-	}
-	{
-		const prefix string = ",\"IsCut\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsCut))
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in *jlexer.Lexer, out *structs.NFLPlayerSeasonStats) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in *jlexer.Lexer, out *structs.NFLPlayerSeasonStats) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -5387,7 +4575,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out *jwriter.Writer, in structs.NFLPlayerSeasonStats) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out *jwriter.Writer, in structs.NFLPlayerSeasonStats) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -5777,7 +4965,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in *jlexer.Lexer, out *structs.NFLPlayerStats) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in *jlexer.Lexer, out *structs.NFLPlayerStats) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -5966,7 +5154,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out *jwriter.Writer, in structs.NFLPlayerStats) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out *jwriter.Writer, in structs.NFLPlayerStats) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -6341,846 +5529,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in *jlexer.Lexer, out *structs.NFLPlayer) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "PlayerID":
-			out.PlayerID = int(in.Int())
-		case "TeamID":
-			out.TeamID = int(in.Int())
-		case "CollegeID":
-			out.CollegeID = uint(in.Uint())
-		case "College":
-			out.College = string(in.String())
-		case "TeamAbbr":
-			out.TeamAbbr = string(in.String())
-		case "Experience":
-			out.Experience = uint(in.Uint())
-		case "HighSchool":
-			out.HighSchool = string(in.String())
-		case "Hometown":
-			out.Hometown = string(in.String())
-		case "State":
-			out.State = string(in.String())
-		case "IsActive":
-			out.IsActive = bool(in.Bool())
-		case "IsPracticeSquad":
-			out.IsPracticeSquad = bool(in.Bool())
-		case "IsFreeAgent":
-			out.IsFreeAgent = bool(in.Bool())
-		case "IsWaived":
-			out.IsWaived = bool(in.Bool())
-		case "IsOnTradeBlock":
-			out.IsOnTradeBlock = bool(in.Bool())
-		case "IsAcceptingOffers":
-			out.IsAcceptingOffers = bool(in.Bool())
-		case "IsNegotiating":
-			out.IsNegotiating = bool(in.Bool())
-		case "NegotiationRound":
-			out.NegotiationRound = uint(in.Uint())
-		case "SigningRound":
-			out.SigningRound = uint(in.Uint())
-		case "MinimumValue":
-			out.MinimumValue = float64(in.Float64())
-		case "AAV":
-			out.AAV = float64(in.Float64())
-		case "DraftedTeamID":
-			out.DraftedTeamID = uint(in.Uint())
-		case "DraftedTeam":
-			out.DraftedTeam = string(in.String())
-		case "DraftedRound":
-			out.DraftedRound = uint(in.Uint())
-		case "DraftPickID":
-			out.DraftPickID = uint(in.Uint())
-		case "DraftedPick":
-			out.DraftedPick = uint(in.Uint())
-		case "ShowLetterGrade":
-			out.ShowLetterGrade = bool(in.Bool())
-		case "HasProgressed":
-			out.HasProgressed = bool(in.Bool())
-		case "Rejections":
-			out.Rejections = int(in.Int())
-		case "ProBowls":
-			out.ProBowls = uint8(in.Uint8())
-		case "TagType":
-			out.TagType = uint8(in.Uint8())
-		case "Stats":
-			if in.IsNull() {
-				in.Skip()
-				out.Stats = nil
-			} else {
-				in.Delim('[')
-				if out.Stats == nil {
-					if !in.IsDelim(']') {
-						out.Stats = make([]structs.NFLPlayerStats, 0, 0)
-					} else {
-						out.Stats = []structs.NFLPlayerStats{}
-					}
-				} else {
-					out.Stats = (out.Stats)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v72 structs.NFLPlayerStats
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &v72)
-					out.Stats = append(out.Stats, v72)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "SeasonStats":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in, &out.SeasonStats)
-		case "Contract":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in, &out.Contract)
-		case "Offers":
-			if in.IsNull() {
-				in.Skip()
-				out.Offers = nil
-			} else {
-				in.Delim('[')
-				if out.Offers == nil {
-					if !in.IsDelim(']') {
-						out.Offers = make([]structs.FreeAgencyOffer, 0, 0)
-					} else {
-						out.Offers = []structs.FreeAgencyOffer{}
-					}
-				} else {
-					out.Offers = (out.Offers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v73 structs.FreeAgencyOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs16(in, &v73)
-					out.Offers = append(out.Offers, v73)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "WaiverOffers":
-			if in.IsNull() {
-				in.Skip()
-				out.WaiverOffers = nil
-			} else {
-				in.Delim('[')
-				if out.WaiverOffers == nil {
-					if !in.IsDelim(']') {
-						out.WaiverOffers = make([]structs.NFLWaiverOffer, 0, 1)
-					} else {
-						out.WaiverOffers = []structs.NFLWaiverOffer{}
-					}
-				} else {
-					out.WaiverOffers = (out.WaiverOffers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v74 structs.NFLWaiverOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v74)
-					out.WaiverOffers = append(out.WaiverOffers, v74)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "Extensions":
-			if in.IsNull() {
-				in.Skip()
-				out.Extensions = nil
-			} else {
-				in.Delim('[')
-				if out.Extensions == nil {
-					if !in.IsDelim(']') {
-						out.Extensions = make([]structs.NFLExtensionOffer, 0, 0)
-					} else {
-						out.Extensions = []structs.NFLExtensionOffer{}
-					}
-				} else {
-					out.Extensions = (out.Extensions)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v75 structs.NFLExtensionOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in, &v75)
-					out.Extensions = append(out.Extensions, v75)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "FirstName":
-			out.FirstName = string(in.String())
-		case "LastName":
-			out.LastName = string(in.String())
-		case "Position":
-			out.Position = string(in.String())
-		case "Archetype":
-			out.Archetype = string(in.String())
-		case "PreviousTeamID":
-			out.PreviousTeamID = uint(in.Uint())
-		case "PreviousTeam":
-			out.PreviousTeam = string(in.String())
-		case "Height":
-			out.Height = int(in.Int())
-		case "Weight":
-			out.Weight = int(in.Int())
-		case "Age":
-			out.Age = int(in.Int())
-		case "Stars":
-			out.Stars = int(in.Int())
-		case "Overall":
-			out.Overall = int(in.Int())
-		case "Stamina":
-			out.Stamina = int(in.Int())
-		case "Injury":
-			out.Injury = int(in.Int())
-		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
-		case "Speed":
-			out.Speed = int(in.Int())
-		case "Carrying":
-			out.Carrying = int(in.Int())
-		case "Agility":
-			out.Agility = int(in.Int())
-		case "Catching":
-			out.Catching = int(in.Int())
-		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
-		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
-		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
-		case "Strength":
-			out.Strength = int(in.Int())
-		case "Tackle":
-			out.Tackle = int(in.Int())
-		case "PassBlock":
-			out.PassBlock = int(in.Int())
-		case "RunBlock":
-			out.RunBlock = int(in.Int())
-		case "PassRush":
-			out.PassRush = int(in.Int())
-		case "RunDefense":
-			out.RunDefense = int(in.Int())
-		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
-		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
-		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
-		case "KickPower":
-			out.KickPower = int(in.Int())
-		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
-		case "PuntPower":
-			out.PuntPower = int(in.Int())
-		case "Progression":
-			out.Progression = int(in.Int())
-		case "Discipline":
-			out.Discipline = int(in.Int())
-		case "PotentialGrade":
-			out.PotentialGrade = string(in.String())
-		case "FreeAgency":
-			out.FreeAgency = string(in.String())
-		case "Personality":
-			out.Personality = string(in.String())
-		case "RecruitingBias":
-			out.RecruitingBias = string(in.String())
-		case "WorkEthic":
-			out.WorkEthic = string(in.String())
-		case "AcademicBias":
-			out.AcademicBias = string(in.String())
-		case "IsInjured":
-			out.IsInjured = bool(in.Bool())
-		case "InjuryName":
-			out.InjuryName = string(in.String())
-		case "InjuryType":
-			out.InjuryType = string(in.String())
-		case "WeeksOfRecovery":
-			out.WeeksOfRecovery = uint(in.Uint())
-		case "InjuryReserve":
-			out.InjuryReserve = bool(in.Bool())
-		case "PrimeAge":
-			out.PrimeAge = uint(in.Uint())
-		case "Clutch":
-			out.Clutch = int(in.Int())
-		case "Shotgun":
-			out.Shotgun = int(in.Int())
-		case "PositionTwo":
-			out.PositionTwo = string(in.String())
-		case "ArchetypeTwo":
-			out.ArchetypeTwo = string(in.String())
-		case "RelativeID":
-			out.RelativeID = uint(in.Uint())
-		case "RelativeType":
-			out.RelativeType = uint(in.Uint())
-		case "Notes":
-			out.Notes = string(in.String())
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out *jwriter.Writer, in structs.NFLPlayer) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"PlayerID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.PlayerID))
-	}
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix)
-		out.Int(int(in.TeamID))
-	}
-	{
-		const prefix string = ",\"CollegeID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.CollegeID))
-	}
-	{
-		const prefix string = ",\"College\":"
-		out.RawString(prefix)
-		out.String(string(in.College))
-	}
-	{
-		const prefix string = ",\"TeamAbbr\":"
-		out.RawString(prefix)
-		out.String(string(in.TeamAbbr))
-	}
-	{
-		const prefix string = ",\"Experience\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.Experience))
-	}
-	{
-		const prefix string = ",\"HighSchool\":"
-		out.RawString(prefix)
-		out.String(string(in.HighSchool))
-	}
-	{
-		const prefix string = ",\"Hometown\":"
-		out.RawString(prefix)
-		out.String(string(in.Hometown))
-	}
-	{
-		const prefix string = ",\"State\":"
-		out.RawString(prefix)
-		out.String(string(in.State))
-	}
-	{
-		const prefix string = ",\"IsActive\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsActive))
-	}
-	{
-		const prefix string = ",\"IsPracticeSquad\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsPracticeSquad))
-	}
-	{
-		const prefix string = ",\"IsFreeAgent\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsFreeAgent))
-	}
-	{
-		const prefix string = ",\"IsWaived\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsWaived))
-	}
-	{
-		const prefix string = ",\"IsOnTradeBlock\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsOnTradeBlock))
-	}
-	{
-		const prefix string = ",\"IsAcceptingOffers\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsAcceptingOffers))
-	}
-	{
-		const prefix string = ",\"IsNegotiating\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsNegotiating))
-	}
-	{
-		const prefix string = ",\"NegotiationRound\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.NegotiationRound))
-	}
-	{
-		const prefix string = ",\"SigningRound\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.SigningRound))
-	}
-	{
-		const prefix string = ",\"MinimumValue\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.MinimumValue))
-	}
-	{
-		const prefix string = ",\"AAV\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.AAV))
-	}
-	{
-		const prefix string = ",\"DraftedTeamID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.DraftedTeamID))
-	}
-	{
-		const prefix string = ",\"DraftedTeam\":"
-		out.RawString(prefix)
-		out.String(string(in.DraftedTeam))
-	}
-	{
-		const prefix string = ",\"DraftedRound\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.DraftedRound))
-	}
-	{
-		const prefix string = ",\"DraftPickID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.DraftPickID))
-	}
-	{
-		const prefix string = ",\"DraftedPick\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.DraftedPick))
-	}
-	{
-		const prefix string = ",\"ShowLetterGrade\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ShowLetterGrade))
-	}
-	{
-		const prefix string = ",\"HasProgressed\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.HasProgressed))
-	}
-	{
-		const prefix string = ",\"Rejections\":"
-		out.RawString(prefix)
-		out.Int(int(in.Rejections))
-	}
-	{
-		const prefix string = ",\"ProBowls\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.ProBowls))
-	}
-	{
-		const prefix string = ",\"TagType\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.TagType))
-	}
-	{
-		const prefix string = ",\"Stats\":"
-		out.RawString(prefix)
-		if in.Stats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v76, v77 := range in.Stats {
-				if v76 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out, v77)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"SeasonStats\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out, in.SeasonStats)
-	}
-	{
-		const prefix string = ",\"Contract\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out, in.Contract)
-	}
-	{
-		const prefix string = ",\"Offers\":"
-		out.RawString(prefix)
-		if in.Offers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v78, v79 := range in.Offers {
-				if v78 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs16(out, v79)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"WaiverOffers\":"
-		out.RawString(prefix)
-		if in.WaiverOffers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v80, v81 := range in.WaiverOffers {
-				if v80 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v81)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"Extensions\":"
-		out.RawString(prefix)
-		if in.Extensions == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v82, v83 := range in.Extensions {
-				if v82 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out, v83)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"FirstName\":"
-		out.RawString(prefix)
-		out.String(string(in.FirstName))
-	}
-	{
-		const prefix string = ",\"LastName\":"
-		out.RawString(prefix)
-		out.String(string(in.LastName))
-	}
-	{
-		const prefix string = ",\"Position\":"
-		out.RawString(prefix)
-		out.String(string(in.Position))
-	}
-	{
-		const prefix string = ",\"Archetype\":"
-		out.RawString(prefix)
-		out.String(string(in.Archetype))
-	}
-	{
-		const prefix string = ",\"PreviousTeamID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.PreviousTeamID))
-	}
-	{
-		const prefix string = ",\"PreviousTeam\":"
-		out.RawString(prefix)
-		out.String(string(in.PreviousTeam))
-	}
-	{
-		const prefix string = ",\"Height\":"
-		out.RawString(prefix)
-		out.Int(int(in.Height))
-	}
-	{
-		const prefix string = ",\"Weight\":"
-		out.RawString(prefix)
-		out.Int(int(in.Weight))
-	}
-	{
-		const prefix string = ",\"Age\":"
-		out.RawString(prefix)
-		out.Int(int(in.Age))
-	}
-	{
-		const prefix string = ",\"Stars\":"
-		out.RawString(prefix)
-		out.Int(int(in.Stars))
-	}
-	{
-		const prefix string = ",\"Overall\":"
-		out.RawString(prefix)
-		out.Int(int(in.Overall))
-	}
-	{
-		const prefix string = ",\"Stamina\":"
-		out.RawString(prefix)
-		out.Int(int(in.Stamina))
-	}
-	{
-		const prefix string = ",\"Injury\":"
-		out.RawString(prefix)
-		out.Int(int(in.Injury))
-	}
-	{
-		const prefix string = ",\"FootballIQ\":"
-		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
-	}
-	{
-		const prefix string = ",\"Speed\":"
-		out.RawString(prefix)
-		out.Int(int(in.Speed))
-	}
-	{
-		const prefix string = ",\"Carrying\":"
-		out.RawString(prefix)
-		out.Int(int(in.Carrying))
-	}
-	{
-		const prefix string = ",\"Agility\":"
-		out.RawString(prefix)
-		out.Int(int(in.Agility))
-	}
-	{
-		const prefix string = ",\"Catching\":"
-		out.RawString(prefix)
-		out.Int(int(in.Catching))
-	}
-	{
-		const prefix string = ",\"RouteRunning\":"
-		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
-	}
-	{
-		const prefix string = ",\"ZoneCoverage\":"
-		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
-	}
-	{
-		const prefix string = ",\"ManCoverage\":"
-		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
-	}
-	{
-		const prefix string = ",\"Strength\":"
-		out.RawString(prefix)
-		out.Int(int(in.Strength))
-	}
-	{
-		const prefix string = ",\"Tackle\":"
-		out.RawString(prefix)
-		out.Int(int(in.Tackle))
-	}
-	{
-		const prefix string = ",\"PassBlock\":"
-		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
-	}
-	{
-		const prefix string = ",\"RunBlock\":"
-		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
-	}
-	{
-		const prefix string = ",\"PassRush\":"
-		out.RawString(prefix)
-		out.Int(int(in.PassRush))
-	}
-	{
-		const prefix string = ",\"RunDefense\":"
-		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
-	}
-	{
-		const prefix string = ",\"ThrowPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
-	}
-	{
-		const prefix string = ",\"ThrowAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
-	}
-	{
-		const prefix string = ",\"KickAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
-	}
-	{
-		const prefix string = ",\"KickPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.KickPower))
-	}
-	{
-		const prefix string = ",\"PuntAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
-	}
-	{
-		const prefix string = ",\"PuntPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
-	}
-	{
-		const prefix string = ",\"Progression\":"
-		out.RawString(prefix)
-		out.Int(int(in.Progression))
-	}
-	{
-		const prefix string = ",\"Discipline\":"
-		out.RawString(prefix)
-		out.Int(int(in.Discipline))
-	}
-	{
-		const prefix string = ",\"PotentialGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.PotentialGrade))
-	}
-	{
-		const prefix string = ",\"FreeAgency\":"
-		out.RawString(prefix)
-		out.String(string(in.FreeAgency))
-	}
-	{
-		const prefix string = ",\"Personality\":"
-		out.RawString(prefix)
-		out.String(string(in.Personality))
-	}
-	{
-		const prefix string = ",\"RecruitingBias\":"
-		out.RawString(prefix)
-		out.String(string(in.RecruitingBias))
-	}
-	{
-		const prefix string = ",\"WorkEthic\":"
-		out.RawString(prefix)
-		out.String(string(in.WorkEthic))
-	}
-	{
-		const prefix string = ",\"AcademicBias\":"
-		out.RawString(prefix)
-		out.String(string(in.AcademicBias))
-	}
-	{
-		const prefix string = ",\"IsInjured\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsInjured))
-	}
-	{
-		const prefix string = ",\"InjuryName\":"
-		out.RawString(prefix)
-		out.String(string(in.InjuryName))
-	}
-	{
-		const prefix string = ",\"InjuryType\":"
-		out.RawString(prefix)
-		out.String(string(in.InjuryType))
-	}
-	{
-		const prefix string = ",\"WeeksOfRecovery\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.WeeksOfRecovery))
-	}
-	{
-		const prefix string = ",\"InjuryReserve\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.InjuryReserve))
-	}
-	{
-		const prefix string = ",\"PrimeAge\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.PrimeAge))
-	}
-	{
-		const prefix string = ",\"Clutch\":"
-		out.RawString(prefix)
-		out.Int(int(in.Clutch))
-	}
-	{
-		const prefix string = ",\"Shotgun\":"
-		out.RawString(prefix)
-		out.Int(int(in.Shotgun))
-	}
-	{
-		const prefix string = ",\"PositionTwo\":"
-		out.RawString(prefix)
-		out.String(string(in.PositionTwo))
-	}
-	{
-		const prefix string = ",\"ArchetypeTwo\":"
-		out.RawString(prefix)
-		out.String(string(in.ArchetypeTwo))
-	}
-	{
-		const prefix string = ",\"RelativeID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.RelativeID))
-	}
-	{
-		const prefix string = ",\"RelativeType\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.RelativeType))
-	}
-	{
-		const prefix string = ",\"Notes\":"
-		out.RawString(prefix)
-		out.String(string(in.Notes))
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in *jlexer.Lexer, out *structs.NFLCapsheet) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in *jlexer.Lexer, out *structs.NFLCapsheet) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -7263,7 +5612,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out *jwriter.Writer, in structs.NFLCapsheet) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out *jwriter.Writer, in structs.NFLCapsheet) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -7373,7 +5722,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs9(in *jlexer.Lexer, out *structs.NFLGame) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs14(in *jlexer.Lexer, out *structs.NFLGame) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -7510,7 +5859,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs9(in *jlexer.Lexer, ou
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs9(out *jwriter.Writer, in structs.NFLGame) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs14(out *jwriter.Writer, in structs.NFLGame) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -7755,7 +6104,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs9(out *jwriter.Writer,
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in *jlexer.Lexer, out *structs.NFLStandings) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in *jlexer.Lexer, out *structs.NFLStandings) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -7870,7 +6219,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in *jlexer.Lexer, ou
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out *jwriter.Writer, in structs.NFLStandings) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out *jwriter.Writer, in structs.NFLStandings) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -8060,7 +6409,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out *jwriter.Writer,
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in *jlexer.Lexer, out *structs.RecruitingTeamProfile) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in *jlexer.Lexer, out *structs.NFLExtensionOffer) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -8079,154 +6428,54 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in *jlexer.Lexer, ou
 			continue
 		}
 		switch key {
+		case "NFLPlayerID":
+			out.NFLPlayerID = uint(in.Uint())
 		case "TeamID":
-			out.TeamID = int(in.Int())
+			out.TeamID = uint(in.Uint())
+		case "SeasonID":
+			out.SeasonID = uint(in.Uint())
 		case "Team":
 			out.Team = string(in.String())
-		case "TeamAbbreviation":
-			out.TeamAbbreviation = string(in.String())
-		case "State":
-			out.State = string(in.String())
-		case "ScholarshipsAvailable":
-			out.ScholarshipsAvailable = int(in.Int())
-		case "WeeklyPoints":
-			out.WeeklyPoints = float64(in.Float64())
-		case "SpentPoints":
-			out.SpentPoints = float64(in.Float64())
-		case "TotalCommitments":
-			out.TotalCommitments = int(in.Int())
-		case "RecruitClassSize":
-			out.RecruitClassSize = int(in.Int())
-		case "PortalReputation":
-			out.PortalReputation = int(in.Int())
-		case "BaseEfficiencyScore":
-			out.BaseEfficiencyScore = float64(in.Float64())
-		case "RecruitingEfficiencyScore":
-			out.RecruitingEfficiencyScore = float64(in.Float64())
-		case "PreviousOverallWinPer":
-			out.PreviousOverallWinPer = float64(in.Float64())
-		case "PreviousConferenceWinPer":
-			out.PreviousConferenceWinPer = float64(in.Float64())
-		case "CurrentOverallWinPer":
-			out.CurrentOverallWinPer = float64(in.Float64())
-		case "CurrentConferenceWinPer":
-			out.CurrentConferenceWinPer = float64(in.Float64())
-		case "ESPNScore":
-			out.ESPNScore = float64(in.Float64())
-		case "RivalsScore":
-			out.RivalsScore = float64(in.Float64())
-		case "Rank247Score":
-			out.Rank247Score = float64(in.Float64())
-		case "CompositeScore":
-			out.CompositeScore = float64(in.Float64())
-		case "ThreeStars":
-			out.ThreeStars = uint8(in.Uint8())
-		case "FourStars":
-			out.FourStars = uint8(in.Uint8())
-		case "FiveStars":
-			out.FiveStars = uint8(in.Uint8())
-		case "RecruitingClassRank":
-			out.RecruitingClassRank = int(in.Int())
-		case "CaughtCheating":
-			out.CaughtCheating = bool(in.Bool())
-		case "IsFBS":
-			out.IsFBS = bool(in.Bool())
-		case "IsAI":
-			out.IsAI = bool(in.Bool())
-		case "IsUserTeam":
-			out.IsUserTeam = bool(in.Bool())
-		case "AIBehavior":
-			out.AIBehavior = string(in.String())
-		case "AIQuality":
-			out.AIQuality = string(in.String())
-		case "WeeksMissed":
-			out.WeeksMissed = int(in.Int())
-		case "BattlesWon":
-			out.BattlesWon = int(in.Int())
-		case "BattlesLost":
-			out.BattlesLost = int(in.Int())
-		case "AIMinThreshold":
-			out.AIMinThreshold = int(in.Int())
-		case "AIMaxThreshold":
-			out.AIMaxThreshold = int(in.Int())
-		case "AIStarMin":
-			out.AIStarMin = int(in.Int())
-		case "AIStarMax":
-			out.AIStarMax = int(in.Int())
-		case "AIAutoOfferscholarships":
-			out.AIAutoOfferscholarships = bool(in.Bool())
-		case "OffensiveScheme":
-			out.OffensiveScheme = string(in.String())
-		case "DefensiveScheme":
-			out.DefensiveScheme = string(in.String())
-		case "Recruiter":
-			out.Recruiter = string(in.String())
-		case "AcademicsAffinity":
-			out.AcademicsAffinity = bool(in.Bool())
-		case "FrontrunnerAffinity":
-			out.FrontrunnerAffinity = bool(in.Bool())
-		case "LargeCrowdsAffinity":
-			out.LargeCrowdsAffinity = bool(in.Bool())
-		case "ReligionAffinity":
-			out.ReligionAffinity = bool(in.Bool())
-		case "ServiceAffinity":
-			out.ServiceAffinity = bool(in.Bool())
-		case "SmallSchoolAffinity":
-			out.SmallSchoolAffinity = bool(in.Bool())
-		case "SmallTownAffinity":
-			out.SmallTownAffinity = bool(in.Bool())
-		case "BigCityAffinity":
-			out.BigCityAffinity = bool(in.Bool())
-		case "MediaSpotlightAffinity":
-			out.MediaSpotlightAffinity = bool(in.Bool())
-		case "RisingStarsAffinity":
-			out.RisingStarsAffinity = bool(in.Bool())
-		case "Recruits":
-			if in.IsNull() {
-				in.Skip()
-				out.Recruits = nil
-			} else {
-				in.Delim('[')
-				if out.Recruits == nil {
-					if !in.IsDelim(']') {
-						out.Recruits = make([]structs.RecruitPlayerProfile, 0, 0)
-					} else {
-						out.Recruits = []structs.RecruitPlayerProfile{}
-					}
-				} else {
-					out.Recruits = (out.Recruits)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v84 structs.RecruitPlayerProfile
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs19(in, &v84)
-					out.Recruits = append(out.Recruits, v84)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "Affinities":
-			if in.IsNull() {
-				in.Skip()
-				out.Affinities = nil
-			} else {
-				in.Delim('[')
-				if out.Affinities == nil {
-					if !in.IsDelim(']') {
-						out.Affinities = make([]structs.ProfileAffinity, 0, 0)
-					} else {
-						out.Affinities = []structs.ProfileAffinity{}
-					}
-				} else {
-					out.Affinities = (out.Affinities)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v85 structs.ProfileAffinity
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs20(in, &v85)
-					out.Affinities = append(out.Affinities, v85)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
+		case "ContractLength":
+			out.ContractLength = int(in.Int())
+		case "Y1BaseSalary":
+			out.Y1BaseSalary = float64(in.Float64())
+		case "Y1Bonus":
+			out.Y1Bonus = float64(in.Float64())
+		case "Y2BaseSalary":
+			out.Y2BaseSalary = float64(in.Float64())
+		case "Y2Bonus":
+			out.Y2Bonus = float64(in.Float64())
+		case "Y3BaseSalary":
+			out.Y3BaseSalary = float64(in.Float64())
+		case "Y3Bonus":
+			out.Y3Bonus = float64(in.Float64())
+		case "Y4BaseSalary":
+			out.Y4BaseSalary = float64(in.Float64())
+		case "Y4Bonus":
+			out.Y4Bonus = float64(in.Float64())
+		case "Y5BaseSalary":
+			out.Y5BaseSalary = float64(in.Float64())
+		case "Y5Bonus":
+			out.Y5Bonus = float64(in.Float64())
+		case "TotalBonus":
+			out.TotalBonus = float64(in.Float64())
+		case "TotalSalary":
+			out.TotalSalary = float64(in.Float64())
+		case "ContractValue":
+			out.ContractValue = float64(in.Float64())
+		case "BonusPercentage":
+			out.BonusPercentage = float64(in.Float64())
+		case "AAV":
+			out.AAV = float64(in.Float64())
+		case "Rejections":
+			out.Rejections = int(in.Int())
+		case "IsAccepted":
+			out.IsAccepted = bool(in.Bool())
+		case "IsActive":
+			out.IsActive = bool(in.Bool())
+		case "IsRejected":
+			out.IsRejected = bool(in.Bool())
 		case "ID":
 			out.ID = uint(in.Uint())
 		case "CreatedAt":
@@ -8259,14 +6508,24 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in *jlexer.Lexer, ou
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out *jwriter.Writer, in structs.RecruitingTeamProfile) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out *jwriter.Writer, in structs.NFLExtensionOffer) {
 	out.RawByte('{')
 	first := true
 	_ = first
 	{
-		const prefix string = ",\"TeamID\":"
+		const prefix string = ",\"NFLPlayerID\":"
 		out.RawString(prefix[1:])
-		out.Int(int(in.TeamID))
+		out.Uint(uint(in.NFLPlayerID))
+	}
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.TeamID))
+	}
+	{
+		const prefix string = ",\"SeasonID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.SeasonID))
 	}
 	{
 		const prefix string = ",\"Team\":"
@@ -8274,281 +6533,104 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out *jwriter.Writer,
 		out.String(string(in.Team))
 	}
 	{
-		const prefix string = ",\"TeamAbbreviation\":"
+		const prefix string = ",\"ContractLength\":"
 		out.RawString(prefix)
-		out.String(string(in.TeamAbbreviation))
+		out.Int(int(in.ContractLength))
 	}
 	{
-		const prefix string = ",\"State\":"
+		const prefix string = ",\"Y1BaseSalary\":"
 		out.RawString(prefix)
-		out.String(string(in.State))
+		out.Float64(float64(in.Y1BaseSalary))
 	}
 	{
-		const prefix string = ",\"ScholarshipsAvailable\":"
+		const prefix string = ",\"Y1Bonus\":"
 		out.RawString(prefix)
-		out.Int(int(in.ScholarshipsAvailable))
+		out.Float64(float64(in.Y1Bonus))
 	}
 	{
-		const prefix string = ",\"WeeklyPoints\":"
+		const prefix string = ",\"Y2BaseSalary\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.WeeklyPoints))
+		out.Float64(float64(in.Y2BaseSalary))
 	}
 	{
-		const prefix string = ",\"SpentPoints\":"
+		const prefix string = ",\"Y2Bonus\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.SpentPoints))
+		out.Float64(float64(in.Y2Bonus))
 	}
 	{
-		const prefix string = ",\"TotalCommitments\":"
+		const prefix string = ",\"Y3BaseSalary\":"
 		out.RawString(prefix)
-		out.Int(int(in.TotalCommitments))
+		out.Float64(float64(in.Y3BaseSalary))
 	}
 	{
-		const prefix string = ",\"RecruitClassSize\":"
+		const prefix string = ",\"Y3Bonus\":"
 		out.RawString(prefix)
-		out.Int(int(in.RecruitClassSize))
+		out.Float64(float64(in.Y3Bonus))
 	}
 	{
-		const prefix string = ",\"PortalReputation\":"
+		const prefix string = ",\"Y4BaseSalary\":"
 		out.RawString(prefix)
-		out.Int(int(in.PortalReputation))
+		out.Float64(float64(in.Y4BaseSalary))
 	}
 	{
-		const prefix string = ",\"BaseEfficiencyScore\":"
+		const prefix string = ",\"Y4Bonus\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.BaseEfficiencyScore))
+		out.Float64(float64(in.Y4Bonus))
 	}
 	{
-		const prefix string = ",\"RecruitingEfficiencyScore\":"
+		const prefix string = ",\"Y5BaseSalary\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.RecruitingEfficiencyScore))
+		out.Float64(float64(in.Y5BaseSalary))
 	}
 	{
-		const prefix string = ",\"PreviousOverallWinPer\":"
+		const prefix string = ",\"Y5Bonus\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.PreviousOverallWinPer))
+		out.Float64(float64(in.Y5Bonus))
 	}
 	{
-		const prefix string = ",\"PreviousConferenceWinPer\":"
+		const prefix string = ",\"TotalBonus\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.PreviousConferenceWinPer))
+		out.Float64(float64(in.TotalBonus))
 	}
 	{
-		const prefix string = ",\"CurrentOverallWinPer\":"
+		const prefix string = ",\"TotalSalary\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.CurrentOverallWinPer))
+		out.Float64(float64(in.TotalSalary))
 	}
 	{
-		const prefix string = ",\"CurrentConferenceWinPer\":"
+		const prefix string = ",\"ContractValue\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.CurrentConferenceWinPer))
+		out.Float64(float64(in.ContractValue))
 	}
 	{
-		const prefix string = ",\"ESPNScore\":"
+		const prefix string = ",\"BonusPercentage\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.ESPNScore))
+		out.Float64(float64(in.BonusPercentage))
 	}
 	{
-		const prefix string = ",\"RivalsScore\":"
+		const prefix string = ",\"AAV\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.RivalsScore))
+		out.Float64(float64(in.AAV))
 	}
 	{
-		const prefix string = ",\"Rank247Score\":"
+		const prefix string = ",\"Rejections\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.Rank247Score))
+		out.Int(int(in.Rejections))
 	}
 	{
-		const prefix string = ",\"CompositeScore\":"
+		const prefix string = ",\"IsAccepted\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.CompositeScore))
+		out.Bool(bool(in.IsAccepted))
 	}
 	{
-		const prefix string = ",\"ThreeStars\":"
+		const prefix string = ",\"IsActive\":"
 		out.RawString(prefix)
-		out.Uint8(uint8(in.ThreeStars))
+		out.Bool(bool(in.IsActive))
 	}
 	{
-		const prefix string = ",\"FourStars\":"
+		const prefix string = ",\"IsRejected\":"
 		out.RawString(prefix)
-		out.Uint8(uint8(in.FourStars))
-	}
-	{
-		const prefix string = ",\"FiveStars\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.FiveStars))
-	}
-	{
-		const prefix string = ",\"RecruitingClassRank\":"
-		out.RawString(prefix)
-		out.Int(int(in.RecruitingClassRank))
-	}
-	{
-		const prefix string = ",\"CaughtCheating\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.CaughtCheating))
-	}
-	{
-		const prefix string = ",\"IsFBS\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsFBS))
-	}
-	{
-		const prefix string = ",\"IsAI\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsAI))
-	}
-	{
-		const prefix string = ",\"IsUserTeam\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsUserTeam))
-	}
-	{
-		const prefix string = ",\"AIBehavior\":"
-		out.RawString(prefix)
-		out.String(string(in.AIBehavior))
-	}
-	{
-		const prefix string = ",\"AIQuality\":"
-		out.RawString(prefix)
-		out.String(string(in.AIQuality))
-	}
-	{
-		const prefix string = ",\"WeeksMissed\":"
-		out.RawString(prefix)
-		out.Int(int(in.WeeksMissed))
-	}
-	{
-		const prefix string = ",\"BattlesWon\":"
-		out.RawString(prefix)
-		out.Int(int(in.BattlesWon))
-	}
-	{
-		const prefix string = ",\"BattlesLost\":"
-		out.RawString(prefix)
-		out.Int(int(in.BattlesLost))
-	}
-	{
-		const prefix string = ",\"AIMinThreshold\":"
-		out.RawString(prefix)
-		out.Int(int(in.AIMinThreshold))
-	}
-	{
-		const prefix string = ",\"AIMaxThreshold\":"
-		out.RawString(prefix)
-		out.Int(int(in.AIMaxThreshold))
-	}
-	{
-		const prefix string = ",\"AIStarMin\":"
-		out.RawString(prefix)
-		out.Int(int(in.AIStarMin))
-	}
-	{
-		const prefix string = ",\"AIStarMax\":"
-		out.RawString(prefix)
-		out.Int(int(in.AIStarMax))
-	}
-	{
-		const prefix string = ",\"AIAutoOfferscholarships\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.AIAutoOfferscholarships))
-	}
-	{
-		const prefix string = ",\"OffensiveScheme\":"
-		out.RawString(prefix)
-		out.String(string(in.OffensiveScheme))
-	}
-	{
-		const prefix string = ",\"DefensiveScheme\":"
-		out.RawString(prefix)
-		out.String(string(in.DefensiveScheme))
-	}
-	{
-		const prefix string = ",\"Recruiter\":"
-		out.RawString(prefix)
-		out.String(string(in.Recruiter))
-	}
-	{
-		const prefix string = ",\"AcademicsAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.AcademicsAffinity))
-	}
-	{
-		const prefix string = ",\"FrontrunnerAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.FrontrunnerAffinity))
-	}
-	{
-		const prefix string = ",\"LargeCrowdsAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.LargeCrowdsAffinity))
-	}
-	{
-		const prefix string = ",\"ReligionAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ReligionAffinity))
-	}
-	{
-		const prefix string = ",\"ServiceAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ServiceAffinity))
-	}
-	{
-		const prefix string = ",\"SmallSchoolAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.SmallSchoolAffinity))
-	}
-	{
-		const prefix string = ",\"SmallTownAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.SmallTownAffinity))
-	}
-	{
-		const prefix string = ",\"BigCityAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.BigCityAffinity))
-	}
-	{
-		const prefix string = ",\"MediaSpotlightAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.MediaSpotlightAffinity))
-	}
-	{
-		const prefix string = ",\"RisingStarsAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.RisingStarsAffinity))
-	}
-	{
-		const prefix string = ",\"Recruits\":"
-		out.RawString(prefix)
-		if in.Recruits == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v86, v87 := range in.Recruits {
-				if v86 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out, v87)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"Affinities\":"
-		out.RawString(prefix)
-		if in.Affinities == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v88, v89 := range in.Affinities {
-				if v88 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs20(out, v89)
-			}
-			out.RawByte(']')
-		}
+		out.Bool(bool(in.IsRejected))
 	}
 	{
 		const prefix string = ",\"ID\":"
@@ -8576,365 +6658,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out *jwriter.Writer,
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs20(in *jlexer.Lexer, out *structs.ProfileAffinity) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "AffinityID":
-			out.AffinityID = int(in.Int())
-		case "ProfileID":
-			out.ProfileID = int(in.Int())
-		case "AffinityName":
-			out.AffinityName = string(in.String())
-		case "IsApplicable":
-			out.IsApplicable = bool(in.Bool())
-		case "IsDynamicAffinity":
-			out.IsDynamicAffinity = bool(in.Bool())
-		case "IsCheckedWeekly":
-			out.IsCheckedWeekly = bool(in.Bool())
-		case "IsCheckedSeasonal":
-			out.IsCheckedSeasonal = bool(in.Bool())
-		case "AffinityValue":
-			out.AffinityValue = float32(in.Float32())
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs20(out *jwriter.Writer, in structs.ProfileAffinity) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"AffinityID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.AffinityID))
-	}
-	{
-		const prefix string = ",\"ProfileID\":"
-		out.RawString(prefix)
-		out.Int(int(in.ProfileID))
-	}
-	{
-		const prefix string = ",\"AffinityName\":"
-		out.RawString(prefix)
-		out.String(string(in.AffinityName))
-	}
-	{
-		const prefix string = ",\"IsApplicable\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsApplicable))
-	}
-	{
-		const prefix string = ",\"IsDynamicAffinity\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsDynamicAffinity))
-	}
-	{
-		const prefix string = ",\"IsCheckedWeekly\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsCheckedWeekly))
-	}
-	{
-		const prefix string = ",\"IsCheckedSeasonal\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsCheckedSeasonal))
-	}
-	{
-		const prefix string = ",\"AffinityValue\":"
-		out.RawString(prefix)
-		out.Float32(float32(in.AffinityValue))
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs19(in *jlexer.Lexer, out *structs.RecruitPlayerProfile) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "SeasonID":
-			out.SeasonID = int(in.Int())
-		case "RecruitID":
-			out.RecruitID = int(in.Int())
-		case "ProfileID":
-			out.ProfileID = int(in.Int())
-		case "TotalPoints":
-			out.TotalPoints = float64(in.Float64())
-		case "CurrentWeeksPoints":
-			out.CurrentWeeksPoints = float64(in.Float64())
-		case "PreviousWeekPoints":
-			out.PreviousWeekPoints = float64(in.Float64())
-		case "SpendingCount":
-			out.SpendingCount = int(in.Int())
-		case "RecruitingEfficiencyScore":
-			out.RecruitingEfficiencyScore = float64(in.Float64())
-		case "Scholarship":
-			out.Scholarship = bool(in.Bool())
-		case "ScholarshipRevoked":
-			out.ScholarshipRevoked = bool(in.Bool())
-		case "AffinityOneEligible":
-			out.AffinityOneEligible = bool(in.Bool())
-		case "AffinityTwoEligible":
-			out.AffinityTwoEligible = bool(in.Bool())
-		case "TeamAbbreviation":
-			out.TeamAbbreviation = string(in.String())
-		case "Recruiter":
-			out.Recruiter = string(in.String())
-		case "RemovedFromBoard":
-			out.RemovedFromBoard = bool(in.Bool())
-		case "IsSigned":
-			out.IsSigned = bool(in.Bool())
-		case "IsLocked":
-			out.IsLocked = bool(in.Bool())
-		case "CaughtCheating":
-			out.CaughtCheating = bool(in.Bool())
-		case "TeamReachedMax":
-			out.TeamReachedMax = bool(in.Bool())
-		case "Recruit":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in, &out.Recruit)
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out *jwriter.Writer, in structs.RecruitPlayerProfile) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"SeasonID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.SeasonID))
-	}
-	{
-		const prefix string = ",\"RecruitID\":"
-		out.RawString(prefix)
-		out.Int(int(in.RecruitID))
-	}
-	{
-		const prefix string = ",\"ProfileID\":"
-		out.RawString(prefix)
-		out.Int(int(in.ProfileID))
-	}
-	{
-		const prefix string = ",\"TotalPoints\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.TotalPoints))
-	}
-	{
-		const prefix string = ",\"CurrentWeeksPoints\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.CurrentWeeksPoints))
-	}
-	{
-		const prefix string = ",\"PreviousWeekPoints\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.PreviousWeekPoints))
-	}
-	{
-		const prefix string = ",\"SpendingCount\":"
-		out.RawString(prefix)
-		out.Int(int(in.SpendingCount))
-	}
-	{
-		const prefix string = ",\"RecruitingEfficiencyScore\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.RecruitingEfficiencyScore))
-	}
-	{
-		const prefix string = ",\"Scholarship\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.Scholarship))
-	}
-	{
-		const prefix string = ",\"ScholarshipRevoked\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ScholarshipRevoked))
-	}
-	{
-		const prefix string = ",\"AffinityOneEligible\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.AffinityOneEligible))
-	}
-	{
-		const prefix string = ",\"AffinityTwoEligible\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.AffinityTwoEligible))
-	}
-	{
-		const prefix string = ",\"TeamAbbreviation\":"
-		out.RawString(prefix)
-		out.String(string(in.TeamAbbreviation))
-	}
-	{
-		const prefix string = ",\"Recruiter\":"
-		out.RawString(prefix)
-		out.String(string(in.Recruiter))
-	}
-	{
-		const prefix string = ",\"RemovedFromBoard\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.RemovedFromBoard))
-	}
-	{
-		const prefix string = ",\"IsSigned\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsSigned))
-	}
-	{
-		const prefix string = ",\"IsLocked\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsLocked))
-	}
-	{
-		const prefix string = ",\"CaughtCheating\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.CaughtCheating))
-	}
-	{
-		const prefix string = ",\"TeamReachedMax\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.TeamReachedMax))
-	}
-	{
-		const prefix string = ",\"Recruit\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out, in.Recruit)
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in *jlexer.Lexer, out *structs.Recruit) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in *jlexer.Lexer, out *structs.NFLContract) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -8955,171 +6679,62 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in *jlexer.Lexer, o
 		switch key {
 		case "PlayerID":
 			out.PlayerID = int(in.Int())
+		case "NFLPlayerID":
+			out.NFLPlayerID = int(in.Int())
 		case "TeamID":
-			out.TeamID = int(in.Int())
-		case "HighSchool":
-			out.HighSchool = string(in.String())
-		case "City":
-			out.City = string(in.String())
-		case "State":
-			out.State = string(in.String())
-		case "AffinityOne":
-			out.AffinityOne = string(in.String())
-		case "AffinityTwo":
-			out.AffinityTwo = string(in.String())
-		case "IsSigned":
-			out.IsSigned = bool(in.Bool())
-		case "IsCustomCroot":
-			out.IsCustomCroot = bool(in.Bool())
-		case "CustomCrootFor":
-			out.CustomCrootFor = string(in.String())
-		case "College":
-			out.College = string(in.String())
-		case "OverallRank":
-			out.OverallRank = float64(in.Float64())
-		case "RivalsRank":
-			out.RivalsRank = float64(in.Float64())
-		case "ESPNRank":
-			out.ESPNRank = float64(in.Float64())
-		case "Rank247":
-			out.Rank247 = float64(in.Float64())
-		case "TopRankModifier":
-			out.TopRankModifier = float64(in.Float64())
-		case "RecruitingModifier":
-			out.RecruitingModifier = float64(in.Float64())
-		case "RecruitingStatus":
-			out.RecruitingStatus = string(in.String())
-		case "RecruitPlayerProfiles":
-			if in.IsNull() {
-				in.Skip()
-				out.RecruitPlayerProfiles = nil
-			} else {
-				in.Delim('[')
-				if out.RecruitPlayerProfiles == nil {
-					if !in.IsDelim(']') {
-						out.RecruitPlayerProfiles = make([]structs.RecruitPlayerProfile, 0, 0)
-					} else {
-						out.RecruitPlayerProfiles = []structs.RecruitPlayerProfile{}
-					}
-				} else {
-					out.RecruitPlayerProfiles = (out.RecruitPlayerProfiles)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v90 structs.RecruitPlayerProfile
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs19(in, &v90)
-					out.RecruitPlayerProfiles = append(out.RecruitPlayerProfiles, v90)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "FirstName":
-			out.FirstName = string(in.String())
-		case "LastName":
-			out.LastName = string(in.String())
-		case "Position":
-			out.Position = string(in.String())
-		case "Archetype":
-			out.Archetype = string(in.String())
-		case "PreviousTeamID":
-			out.PreviousTeamID = uint(in.Uint())
-		case "PreviousTeam":
-			out.PreviousTeam = string(in.String())
-		case "Height":
-			out.Height = int(in.Int())
-		case "Weight":
-			out.Weight = int(in.Int())
-		case "Age":
-			out.Age = int(in.Int())
-		case "Stars":
-			out.Stars = int(in.Int())
-		case "Overall":
-			out.Overall = int(in.Int())
-		case "Stamina":
-			out.Stamina = int(in.Int())
-		case "Injury":
-			out.Injury = int(in.Int())
-		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
-		case "Speed":
-			out.Speed = int(in.Int())
-		case "Carrying":
-			out.Carrying = int(in.Int())
-		case "Agility":
-			out.Agility = int(in.Int())
-		case "Catching":
-			out.Catching = int(in.Int())
-		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
-		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
-		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
-		case "Strength":
-			out.Strength = int(in.Int())
-		case "Tackle":
-			out.Tackle = int(in.Int())
-		case "PassBlock":
-			out.PassBlock = int(in.Int())
-		case "RunBlock":
-			out.RunBlock = int(in.Int())
-		case "PassRush":
-			out.PassRush = int(in.Int())
-		case "RunDefense":
-			out.RunDefense = int(in.Int())
-		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
-		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
-		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
-		case "KickPower":
-			out.KickPower = int(in.Int())
-		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
-		case "PuntPower":
-			out.PuntPower = int(in.Int())
-		case "Progression":
-			out.Progression = int(in.Int())
-		case "Discipline":
-			out.Discipline = int(in.Int())
-		case "PotentialGrade":
-			out.PotentialGrade = string(in.String())
-		case "FreeAgency":
-			out.FreeAgency = string(in.String())
-		case "Personality":
-			out.Personality = string(in.String())
-		case "RecruitingBias":
-			out.RecruitingBias = string(in.String())
-		case "WorkEthic":
-			out.WorkEthic = string(in.String())
-		case "AcademicBias":
-			out.AcademicBias = string(in.String())
-		case "IsInjured":
-			out.IsInjured = bool(in.Bool())
-		case "InjuryName":
-			out.InjuryName = string(in.String())
-		case "InjuryType":
-			out.InjuryType = string(in.String())
-		case "WeeksOfRecovery":
-			out.WeeksOfRecovery = uint(in.Uint())
-		case "InjuryReserve":
-			out.InjuryReserve = bool(in.Bool())
-		case "PrimeAge":
-			out.PrimeAge = uint(in.Uint())
-		case "Clutch":
-			out.Clutch = int(in.Int())
-		case "Shotgun":
-			out.Shotgun = int(in.Int())
-		case "PositionTwo":
-			out.PositionTwo = string(in.String())
-		case "ArchetypeTwo":
-			out.ArchetypeTwo = string(in.String())
-		case "RelativeID":
-			out.RelativeID = uint(in.Uint())
-		case "RelativeType":
-			out.RelativeType = uint(in.Uint())
-		case "Notes":
-			out.Notes = string(in.String())
+			out.TeamID = uint(in.Uint())
+		case "Team":
+			out.Team = string(in.String())
+		case "OriginalTeamID":
+			out.OriginalTeamID = uint(in.Uint())
+		case "OriginalTeam":
+			out.OriginalTeam = string(in.String())
+		case "ContractLength":
+			out.ContractLength = int(in.Int())
+		case "Y1BaseSalary":
+			out.Y1BaseSalary = float64(in.Float64())
+		case "Y1Bonus":
+			out.Y1Bonus = float64(in.Float64())
+		case "Y2BaseSalary":
+			out.Y2BaseSalary = float64(in.Float64())
+		case "Y2Bonus":
+			out.Y2Bonus = float64(in.Float64())
+		case "Y3BaseSalary":
+			out.Y3BaseSalary = float64(in.Float64())
+		case "Y3Bonus":
+			out.Y3Bonus = float64(in.Float64())
+		case "Y4BaseSalary":
+			out.Y4BaseSalary = float64(in.Float64())
+		case "Y4Bonus":
+			out.Y4Bonus = float64(in.Float64())
+		case "Y5BaseSalary":
+			out.Y5BaseSalary = float64(in.Float64())
+		case "Y5Bonus":
+			out.Y5Bonus = float64(in.Float64())
+		case "BonusPercentage":
+			out.BonusPercentage = float64(in.Float64())
+		case "ContractType":
+			out.ContractType = string(in.String())
+		case "ContractValue":
+			out.ContractValue = float64(in.Float64())
+		case "SigningValue":
+			out.SigningValue = float64(in.Float64())
+		case "IsActive":
+			out.IsActive = bool(in.Bool())
+		case "IsComplete":
+			out.IsComplete = bool(in.Bool())
+		case "IsExtended":
+			out.IsExtended = bool(in.Bool())
+		case "HasProgressed":
+			out.HasProgressed = bool(in.Bool())
+		case "PlayerRetired":
+			out.PlayerRetired = bool(in.Bool())
+		case "TagType":
+			out.TagType = uint8(in.Uint8())
+		case "IsTagged":
+			out.IsTagged = bool(in.Bool())
+		case "IsCut":
+			out.IsCut = bool(in.Bool())
 		case "ID":
 			out.ID = uint(in.Uint())
 		case "CreatedAt":
@@ -9152,7 +6767,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out *jwriter.Writer, in structs.Recruit) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out *jwriter.Writer, in structs.NFLContract) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -9162,375 +6777,144 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out *jwriter.Writer
 		out.Int(int(in.PlayerID))
 	}
 	{
+		const prefix string = ",\"NFLPlayerID\":"
+		out.RawString(prefix)
+		out.Int(int(in.NFLPlayerID))
+	}
+	{
 		const prefix string = ",\"TeamID\":"
 		out.RawString(prefix)
-		out.Int(int(in.TeamID))
+		out.Uint(uint(in.TeamID))
 	}
 	{
-		const prefix string = ",\"HighSchool\":"
+		const prefix string = ",\"Team\":"
 		out.RawString(prefix)
-		out.String(string(in.HighSchool))
+		out.String(string(in.Team))
 	}
 	{
-		const prefix string = ",\"City\":"
+		const prefix string = ",\"OriginalTeamID\":"
 		out.RawString(prefix)
-		out.String(string(in.City))
+		out.Uint(uint(in.OriginalTeamID))
 	}
 	{
-		const prefix string = ",\"State\":"
+		const prefix string = ",\"OriginalTeam\":"
 		out.RawString(prefix)
-		out.String(string(in.State))
+		out.String(string(in.OriginalTeam))
 	}
 	{
-		const prefix string = ",\"AffinityOne\":"
+		const prefix string = ",\"ContractLength\":"
 		out.RawString(prefix)
-		out.String(string(in.AffinityOne))
+		out.Int(int(in.ContractLength))
 	}
 	{
-		const prefix string = ",\"AffinityTwo\":"
+		const prefix string = ",\"Y1BaseSalary\":"
 		out.RawString(prefix)
-		out.String(string(in.AffinityTwo))
+		out.Float64(float64(in.Y1BaseSalary))
 	}
 	{
-		const prefix string = ",\"IsSigned\":"
+		const prefix string = ",\"Y1Bonus\":"
 		out.RawString(prefix)
-		out.Bool(bool(in.IsSigned))
+		out.Float64(float64(in.Y1Bonus))
 	}
 	{
-		const prefix string = ",\"IsCustomCroot\":"
+		const prefix string = ",\"Y2BaseSalary\":"
 		out.RawString(prefix)
-		out.Bool(bool(in.IsCustomCroot))
+		out.Float64(float64(in.Y2BaseSalary))
 	}
 	{
-		const prefix string = ",\"CustomCrootFor\":"
+		const prefix string = ",\"Y2Bonus\":"
 		out.RawString(prefix)
-		out.String(string(in.CustomCrootFor))
+		out.Float64(float64(in.Y2Bonus))
 	}
 	{
-		const prefix string = ",\"College\":"
+		const prefix string = ",\"Y3BaseSalary\":"
 		out.RawString(prefix)
-		out.String(string(in.College))
+		out.Float64(float64(in.Y3BaseSalary))
 	}
 	{
-		const prefix string = ",\"OverallRank\":"
+		const prefix string = ",\"Y3Bonus\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.OverallRank))
+		out.Float64(float64(in.Y3Bonus))
 	}
 	{
-		const prefix string = ",\"RivalsRank\":"
+		const prefix string = ",\"Y4BaseSalary\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.RivalsRank))
+		out.Float64(float64(in.Y4BaseSalary))
 	}
 	{
-		const prefix string = ",\"ESPNRank\":"
+		const prefix string = ",\"Y4Bonus\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.ESPNRank))
+		out.Float64(float64(in.Y4Bonus))
 	}
 	{
-		const prefix string = ",\"Rank247\":"
+		const prefix string = ",\"Y5BaseSalary\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.Rank247))
+		out.Float64(float64(in.Y5BaseSalary))
 	}
 	{
-		const prefix string = ",\"TopRankModifier\":"
+		const prefix string = ",\"Y5Bonus\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.TopRankModifier))
+		out.Float64(float64(in.Y5Bonus))
 	}
 	{
-		const prefix string = ",\"RecruitingModifier\":"
+		const prefix string = ",\"BonusPercentage\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.RecruitingModifier))
+		out.Float64(float64(in.BonusPercentage))
 	}
 	{
-		const prefix string = ",\"RecruitingStatus\":"
+		const prefix string = ",\"ContractType\":"
 		out.RawString(prefix)
-		out.String(string(in.RecruitingStatus))
+		out.String(string(in.ContractType))
 	}
 	{
-		const prefix string = ",\"RecruitPlayerProfiles\":"
+		const prefix string = ",\"ContractValue\":"
 		out.RawString(prefix)
-		if in.RecruitPlayerProfiles == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v91, v92 := range in.RecruitPlayerProfiles {
-				if v91 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out, v92)
-			}
-			out.RawByte(']')
-		}
+		out.Float64(float64(in.ContractValue))
 	}
 	{
-		const prefix string = ",\"FirstName\":"
+		const prefix string = ",\"SigningValue\":"
 		out.RawString(prefix)
-		out.String(string(in.FirstName))
+		out.Float64(float64(in.SigningValue))
 	}
 	{
-		const prefix string = ",\"LastName\":"
+		const prefix string = ",\"IsActive\":"
 		out.RawString(prefix)
-		out.String(string(in.LastName))
+		out.Bool(bool(in.IsActive))
 	}
 	{
-		const prefix string = ",\"Position\":"
+		const prefix string = ",\"IsComplete\":"
 		out.RawString(prefix)
-		out.String(string(in.Position))
+		out.Bool(bool(in.IsComplete))
 	}
 	{
-		const prefix string = ",\"Archetype\":"
+		const prefix string = ",\"IsExtended\":"
 		out.RawString(prefix)
-		out.String(string(in.Archetype))
+		out.Bool(bool(in.IsExtended))
 	}
 	{
-		const prefix string = ",\"PreviousTeamID\":"
+		const prefix string = ",\"HasProgressed\":"
 		out.RawString(prefix)
-		out.Uint(uint(in.PreviousTeamID))
+		out.Bool(bool(in.HasProgressed))
 	}
 	{
-		const prefix string = ",\"PreviousTeam\":"
+		const prefix string = ",\"PlayerRetired\":"
 		out.RawString(prefix)
-		out.String(string(in.PreviousTeam))
+		out.Bool(bool(in.PlayerRetired))
 	}
 	{
-		const prefix string = ",\"Height\":"
+		const prefix string = ",\"TagType\":"
 		out.RawString(prefix)
-		out.Int(int(in.Height))
+		out.Uint8(uint8(in.TagType))
 	}
 	{
-		const prefix string = ",\"Weight\":"
+		const prefix string = ",\"IsTagged\":"
 		out.RawString(prefix)
-		out.Int(int(in.Weight))
+		out.Bool(bool(in.IsTagged))
 	}
 	{
-		const prefix string = ",\"Age\":"
+		const prefix string = ",\"IsCut\":"
 		out.RawString(prefix)
-		out.Int(int(in.Age))
-	}
-	{
-		const prefix string = ",\"Stars\":"
-		out.RawString(prefix)
-		out.Int(int(in.Stars))
-	}
-	{
-		const prefix string = ",\"Overall\":"
-		out.RawString(prefix)
-		out.Int(int(in.Overall))
-	}
-	{
-		const prefix string = ",\"Stamina\":"
-		out.RawString(prefix)
-		out.Int(int(in.Stamina))
-	}
-	{
-		const prefix string = ",\"Injury\":"
-		out.RawString(prefix)
-		out.Int(int(in.Injury))
-	}
-	{
-		const prefix string = ",\"FootballIQ\":"
-		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
-	}
-	{
-		const prefix string = ",\"Speed\":"
-		out.RawString(prefix)
-		out.Int(int(in.Speed))
-	}
-	{
-		const prefix string = ",\"Carrying\":"
-		out.RawString(prefix)
-		out.Int(int(in.Carrying))
-	}
-	{
-		const prefix string = ",\"Agility\":"
-		out.RawString(prefix)
-		out.Int(int(in.Agility))
-	}
-	{
-		const prefix string = ",\"Catching\":"
-		out.RawString(prefix)
-		out.Int(int(in.Catching))
-	}
-	{
-		const prefix string = ",\"RouteRunning\":"
-		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
-	}
-	{
-		const prefix string = ",\"ZoneCoverage\":"
-		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
-	}
-	{
-		const prefix string = ",\"ManCoverage\":"
-		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
-	}
-	{
-		const prefix string = ",\"Strength\":"
-		out.RawString(prefix)
-		out.Int(int(in.Strength))
-	}
-	{
-		const prefix string = ",\"Tackle\":"
-		out.RawString(prefix)
-		out.Int(int(in.Tackle))
-	}
-	{
-		const prefix string = ",\"PassBlock\":"
-		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
-	}
-	{
-		const prefix string = ",\"RunBlock\":"
-		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
-	}
-	{
-		const prefix string = ",\"PassRush\":"
-		out.RawString(prefix)
-		out.Int(int(in.PassRush))
-	}
-	{
-		const prefix string = ",\"RunDefense\":"
-		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
-	}
-	{
-		const prefix string = ",\"ThrowPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
-	}
-	{
-		const prefix string = ",\"ThrowAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
-	}
-	{
-		const prefix string = ",\"KickAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
-	}
-	{
-		const prefix string = ",\"KickPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.KickPower))
-	}
-	{
-		const prefix string = ",\"PuntAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
-	}
-	{
-		const prefix string = ",\"PuntPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
-	}
-	{
-		const prefix string = ",\"Progression\":"
-		out.RawString(prefix)
-		out.Int(int(in.Progression))
-	}
-	{
-		const prefix string = ",\"Discipline\":"
-		out.RawString(prefix)
-		out.Int(int(in.Discipline))
-	}
-	{
-		const prefix string = ",\"PotentialGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.PotentialGrade))
-	}
-	{
-		const prefix string = ",\"FreeAgency\":"
-		out.RawString(prefix)
-		out.String(string(in.FreeAgency))
-	}
-	{
-		const prefix string = ",\"Personality\":"
-		out.RawString(prefix)
-		out.String(string(in.Personality))
-	}
-	{
-		const prefix string = ",\"RecruitingBias\":"
-		out.RawString(prefix)
-		out.String(string(in.RecruitingBias))
-	}
-	{
-		const prefix string = ",\"WorkEthic\":"
-		out.RawString(prefix)
-		out.String(string(in.WorkEthic))
-	}
-	{
-		const prefix string = ",\"AcademicBias\":"
-		out.RawString(prefix)
-		out.String(string(in.AcademicBias))
-	}
-	{
-		const prefix string = ",\"IsInjured\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsInjured))
-	}
-	{
-		const prefix string = ",\"InjuryName\":"
-		out.RawString(prefix)
-		out.String(string(in.InjuryName))
-	}
-	{
-		const prefix string = ",\"InjuryType\":"
-		out.RawString(prefix)
-		out.String(string(in.InjuryType))
-	}
-	{
-		const prefix string = ",\"WeeksOfRecovery\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.WeeksOfRecovery))
-	}
-	{
-		const prefix string = ",\"InjuryReserve\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.InjuryReserve))
-	}
-	{
-		const prefix string = ",\"PrimeAge\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.PrimeAge))
-	}
-	{
-		const prefix string = ",\"Clutch\":"
-		out.RawString(prefix)
-		out.Int(int(in.Clutch))
-	}
-	{
-		const prefix string = ",\"Shotgun\":"
-		out.RawString(prefix)
-		out.Int(int(in.Shotgun))
-	}
-	{
-		const prefix string = ",\"PositionTwo\":"
-		out.RawString(prefix)
-		out.String(string(in.PositionTwo))
-	}
-	{
-		const prefix string = ",\"ArchetypeTwo\":"
-		out.RawString(prefix)
-		out.String(string(in.ArchetypeTwo))
-	}
-	{
-		const prefix string = ",\"RelativeID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.RelativeID))
-	}
-	{
-		const prefix string = ",\"RelativeType\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.RelativeType))
-	}
-	{
-		const prefix string = ",\"Notes\":"
-		out.RawString(prefix)
-		out.String(string(in.Notes))
+		out.Bool(bool(in.IsCut))
 	}
 	{
 		const prefix string = ",\"ID\":"
@@ -9558,7 +6942,271 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs6(in *jlexer.Lexer, out *structs.NewsLog) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in *jlexer.Lexer, out *structs.NFLDepthChart) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "TeamID":
+			out.TeamID = int(in.Int())
+		case "DepthChartPlayers":
+			if in.IsNull() {
+				in.Skip()
+				out.DepthChartPlayers = nil
+			} else {
+				in.Delim('[')
+				if out.DepthChartPlayers == nil {
+					if !in.IsDelim(']') {
+						out.DepthChartPlayers = make([]structs.NFLDepthChartPosition, 0, 0)
+					} else {
+						out.DepthChartPlayers = []structs.NFLDepthChartPosition{}
+					}
+				} else {
+					out.DepthChartPlayers = (out.DepthChartPlayers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v74 structs.NFLDepthChartPosition
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs19(in, &v74)
+					out.DepthChartPlayers = append(out.DepthChartPlayers, v74)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out *jwriter.Writer, in structs.NFLDepthChart) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.TeamID))
+	}
+	{
+		const prefix string = ",\"DepthChartPlayers\":"
+		out.RawString(prefix)
+		if in.DepthChartPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v75, v76 := range in.DepthChartPlayers {
+				if v75 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out, v76)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs19(in *jlexer.Lexer, out *structs.NFLDepthChartPosition) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "DepthChartID":
+			out.DepthChartID = uint(in.Uint())
+		case "PlayerID":
+			out.PlayerID = uint(in.Uint())
+		case "Position":
+			out.Position = string(in.String())
+		case "PositionLevel":
+			out.PositionLevel = string(in.String())
+		case "FirstName":
+			out.FirstName = string(in.String())
+		case "LastName":
+			out.LastName = string(in.String())
+		case "OriginalPosition":
+			out.OriginalPosition = string(in.String())
+		case "NFLPlayer":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &out.NFLPlayer)
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out *jwriter.Writer, in structs.NFLDepthChartPosition) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"DepthChartID\":"
+		out.RawString(prefix[1:])
+		out.Uint(uint(in.DepthChartID))
+	}
+	{
+		const prefix string = ",\"PlayerID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.PlayerID))
+	}
+	{
+		const prefix string = ",\"Position\":"
+		out.RawString(prefix)
+		out.String(string(in.Position))
+	}
+	{
+		const prefix string = ",\"PositionLevel\":"
+		out.RawString(prefix)
+		out.String(string(in.PositionLevel))
+	}
+	{
+		const prefix string = ",\"FirstName\":"
+		out.RawString(prefix)
+		out.String(string(in.FirstName))
+	}
+	{
+		const prefix string = ",\"LastName\":"
+		out.RawString(prefix)
+		out.String(string(in.LastName))
+	}
+	{
+		const prefix string = ",\"OriginalPosition\":"
+		out.RawString(prefix)
+		out.String(string(in.OriginalPosition))
+	}
+	{
+		const prefix string = ",\"NFLPlayer\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, in.NFLPlayer)
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs9(in *jlexer.Lexer, out *structs.NewsLog) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -9623,7 +7271,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs6(in *jlexer.Lexer, ou
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out *jwriter.Writer, in structs.NewsLog) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs9(out *jwriter.Writer, in structs.NewsLog) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -9661,1071 +7309,6 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out *jwriter.Writer,
 		const prefix string = ",\"League\":"
 		out.RawString(prefix)
 		out.String(string(in.League))
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers2(in *jlexer.Lexer, out *BootstrapDataThree) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "Recruits":
-			if in.IsNull() {
-				in.Skip()
-				out.Recruits = nil
-			} else {
-				in.Delim('[')
-				if out.Recruits == nil {
-					if !in.IsDelim(']') {
-						out.Recruits = make([]structs.Croot, 0, 0)
-					} else {
-						out.Recruits = []structs.Croot{}
-					}
-				} else {
-					out.Recruits = (out.Recruits)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v93 structs.Croot
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs22(in, &v93)
-					out.Recruits = append(out.Recruits, v93)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "RecruitProfiles":
-			if in.IsNull() {
-				in.Skip()
-				out.RecruitProfiles = nil
-			} else {
-				in.Delim('[')
-				if out.RecruitProfiles == nil {
-					if !in.IsDelim(']') {
-						out.RecruitProfiles = make([]structs.RecruitPlayerProfile, 0, 0)
-					} else {
-						out.RecruitProfiles = []structs.RecruitPlayerProfile{}
-					}
-				} else {
-					out.RecruitProfiles = (out.RecruitProfiles)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v94 structs.RecruitPlayerProfile
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs19(in, &v94)
-					out.RecruitProfiles = append(out.RecruitProfiles, v94)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "CollegeDepthChartMap":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				out.CollegeDepthChartMap = make(map[uint]structs.CollegeTeamDepthChart)
-				for !in.IsDelim('}') {
-					key := uint(in.UintStr())
-					in.WantColon()
-					var v95 structs.CollegeTeamDepthChart
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs23(in, &v95)
-					(out.CollegeDepthChartMap)[key] = v95
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
-		case "FreeAgentOffers":
-			if in.IsNull() {
-				in.Skip()
-				out.FreeAgentOffers = nil
-			} else {
-				in.Delim('[')
-				if out.FreeAgentOffers == nil {
-					if !in.IsDelim(']') {
-						out.FreeAgentOffers = make([]structs.FreeAgencyOffer, 0, 0)
-					} else {
-						out.FreeAgentOffers = []structs.FreeAgencyOffer{}
-					}
-				} else {
-					out.FreeAgentOffers = (out.FreeAgentOffers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v96 structs.FreeAgencyOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs16(in, &v96)
-					out.FreeAgentOffers = append(out.FreeAgentOffers, v96)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "WaiverWireOffers":
-			if in.IsNull() {
-				in.Skip()
-				out.WaiverWireOffers = nil
-			} else {
-				in.Delim('[')
-				if out.WaiverWireOffers == nil {
-					if !in.IsDelim(']') {
-						out.WaiverWireOffers = make([]structs.NFLWaiverOffer, 0, 1)
-					} else {
-						out.WaiverWireOffers = []structs.NFLWaiverOffer{}
-					}
-				} else {
-					out.WaiverWireOffers = (out.WaiverWireOffers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v97 structs.NFLWaiverOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v97)
-					out.WaiverWireOffers = append(out.WaiverWireOffers, v97)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "FreeAgents":
-			if in.IsNull() {
-				in.Skip()
-				out.FreeAgents = nil
-			} else {
-				in.Delim('[')
-				if out.FreeAgents == nil {
-					if !in.IsDelim(']') {
-						out.FreeAgents = make([]structs.NFLPlayer, 0, 0)
-					} else {
-						out.FreeAgents = []structs.NFLPlayer{}
-					}
-				} else {
-					out.FreeAgents = (out.FreeAgents)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v98 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v98)
-					out.FreeAgents = append(out.FreeAgents, v98)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "WaiverPlayers":
-			if in.IsNull() {
-				in.Skip()
-				out.WaiverPlayers = nil
-			} else {
-				in.Delim('[')
-				if out.WaiverPlayers == nil {
-					if !in.IsDelim(']') {
-						out.WaiverPlayers = make([]structs.NFLPlayer, 0, 0)
-					} else {
-						out.WaiverPlayers = []structs.NFLPlayer{}
-					}
-				} else {
-					out.WaiverPlayers = (out.WaiverPlayers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v99 structs.NFLPlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v99)
-					out.WaiverPlayers = append(out.WaiverPlayers, v99)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "NFLDraftees":
-			if in.IsNull() {
-				in.Skip()
-				out.NFLDraftees = nil
-			} else {
-				in.Delim('[')
-				if out.NFLDraftees == nil {
-					if !in.IsDelim(']') {
-						out.NFLDraftees = make([]models.NFLDraftee, 0, 0)
-					} else {
-						out.NFLDraftees = []models.NFLDraftee{}
-					}
-				} else {
-					out.NFLDraftees = (out.NFLDraftees)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v100 models.NFLDraftee
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAModels(in, &v100)
-					out.NFLDraftees = append(out.NFLDraftees, v100)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "ProNews":
-			if in.IsNull() {
-				in.Skip()
-				out.ProNews = nil
-			} else {
-				in.Delim('[')
-				if out.ProNews == nil {
-					if !in.IsDelim(']') {
-						out.ProNews = make([]structs.NewsLog, 0, 0)
-					} else {
-						out.ProNews = []structs.NewsLog{}
-					}
-				} else {
-					out.ProNews = (out.ProNews)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v101 structs.NewsLog
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs6(in, &v101)
-					out.ProNews = append(out.ProNews, v101)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "NFLDepthChartMap":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				out.NFLDepthChartMap = make(map[uint]structs.NFLDepthChart)
-				for !in.IsDelim('}') {
-					key := uint(in.UintStr())
-					in.WantColon()
-					var v102 structs.NFLDepthChart
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in, &v102)
-					(out.NFLDepthChartMap)[key] = v102
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
-		case "ContractMap":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				out.ContractMap = make(map[uint]structs.NFLContract)
-				for !in.IsDelim('}') {
-					key := uint(in.UintStr())
-					in.WantColon()
-					var v103 structs.NFLContract
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in, &v103)
-					(out.ContractMap)[key] = v103
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
-		case "ExtensionMap":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				out.ExtensionMap = make(map[uint]structs.NFLExtensionOffer)
-				for !in.IsDelim('}') {
-					key := uint(in.UintStr())
-					in.WantColon()
-					var v104 structs.NFLExtensionOffer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in, &v104)
-					(out.ExtensionMap)[key] = v104
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
-		case "FaceData":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				out.FaceData = make(map[uint]structs.FaceDataResponse)
-				for !in.IsDelim('}') {
-					key := uint(in.UintStr())
-					in.WantColon()
-					var v105 structs.FaceDataResponse
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs25(in, &v105)
-					(out.FaceData)[key] = v105
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers2(out *jwriter.Writer, in BootstrapDataThree) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"Recruits\":"
-		out.RawString(prefix[1:])
-		if in.Recruits == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v106, v107 := range in.Recruits {
-				if v106 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs22(out, v107)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"RecruitProfiles\":"
-		out.RawString(prefix)
-		if in.RecruitProfiles == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v108, v109 := range in.RecruitProfiles {
-				if v108 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs19(out, v109)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"CollegeDepthChartMap\":"
-		out.RawString(prefix)
-		if in.CollegeDepthChartMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
-			out.RawString(`null`)
-		} else {
-			out.RawByte('{')
-			v110First := true
-			for v110Name, v110Value := range in.CollegeDepthChartMap {
-				if v110First {
-					v110First = false
-				} else {
-					out.RawByte(',')
-				}
-				out.UintStr(uint(v110Name))
-				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs23(out, v110Value)
-			}
-			out.RawByte('}')
-		}
-	}
-	{
-		const prefix string = ",\"FreeAgentOffers\":"
-		out.RawString(prefix)
-		if in.FreeAgentOffers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v111, v112 := range in.FreeAgentOffers {
-				if v111 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs16(out, v112)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"WaiverWireOffers\":"
-		out.RawString(prefix)
-		if in.WaiverWireOffers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v113, v114 := range in.WaiverWireOffers {
-				if v113 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v114)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"FreeAgents\":"
-		out.RawString(prefix)
-		if in.FreeAgents == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v115, v116 := range in.FreeAgents {
-				if v115 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v116)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"WaiverPlayers\":"
-		out.RawString(prefix)
-		if in.WaiverPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v117, v118 := range in.WaiverPlayers {
-				if v117 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v118)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"NFLDraftees\":"
-		out.RawString(prefix)
-		if in.NFLDraftees == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v119, v120 := range in.NFLDraftees {
-				if v119 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out, v120)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"ProNews\":"
-		out.RawString(prefix)
-		if in.ProNews == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v121, v122 := range in.ProNews {
-				if v121 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out, v122)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"NFLDepthChartMap\":"
-		out.RawString(prefix)
-		if in.NFLDepthChartMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
-			out.RawString(`null`)
-		} else {
-			out.RawByte('{')
-			v123First := true
-			for v123Name, v123Value := range in.NFLDepthChartMap {
-				if v123First {
-					v123First = false
-				} else {
-					out.RawByte(',')
-				}
-				out.UintStr(uint(v123Name))
-				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out, v123Value)
-			}
-			out.RawByte('}')
-		}
-	}
-	{
-		const prefix string = ",\"ContractMap\":"
-		out.RawString(prefix)
-		if in.ContractMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
-			out.RawString(`null`)
-		} else {
-			out.RawByte('{')
-			v124First := true
-			for v124Name, v124Value := range in.ContractMap {
-				if v124First {
-					v124First = false
-				} else {
-					out.RawByte(',')
-				}
-				out.UintStr(uint(v124Name))
-				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out, v124Value)
-			}
-			out.RawByte('}')
-		}
-	}
-	{
-		const prefix string = ",\"ExtensionMap\":"
-		out.RawString(prefix)
-		if in.ExtensionMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
-			out.RawString(`null`)
-		} else {
-			out.RawByte('{')
-			v125First := true
-			for v125Name, v125Value := range in.ExtensionMap {
-				if v125First {
-					v125First = false
-				} else {
-					out.RawByte(',')
-				}
-				out.UintStr(uint(v125Name))
-				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out, v125Value)
-			}
-			out.RawByte('}')
-		}
-	}
-	{
-		const prefix string = ",\"FaceData\":"
-		out.RawString(prefix)
-		if in.FaceData == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
-			out.RawString(`null`)
-		} else {
-			out.RawByte('{')
-			v126First := true
-			for v126Name, v126Value := range in.FaceData {
-				if v126First {
-					v126First = false
-				} else {
-					out.RawByte(',')
-				}
-				out.UintStr(uint(v126Name))
-				out.RawByte(':')
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs25(out, v126Value)
-			}
-			out.RawByte('}')
-		}
-	}
-	out.RawByte('}')
-}
-
-// MarshalJSON supports json.Marshaler interface
-func (v BootstrapDataThree) MarshalJSON() ([]byte, error) {
-	w := jwriter.Writer{}
-	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers2(&w, v)
-	return w.Buffer.BuildBytes(), w.Error
-}
-
-// MarshalEasyJSON supports easyjson.Marshaler interface
-func (v BootstrapDataThree) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers2(w, v)
-}
-
-// UnmarshalJSON supports json.Unmarshaler interface
-func (v *BootstrapDataThree) UnmarshalJSON(data []byte) error {
-	r := jlexer.Lexer{Data: data}
-	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers2(&r, v)
-	return r.Error()
-}
-
-// UnmarshalEasyJSON supports easyjson.Unmarshaler interface
-func (v *BootstrapDataThree) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers2(l, v)
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs25(in *jlexer.Lexer, out *structs.FaceDataResponse) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "PlayerID":
-			out.PlayerID = uint(in.Uint())
-		case "Accessories":
-			out.Accessories = string(in.String())
-		case "Body":
-			out.Body = string(in.String())
-		case "Ear":
-			out.Ear = string(in.String())
-		case "Eye":
-			out.Eye = string(in.String())
-		case "EyeLine":
-			out.EyeLine = string(in.String())
-		case "Eyebrow":
-			out.Eyebrow = string(in.String())
-		case "FacialHair":
-			out.FacialHair = string(in.String())
-		case "Glasses":
-			out.Glasses = string(in.String())
-		case "Hair":
-			out.Hair = string(in.String())
-		case "HairBG":
-			out.HairBG = string(in.String())
-		case "HairFlip":
-			out.HairFlip = bool(in.Bool())
-		case "Head":
-			out.Head = string(in.String())
-		case "Jersey":
-			out.Jersey = string(in.String())
-		case "MiscLine":
-			out.MiscLine = string(in.String())
-		case "Mouth":
-			out.Mouth = string(in.String())
-		case "MouthFlip":
-			out.MouthFlip = bool(in.Bool())
-		case "Nose":
-			out.Nose = string(in.String())
-		case "NoseFlip":
-			out.NoseFlip = bool(in.Bool())
-		case "SmileLine":
-			out.SmileLine = string(in.String())
-		case "BodySize":
-			out.BodySize = float32(in.Float32())
-		case "EarSize":
-			out.EarSize = float32(in.Float32())
-		case "EyeAngle":
-			out.EyeAngle = int8(in.Int8())
-		case "EyeBrowAngle":
-			out.EyeBrowAngle = int8(in.Int8())
-		case "FaceSize":
-			out.FaceSize = float32(in.Float32())
-		case "FacialHairShave":
-			out.FacialHairShave = string(in.String())
-		case "NoseSize":
-			out.NoseSize = float32(in.Float32())
-		case "SmileLineSize":
-			out.SmileLineSize = float32(in.Float32())
-		case "SkinColor":
-			out.SkinColor = string(in.String())
-		case "HairColor":
-			out.HairColor = string(in.String())
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs25(out *jwriter.Writer, in structs.FaceDataResponse) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"PlayerID\":"
-		out.RawString(prefix[1:])
-		out.Uint(uint(in.PlayerID))
-	}
-	{
-		const prefix string = ",\"Accessories\":"
-		out.RawString(prefix)
-		out.String(string(in.Accessories))
-	}
-	{
-		const prefix string = ",\"Body\":"
-		out.RawString(prefix)
-		out.String(string(in.Body))
-	}
-	{
-		const prefix string = ",\"Ear\":"
-		out.RawString(prefix)
-		out.String(string(in.Ear))
-	}
-	{
-		const prefix string = ",\"Eye\":"
-		out.RawString(prefix)
-		out.String(string(in.Eye))
-	}
-	{
-		const prefix string = ",\"EyeLine\":"
-		out.RawString(prefix)
-		out.String(string(in.EyeLine))
-	}
-	{
-		const prefix string = ",\"Eyebrow\":"
-		out.RawString(prefix)
-		out.String(string(in.Eyebrow))
-	}
-	{
-		const prefix string = ",\"FacialHair\":"
-		out.RawString(prefix)
-		out.String(string(in.FacialHair))
-	}
-	{
-		const prefix string = ",\"Glasses\":"
-		out.RawString(prefix)
-		out.String(string(in.Glasses))
-	}
-	{
-		const prefix string = ",\"Hair\":"
-		out.RawString(prefix)
-		out.String(string(in.Hair))
-	}
-	{
-		const prefix string = ",\"HairBG\":"
-		out.RawString(prefix)
-		out.String(string(in.HairBG))
-	}
-	{
-		const prefix string = ",\"HairFlip\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.HairFlip))
-	}
-	{
-		const prefix string = ",\"Head\":"
-		out.RawString(prefix)
-		out.String(string(in.Head))
-	}
-	{
-		const prefix string = ",\"Jersey\":"
-		out.RawString(prefix)
-		out.String(string(in.Jersey))
-	}
-	{
-		const prefix string = ",\"MiscLine\":"
-		out.RawString(prefix)
-		out.String(string(in.MiscLine))
-	}
-	{
-		const prefix string = ",\"Mouth\":"
-		out.RawString(prefix)
-		out.String(string(in.Mouth))
-	}
-	{
-		const prefix string = ",\"MouthFlip\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.MouthFlip))
-	}
-	{
-		const prefix string = ",\"Nose\":"
-		out.RawString(prefix)
-		out.String(string(in.Nose))
-	}
-	{
-		const prefix string = ",\"NoseFlip\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.NoseFlip))
-	}
-	{
-		const prefix string = ",\"SmileLine\":"
-		out.RawString(prefix)
-		out.String(string(in.SmileLine))
-	}
-	{
-		const prefix string = ",\"BodySize\":"
-		out.RawString(prefix)
-		out.Float32(float32(in.BodySize))
-	}
-	{
-		const prefix string = ",\"EarSize\":"
-		out.RawString(prefix)
-		out.Float32(float32(in.EarSize))
-	}
-	{
-		const prefix string = ",\"EyeAngle\":"
-		out.RawString(prefix)
-		out.Int8(int8(in.EyeAngle))
-	}
-	{
-		const prefix string = ",\"EyeBrowAngle\":"
-		out.RawString(prefix)
-		out.Int8(int8(in.EyeBrowAngle))
-	}
-	{
-		const prefix string = ",\"FaceSize\":"
-		out.RawString(prefix)
-		out.Float32(float32(in.FaceSize))
-	}
-	{
-		const prefix string = ",\"FacialHairShave\":"
-		out.RawString(prefix)
-		out.String(string(in.FacialHairShave))
-	}
-	{
-		const prefix string = ",\"NoseSize\":"
-		out.RawString(prefix)
-		out.Float32(float32(in.NoseSize))
-	}
-	{
-		const prefix string = ",\"SmileLineSize\":"
-		out.RawString(prefix)
-		out.Float32(float32(in.SmileLineSize))
-	}
-	{
-		const prefix string = ",\"SkinColor\":"
-		out.RawString(prefix)
-		out.String(string(in.SkinColor))
-	}
-	{
-		const prefix string = ",\"HairColor\":"
-		out.RawString(prefix)
-		out.String(string(in.HairColor))
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in *jlexer.Lexer, out *structs.NFLDepthChart) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "TeamID":
-			out.TeamID = int(in.Int())
-		case "DepthChartPlayers":
-			if in.IsNull() {
-				in.Skip()
-				out.DepthChartPlayers = nil
-			} else {
-				in.Delim('[')
-				if out.DepthChartPlayers == nil {
-					if !in.IsDelim(']') {
-						out.DepthChartPlayers = make([]structs.NFLDepthChartPosition, 0, 0)
-					} else {
-						out.DepthChartPlayers = []structs.NFLDepthChartPosition{}
-					}
-				} else {
-					out.DepthChartPlayers = (out.DepthChartPlayers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v127 structs.NFLDepthChartPosition
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs26(in, &v127)
-					out.DepthChartPlayers = append(out.DepthChartPlayers, v127)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out *jwriter.Writer, in structs.NFLDepthChart) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.TeamID))
-	}
-	{
-		const prefix string = ",\"DepthChartPlayers\":"
-		out.RawString(prefix)
-		if in.DepthChartPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v128, v129 := range in.DepthChartPlayers {
-				if v128 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs26(out, v129)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs26(in *jlexer.Lexer, out *structs.NFLDepthChartPosition) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "DepthChartID":
-			out.DepthChartID = uint(in.Uint())
-		case "PlayerID":
-			out.PlayerID = uint(in.Uint())
-		case "Position":
-			out.Position = string(in.String())
-		case "PositionLevel":
-			out.PositionLevel = string(in.String())
-		case "FirstName":
-			out.FirstName = string(in.String())
-		case "LastName":
-			out.LastName = string(in.String())
-		case "OriginalPosition":
-			out.OriginalPosition = string(in.String())
-		case "NFLPlayer":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &out.NFLPlayer)
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs26(out *jwriter.Writer, in structs.NFLDepthChartPosition) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"DepthChartID\":"
-		out.RawString(prefix[1:])
-		out.Uint(uint(in.DepthChartID))
-	}
-	{
-		const prefix string = ",\"PlayerID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.PlayerID))
-	}
-	{
-		const prefix string = ",\"Position\":"
-		out.RawString(prefix)
-		out.String(string(in.Position))
-	}
-	{
-		const prefix string = ",\"PositionLevel\":"
-		out.RawString(prefix)
-		out.String(string(in.PositionLevel))
-	}
-	{
-		const prefix string = ",\"FirstName\":"
-		out.RawString(prefix)
-		out.String(string(in.FirstName))
-	}
-	{
-		const prefix string = ",\"LastName\":"
-		out.RawString(prefix)
-		out.String(string(in.LastName))
-	}
-	{
-		const prefix string = ",\"OriginalPosition\":"
-		out.RawString(prefix)
-		out.String(string(in.OriginalPosition))
-	}
-	{
-		const prefix string = ",\"NFLPlayer\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, in.NFLPlayer)
 	}
 	{
 		const prefix string = ",\"ID\":"
@@ -11464,7 +8047,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAModels(out *jwriter.Writer, i
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs23(in *jlexer.Lexer, out *structs.CollegeTeamDepthChart) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in *jlexer.Lexer, out *structs.NFLPlayer) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -11483,278 +8066,162 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs23(in *jlexer.Lexer, o
 			continue
 		}
 		switch key {
+		case "PlayerID":
+			out.PlayerID = int(in.Int())
 		case "TeamID":
 			out.TeamID = int(in.Int())
-		case "DepthChartPlayers":
+		case "CollegeID":
+			out.CollegeID = uint(in.Uint())
+		case "College":
+			out.College = string(in.String())
+		case "TeamAbbr":
+			out.TeamAbbr = string(in.String())
+		case "Experience":
+			out.Experience = uint(in.Uint())
+		case "HighSchool":
+			out.HighSchool = string(in.String())
+		case "Hometown":
+			out.Hometown = string(in.String())
+		case "State":
+			out.State = string(in.String())
+		case "IsActive":
+			out.IsActive = bool(in.Bool())
+		case "IsPracticeSquad":
+			out.IsPracticeSquad = bool(in.Bool())
+		case "IsFreeAgent":
+			out.IsFreeAgent = bool(in.Bool())
+		case "IsWaived":
+			out.IsWaived = bool(in.Bool())
+		case "IsOnTradeBlock":
+			out.IsOnTradeBlock = bool(in.Bool())
+		case "IsAcceptingOffers":
+			out.IsAcceptingOffers = bool(in.Bool())
+		case "IsNegotiating":
+			out.IsNegotiating = bool(in.Bool())
+		case "NegotiationRound":
+			out.NegotiationRound = uint(in.Uint())
+		case "SigningRound":
+			out.SigningRound = uint(in.Uint())
+		case "MinimumValue":
+			out.MinimumValue = float64(in.Float64())
+		case "AAV":
+			out.AAV = float64(in.Float64())
+		case "DraftedTeamID":
+			out.DraftedTeamID = uint(in.Uint())
+		case "DraftedTeam":
+			out.DraftedTeam = string(in.String())
+		case "DraftedRound":
+			out.DraftedRound = uint(in.Uint())
+		case "DraftPickID":
+			out.DraftPickID = uint(in.Uint())
+		case "DraftedPick":
+			out.DraftedPick = uint(in.Uint())
+		case "ShowLetterGrade":
+			out.ShowLetterGrade = bool(in.Bool())
+		case "HasProgressed":
+			out.HasProgressed = bool(in.Bool())
+		case "Rejections":
+			out.Rejections = int(in.Int())
+		case "ProBowls":
+			out.ProBowls = uint8(in.Uint8())
+		case "TagType":
+			out.TagType = uint8(in.Uint8())
+		case "Stats":
 			if in.IsNull() {
 				in.Skip()
-				out.DepthChartPlayers = nil
+				out.Stats = nil
 			} else {
 				in.Delim('[')
-				if out.DepthChartPlayers == nil {
+				if out.Stats == nil {
 					if !in.IsDelim(']') {
-						out.DepthChartPlayers = make([]structs.CollegeDepthChartPosition, 0, 0)
+						out.Stats = make([]structs.NFLPlayerStats, 0, 0)
 					} else {
-						out.DepthChartPlayers = []structs.CollegeDepthChartPosition{}
+						out.Stats = []structs.NFLPlayerStats{}
 					}
 				} else {
-					out.DepthChartPlayers = (out.DepthChartPlayers)[:0]
+					out.Stats = (out.Stats)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v130 structs.CollegeDepthChartPosition
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs27(in, &v130)
-					out.DepthChartPlayers = append(out.DepthChartPlayers, v130)
+					var v77 structs.NFLPlayerStats
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs17(in, &v77)
+					out.Stats = append(out.Stats, v77)
 					in.WantComma()
 				}
 				in.Delim(']')
 			}
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
+		case "SeasonStats":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs18(in, &out.SeasonStats)
+		case "Contract":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &out.Contract)
+		case "Offers":
 			if in.IsNull() {
 				in.Skip()
-				out.DeletedAt = nil
+				out.Offers = nil
 			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
+				in.Delim('[')
+				if out.Offers == nil {
+					if !in.IsDelim(']') {
+						out.Offers = make([]structs.FreeAgencyOffer, 0, 0)
+					} else {
+						out.Offers = []structs.FreeAgencyOffer{}
+					}
+				} else {
+					out.Offers = (out.Offers)[:0]
 				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				for !in.IsDelim(']') {
+					var v78 structs.FreeAgencyOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs6(in, &v78)
+					out.Offers = append(out.Offers, v78)
+					in.WantComma()
 				}
+				in.Delim(']')
 			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs23(out *jwriter.Writer, in structs.CollegeTeamDepthChart) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.TeamID))
-	}
-	{
-		const prefix string = ",\"DepthChartPlayers\":"
-		out.RawString(prefix)
-		if in.DepthChartPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v131, v132 := range in.DepthChartPlayers {
-				if v131 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs27(out, v132)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs27(in *jlexer.Lexer, out *structs.CollegeDepthChartPosition) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "DepthChartID":
-			out.DepthChartID = int(in.Int())
-		case "PlayerID":
-			out.PlayerID = int(in.Int())
-		case "Position":
-			out.Position = string(in.String())
-		case "PositionLevel":
-			out.PositionLevel = string(in.String())
-		case "FirstName":
-			out.FirstName = string(in.String())
-		case "LastName":
-			out.LastName = string(in.String())
-		case "OriginalPosition":
-			out.OriginalPosition = string(in.String())
-		case "CollegePlayer":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &out.CollegePlayer)
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
+		case "WaiverOffers":
 			if in.IsNull() {
 				in.Skip()
-				out.DeletedAt = nil
+				out.WaiverOffers = nil
 			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
+				in.Delim('[')
+				if out.WaiverOffers == nil {
+					if !in.IsDelim(']') {
+						out.WaiverOffers = make([]structs.NFLWaiverOffer, 0, 2)
+					} else {
+						out.WaiverOffers = []structs.NFLWaiverOffer{}
+					}
+				} else {
+					out.WaiverOffers = (out.WaiverOffers)[:0]
 				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				for !in.IsDelim(']') {
+					var v79 structs.NFLWaiverOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in, &v79)
+					out.WaiverOffers = append(out.WaiverOffers, v79)
+					in.WantComma()
 				}
+				in.Delim(']')
 			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs27(out *jwriter.Writer, in structs.CollegeDepthChartPosition) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"DepthChartID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.DepthChartID))
-	}
-	{
-		const prefix string = ",\"PlayerID\":"
-		out.RawString(prefix)
-		out.Int(int(in.PlayerID))
-	}
-	{
-		const prefix string = ",\"Position\":"
-		out.RawString(prefix)
-		out.String(string(in.Position))
-	}
-	{
-		const prefix string = ",\"PositionLevel\":"
-		out.RawString(prefix)
-		out.String(string(in.PositionLevel))
-	}
-	{
-		const prefix string = ",\"FirstName\":"
-		out.RawString(prefix)
-		out.String(string(in.FirstName))
-	}
-	{
-		const prefix string = ",\"LastName\":"
-		out.RawString(prefix)
-		out.String(string(in.LastName))
-	}
-	{
-		const prefix string = ",\"OriginalPosition\":"
-		out.RawString(prefix)
-		out.String(string(in.OriginalPosition))
-	}
-	{
-		const prefix string = ",\"CollegePlayer\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, in.CollegePlayer)
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs22(in *jlexer.Lexer, out *structs.Croot) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "PlayerID":
-			out.PlayerID = int(in.Int())
-		case "TeamID":
-			out.TeamID = int(in.Int())
-		case "College":
-			out.College = string(in.String())
+		case "Extensions":
+			if in.IsNull() {
+				in.Skip()
+				out.Extensions = nil
+			} else {
+				in.Delim('[')
+				if out.Extensions == nil {
+					if !in.IsDelim(']') {
+						out.Extensions = make([]structs.NFLExtensionOffer, 0, 0)
+					} else {
+						out.Extensions = []structs.NFLExtensionOffer{}
+					}
+				} else {
+					out.Extensions = (out.Extensions)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v80 structs.NFLExtensionOffer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs12(in, &v80)
+					out.Extensions = append(out.Extensions, v80)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
 		case "FirstName":
 			out.FirstName = string(in.String())
 		case "LastName":
@@ -11763,68 +8230,127 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs22(in *jlexer.Lexer, o
 			out.Position = string(in.String())
 		case "Archetype":
 			out.Archetype = string(in.String())
+		case "PreviousTeamID":
+			out.PreviousTeamID = uint(in.Uint())
+		case "PreviousTeam":
+			out.PreviousTeam = string(in.String())
 		case "Height":
 			out.Height = int(in.Int())
 		case "Weight":
 			out.Weight = int(in.Int())
+		case "Age":
+			out.Age = int(in.Int())
 		case "Stars":
 			out.Stars = int(in.Int())
+		case "Overall":
+			out.Overall = int(in.Int())
+		case "Stamina":
+			out.Stamina = int(in.Int())
+		case "Injury":
+			out.Injury = int(in.Int())
+		case "FootballIQ":
+			out.FootballIQ = int(in.Int())
+		case "Speed":
+			out.Speed = int(in.Int())
+		case "Carrying":
+			out.Carrying = int(in.Int())
+		case "Agility":
+			out.Agility = int(in.Int())
+		case "Catching":
+			out.Catching = int(in.Int())
+		case "RouteRunning":
+			out.RouteRunning = int(in.Int())
+		case "ZoneCoverage":
+			out.ZoneCoverage = int(in.Int())
+		case "ManCoverage":
+			out.ManCoverage = int(in.Int())
+		case "Strength":
+			out.Strength = int(in.Int())
+		case "Tackle":
+			out.Tackle = int(in.Int())
+		case "PassBlock":
+			out.PassBlock = int(in.Int())
+		case "RunBlock":
+			out.RunBlock = int(in.Int())
+		case "PassRush":
+			out.PassRush = int(in.Int())
+		case "RunDefense":
+			out.RunDefense = int(in.Int())
+		case "ThrowPower":
+			out.ThrowPower = int(in.Int())
+		case "ThrowAccuracy":
+			out.ThrowAccuracy = int(in.Int())
+		case "KickAccuracy":
+			out.KickAccuracy = int(in.Int())
+		case "KickPower":
+			out.KickPower = int(in.Int())
+		case "PuntAccuracy":
+			out.PuntAccuracy = int(in.Int())
+		case "PuntPower":
+			out.PuntPower = int(in.Int())
+		case "Progression":
+			out.Progression = int(in.Int())
+		case "Discipline":
+			out.Discipline = int(in.Int())
 		case "PotentialGrade":
 			out.PotentialGrade = string(in.String())
+		case "FreeAgency":
+			out.FreeAgency = string(in.String())
 		case "Personality":
 			out.Personality = string(in.String())
 		case "RecruitingBias":
 			out.RecruitingBias = string(in.String())
-		case "AcademicBias":
-			out.AcademicBias = string(in.String())
 		case "WorkEthic":
 			out.WorkEthic = string(in.String())
-		case "HighSchool":
-			out.HighSchool = string(in.String())
-		case "City":
-			out.City = string(in.String())
-		case "State":
-			out.State = string(in.String())
-		case "AffinityOne":
-			out.AffinityOne = string(in.String())
-		case "AffinityTwo":
-			out.AffinityTwo = string(in.String())
-		case "RecruitingStatus":
-			out.RecruitingStatus = string(in.String())
-		case "RecruitModifier":
-			out.RecruitModifier = float64(in.Float64())
-		case "IsCustomCroot":
-			out.IsCustomCroot = bool(in.Bool())
-		case "CustomCrootFor":
-			out.CustomCrootFor = string(in.String())
-		case "IsSigned":
-			out.IsSigned = bool(in.Bool())
-		case "OverallGrade":
-			out.OverallGrade = string(in.String())
-		case "TotalRank":
-			out.TotalRank = float64(in.Float64())
-		case "LeadingTeams":
+		case "AcademicBias":
+			out.AcademicBias = string(in.String())
+		case "IsInjured":
+			out.IsInjured = bool(in.Bool())
+		case "InjuryName":
+			out.InjuryName = string(in.String())
+		case "InjuryType":
+			out.InjuryType = string(in.String())
+		case "WeeksOfRecovery":
+			out.WeeksOfRecovery = uint(in.Uint())
+		case "InjuryReserve":
+			out.InjuryReserve = bool(in.Bool())
+		case "PrimeAge":
+			out.PrimeAge = uint(in.Uint())
+		case "Clutch":
+			out.Clutch = int(in.Int())
+		case "Shotgun":
+			out.Shotgun = int(in.Int())
+		case "PositionTwo":
+			out.PositionTwo = string(in.String())
+		case "ArchetypeTwo":
+			out.ArchetypeTwo = string(in.String())
+		case "RelativeID":
+			out.RelativeID = uint(in.Uint())
+		case "RelativeType":
+			out.RelativeType = uint(in.Uint())
+		case "Notes":
+			out.Notes = string(in.String())
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
 			if in.IsNull() {
 				in.Skip()
-				out.LeadingTeams = nil
+				out.DeletedAt = nil
 			} else {
-				in.Delim('[')
-				if out.LeadingTeams == nil {
-					if !in.IsDelim(']') {
-						out.LeadingTeams = make([]structs.LeadingTeams, 0, 1)
-					} else {
-						out.LeadingTeams = []structs.LeadingTeams{}
-					}
-				} else {
-					out.LeadingTeams = (out.LeadingTeams)[:0]
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
 				}
-				for !in.IsDelim(']') {
-					var v133 structs.LeadingTeams
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in, &v133)
-					out.LeadingTeams = append(out.LeadingTeams, v133)
-					in.WantComma()
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
 				}
-				in.Delim(']')
 			}
 		default:
 			in.SkipRecursive()
@@ -11836,18 +8362,13 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs22(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs22(out *jwriter.Writer, in structs.Croot) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out *jwriter.Writer, in structs.NFLPlayer) {
 	out.RawByte('{')
 	first := true
 	_ = first
 	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix[1:])
-		out.Uint(uint(in.ID))
-	}
-	{
 		const prefix string = ",\"PlayerID\":"
-		out.RawString(prefix)
+		out.RawString(prefix[1:])
 		out.Int(int(in.PlayerID))
 	}
 	{
@@ -11856,9 +8377,218 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs22(out *jwriter.Writer
 		out.Int(int(in.TeamID))
 	}
 	{
+		const prefix string = ",\"CollegeID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.CollegeID))
+	}
+	{
 		const prefix string = ",\"College\":"
 		out.RawString(prefix)
 		out.String(string(in.College))
+	}
+	{
+		const prefix string = ",\"TeamAbbr\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamAbbr))
+	}
+	{
+		const prefix string = ",\"Experience\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.Experience))
+	}
+	{
+		const prefix string = ",\"HighSchool\":"
+		out.RawString(prefix)
+		out.String(string(in.HighSchool))
+	}
+	{
+		const prefix string = ",\"Hometown\":"
+		out.RawString(prefix)
+		out.String(string(in.Hometown))
+	}
+	{
+		const prefix string = ",\"State\":"
+		out.RawString(prefix)
+		out.String(string(in.State))
+	}
+	{
+		const prefix string = ",\"IsActive\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsActive))
+	}
+	{
+		const prefix string = ",\"IsPracticeSquad\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsPracticeSquad))
+	}
+	{
+		const prefix string = ",\"IsFreeAgent\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsFreeAgent))
+	}
+	{
+		const prefix string = ",\"IsWaived\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsWaived))
+	}
+	{
+		const prefix string = ",\"IsOnTradeBlock\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsOnTradeBlock))
+	}
+	{
+		const prefix string = ",\"IsAcceptingOffers\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsAcceptingOffers))
+	}
+	{
+		const prefix string = ",\"IsNegotiating\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsNegotiating))
+	}
+	{
+		const prefix string = ",\"NegotiationRound\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.NegotiationRound))
+	}
+	{
+		const prefix string = ",\"SigningRound\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.SigningRound))
+	}
+	{
+		const prefix string = ",\"MinimumValue\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.MinimumValue))
+	}
+	{
+		const prefix string = ",\"AAV\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.AAV))
+	}
+	{
+		const prefix string = ",\"DraftedTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.DraftedTeamID))
+	}
+	{
+		const prefix string = ",\"DraftedTeam\":"
+		out.RawString(prefix)
+		out.String(string(in.DraftedTeam))
+	}
+	{
+		const prefix string = ",\"DraftedRound\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.DraftedRound))
+	}
+	{
+		const prefix string = ",\"DraftPickID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.DraftPickID))
+	}
+	{
+		const prefix string = ",\"DraftedPick\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.DraftedPick))
+	}
+	{
+		const prefix string = ",\"ShowLetterGrade\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.ShowLetterGrade))
+	}
+	{
+		const prefix string = ",\"HasProgressed\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.HasProgressed))
+	}
+	{
+		const prefix string = ",\"Rejections\":"
+		out.RawString(prefix)
+		out.Int(int(in.Rejections))
+	}
+	{
+		const prefix string = ",\"ProBowls\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ProBowls))
+	}
+	{
+		const prefix string = ",\"TagType\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.TagType))
+	}
+	{
+		const prefix string = ",\"Stats\":"
+		out.RawString(prefix)
+		if in.Stats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v81, v82 := range in.Stats {
+				if v81 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs17(out, v82)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"SeasonStats\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs18(out, in.SeasonStats)
+	}
+	{
+		const prefix string = ",\"Contract\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, in.Contract)
+	}
+	{
+		const prefix string = ",\"Offers\":"
+		out.RawString(prefix)
+		if in.Offers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v83, v84 := range in.Offers {
+				if v83 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out, v84)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"WaiverOffers\":"
+		out.RawString(prefix)
+		if in.WaiverOffers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v85, v86 := range in.WaiverOffers {
+				if v85 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out, v86)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"Extensions\":"
+		out.RawString(prefix)
+		if in.Extensions == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v87, v88 := range in.Extensions {
+				if v87 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs12(out, v88)
+			}
+			out.RawByte(']')
+		}
 	}
 	{
 		const prefix string = ",\"FirstName\":"
@@ -11881,6 +8611,16 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs22(out *jwriter.Writer
 		out.String(string(in.Archetype))
 	}
 	{
+		const prefix string = ",\"PreviousTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.PreviousTeamID))
+	}
+	{
+		const prefix string = ",\"PreviousTeam\":"
+		out.RawString(prefix)
+		out.String(string(in.PreviousTeam))
+	}
+	{
 		const prefix string = ",\"Height\":"
 		out.RawString(prefix)
 		out.Int(int(in.Height))
@@ -11891,14 +8631,149 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs22(out *jwriter.Writer
 		out.Int(int(in.Weight))
 	}
 	{
+		const prefix string = ",\"Age\":"
+		out.RawString(prefix)
+		out.Int(int(in.Age))
+	}
+	{
 		const prefix string = ",\"Stars\":"
 		out.RawString(prefix)
 		out.Int(int(in.Stars))
 	}
 	{
+		const prefix string = ",\"Overall\":"
+		out.RawString(prefix)
+		out.Int(int(in.Overall))
+	}
+	{
+		const prefix string = ",\"Stamina\":"
+		out.RawString(prefix)
+		out.Int(int(in.Stamina))
+	}
+	{
+		const prefix string = ",\"Injury\":"
+		out.RawString(prefix)
+		out.Int(int(in.Injury))
+	}
+	{
+		const prefix string = ",\"FootballIQ\":"
+		out.RawString(prefix)
+		out.Int(int(in.FootballIQ))
+	}
+	{
+		const prefix string = ",\"Speed\":"
+		out.RawString(prefix)
+		out.Int(int(in.Speed))
+	}
+	{
+		const prefix string = ",\"Carrying\":"
+		out.RawString(prefix)
+		out.Int(int(in.Carrying))
+	}
+	{
+		const prefix string = ",\"Agility\":"
+		out.RawString(prefix)
+		out.Int(int(in.Agility))
+	}
+	{
+		const prefix string = ",\"Catching\":"
+		out.RawString(prefix)
+		out.Int(int(in.Catching))
+	}
+	{
+		const prefix string = ",\"RouteRunning\":"
+		out.RawString(prefix)
+		out.Int(int(in.RouteRunning))
+	}
+	{
+		const prefix string = ",\"ZoneCoverage\":"
+		out.RawString(prefix)
+		out.Int(int(in.ZoneCoverage))
+	}
+	{
+		const prefix string = ",\"ManCoverage\":"
+		out.RawString(prefix)
+		out.Int(int(in.ManCoverage))
+	}
+	{
+		const prefix string = ",\"Strength\":"
+		out.RawString(prefix)
+		out.Int(int(in.Strength))
+	}
+	{
+		const prefix string = ",\"Tackle\":"
+		out.RawString(prefix)
+		out.Int(int(in.Tackle))
+	}
+	{
+		const prefix string = ",\"PassBlock\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassBlock))
+	}
+	{
+		const prefix string = ",\"RunBlock\":"
+		out.RawString(prefix)
+		out.Int(int(in.RunBlock))
+	}
+	{
+		const prefix string = ",\"PassRush\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassRush))
+	}
+	{
+		const prefix string = ",\"RunDefense\":"
+		out.RawString(prefix)
+		out.Int(int(in.RunDefense))
+	}
+	{
+		const prefix string = ",\"ThrowPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.ThrowPower))
+	}
+	{
+		const prefix string = ",\"ThrowAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.ThrowAccuracy))
+	}
+	{
+		const prefix string = ",\"KickAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.KickAccuracy))
+	}
+	{
+		const prefix string = ",\"KickPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.KickPower))
+	}
+	{
+		const prefix string = ",\"PuntAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.PuntAccuracy))
+	}
+	{
+		const prefix string = ",\"PuntPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.PuntPower))
+	}
+	{
+		const prefix string = ",\"Progression\":"
+		out.RawString(prefix)
+		out.Int(int(in.Progression))
+	}
+	{
+		const prefix string = ",\"Discipline\":"
+		out.RawString(prefix)
+		out.Int(int(in.Discipline))
+	}
+	{
 		const prefix string = ",\"PotentialGrade\":"
 		out.RawString(prefix)
 		out.String(string(in.PotentialGrade))
+	}
+	{
+		const prefix string = ",\"FreeAgency\":"
+		out.RawString(prefix)
+		out.String(string(in.FreeAgency))
 	}
 	{
 		const prefix string = ",\"Personality\":"
@@ -11911,94 +8786,107 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs22(out *jwriter.Writer
 		out.String(string(in.RecruitingBias))
 	}
 	{
-		const prefix string = ",\"AcademicBias\":"
-		out.RawString(prefix)
-		out.String(string(in.AcademicBias))
-	}
-	{
 		const prefix string = ",\"WorkEthic\":"
 		out.RawString(prefix)
 		out.String(string(in.WorkEthic))
 	}
 	{
-		const prefix string = ",\"HighSchool\":"
+		const prefix string = ",\"AcademicBias\":"
 		out.RawString(prefix)
-		out.String(string(in.HighSchool))
+		out.String(string(in.AcademicBias))
 	}
 	{
-		const prefix string = ",\"City\":"
+		const prefix string = ",\"IsInjured\":"
 		out.RawString(prefix)
-		out.String(string(in.City))
+		out.Bool(bool(in.IsInjured))
 	}
 	{
-		const prefix string = ",\"State\":"
+		const prefix string = ",\"InjuryName\":"
 		out.RawString(prefix)
-		out.String(string(in.State))
+		out.String(string(in.InjuryName))
 	}
 	{
-		const prefix string = ",\"AffinityOne\":"
+		const prefix string = ",\"InjuryType\":"
 		out.RawString(prefix)
-		out.String(string(in.AffinityOne))
+		out.String(string(in.InjuryType))
 	}
 	{
-		const prefix string = ",\"AffinityTwo\":"
+		const prefix string = ",\"WeeksOfRecovery\":"
 		out.RawString(prefix)
-		out.String(string(in.AffinityTwo))
+		out.Uint(uint(in.WeeksOfRecovery))
 	}
 	{
-		const prefix string = ",\"RecruitingStatus\":"
+		const prefix string = ",\"InjuryReserve\":"
 		out.RawString(prefix)
-		out.String(string(in.RecruitingStatus))
+		out.Bool(bool(in.InjuryReserve))
 	}
 	{
-		const prefix string = ",\"RecruitModifier\":"
+		const prefix string = ",\"PrimeAge\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.RecruitModifier))
+		out.Uint(uint(in.PrimeAge))
 	}
 	{
-		const prefix string = ",\"IsCustomCroot\":"
+		const prefix string = ",\"Clutch\":"
 		out.RawString(prefix)
-		out.Bool(bool(in.IsCustomCroot))
+		out.Int(int(in.Clutch))
 	}
 	{
-		const prefix string = ",\"CustomCrootFor\":"
+		const prefix string = ",\"Shotgun\":"
 		out.RawString(prefix)
-		out.String(string(in.CustomCrootFor))
+		out.Int(int(in.Shotgun))
 	}
 	{
-		const prefix string = ",\"IsSigned\":"
+		const prefix string = ",\"PositionTwo\":"
 		out.RawString(prefix)
-		out.Bool(bool(in.IsSigned))
+		out.String(string(in.PositionTwo))
 	}
 	{
-		const prefix string = ",\"OverallGrade\":"
+		const prefix string = ",\"ArchetypeTwo\":"
 		out.RawString(prefix)
-		out.String(string(in.OverallGrade))
+		out.String(string(in.ArchetypeTwo))
 	}
 	{
-		const prefix string = ",\"TotalRank\":"
+		const prefix string = ",\"RelativeID\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.TotalRank))
+		out.Uint(uint(in.RelativeID))
 	}
 	{
-		const prefix string = ",\"LeadingTeams\":"
+		const prefix string = ",\"RelativeType\":"
 		out.RawString(prefix)
-		if in.LeadingTeams == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.Uint(uint(in.RelativeType))
+	}
+	{
+		const prefix string = ",\"Notes\":"
+		out.RawString(prefix)
+		out.String(string(in.Notes))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
 			out.RawString("null")
 		} else {
-			out.RawByte('[')
-			for v134, v135 := range in.LeadingTeams {
-				if v134 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out, v135)
-			}
-			out.RawByte(']')
+			out.Raw((*in.DeletedAt).MarshalJSON())
 		}
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in *jlexer.Lexer, out *structs.LeadingTeams) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in *jlexer.Lexer, out *structs.NFLWaiverOffer) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -12017,16 +8905,18 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in *jlexer.Lexer, o
 			continue
 		}
 		switch key {
+		case "ID":
+			out.ID = uint(in.Uint())
 		case "TeamID":
 			out.TeamID = uint(in.Uint())
-		case "TeamName":
-			out.TeamName = string(in.String())
-		case "TeamAbbr":
-			out.TeamAbbr = string(in.String())
-		case "Odds":
-			out.Odds = float64(in.Float64())
-		case "HasScholarship":
-			out.HasScholarship = bool(in.Bool())
+		case "Team":
+			out.Team = string(in.String())
+		case "WaiverOrder":
+			out.WaiverOrder = uint(in.Uint())
+		case "NFLPlayerID":
+			out.NFLPlayerID = uint(in.Uint())
+		case "IsActive":
+			out.IsActive = bool(in.Bool())
 		default:
 			in.SkipRecursive()
 		}
@@ -12037,38 +8927,43 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out *jwriter.Writer, in structs.LeadingTeams) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out *jwriter.Writer, in structs.NFLWaiverOffer) {
 	out.RawByte('{')
 	first := true
 	_ = first
 	{
-		const prefix string = ",\"TeamID\":"
+		const prefix string = ",\"ID\":"
 		out.RawString(prefix[1:])
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix)
 		out.Uint(uint(in.TeamID))
 	}
 	{
-		const prefix string = ",\"TeamName\":"
+		const prefix string = ",\"Team\":"
 		out.RawString(prefix)
-		out.String(string(in.TeamName))
+		out.String(string(in.Team))
 	}
 	{
-		const prefix string = ",\"TeamAbbr\":"
+		const prefix string = ",\"WaiverOrder\":"
 		out.RawString(prefix)
-		out.String(string(in.TeamAbbr))
+		out.Uint(uint(in.WaiverOrder))
 	}
 	{
-		const prefix string = ",\"Odds\":"
+		const prefix string = ",\"NFLPlayerID\":"
 		out.RawString(prefix)
-		out.Float64(float64(in.Odds))
+		out.Uint(uint(in.NFLPlayerID))
 	}
 	{
-		const prefix string = ",\"HasScholarship\":"
+		const prefix string = ",\"IsActive\":"
 		out.RawString(prefix)
-		out.Bool(bool(in.HasScholarship))
+		out.Bool(bool(in.IsActive))
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(in *jlexer.Lexer, out *BootstrapData) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs6(in *jlexer.Lexer, out *structs.FreeAgencyOffer) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -12087,8 +8982,241 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(in *jlexer.Lexer, o
 			continue
 		}
 		switch key {
-		case "CollegeTeam":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in, &out.CollegeTeam)
+		case "NFLPlayerID":
+			out.NFLPlayerID = uint(in.Uint())
+		case "TeamID":
+			out.TeamID = uint(in.Uint())
+		case "Team":
+			out.Team = string(in.String())
+		case "ContractLength":
+			out.ContractLength = int(in.Int())
+		case "Y1BaseSalary":
+			out.Y1BaseSalary = float64(in.Float64())
+		case "Y1Bonus":
+			out.Y1Bonus = float64(in.Float64())
+		case "Y2BaseSalary":
+			out.Y2BaseSalary = float64(in.Float64())
+		case "Y2Bonus":
+			out.Y2Bonus = float64(in.Float64())
+		case "Y3BaseSalary":
+			out.Y3BaseSalary = float64(in.Float64())
+		case "Y3Bonus":
+			out.Y3Bonus = float64(in.Float64())
+		case "Y4BaseSalary":
+			out.Y4BaseSalary = float64(in.Float64())
+		case "Y4Bonus":
+			out.Y4Bonus = float64(in.Float64())
+		case "Y5BaseSalary":
+			out.Y5BaseSalary = float64(in.Float64())
+		case "Y5Bonus":
+			out.Y5Bonus = float64(in.Float64())
+		case "TotalBonus":
+			out.TotalBonus = float64(in.Float64())
+		case "TotalSalary":
+			out.TotalSalary = float64(in.Float64())
+		case "ContractValue":
+			out.ContractValue = float64(in.Float64())
+		case "BonusPercentage":
+			out.BonusPercentage = float64(in.Float64())
+		case "AAV":
+			out.AAV = float64(in.Float64())
+		case "Syncs":
+			out.Syncs = uint8(in.Uint8())
+		case "IsActive":
+			out.IsActive = bool(in.Bool())
+		case "IsRejected":
+			out.IsRejected = bool(in.Bool())
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs6(out *jwriter.Writer, in structs.FreeAgencyOffer) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"NFLPlayerID\":"
+		out.RawString(prefix[1:])
+		out.Uint(uint(in.NFLPlayerID))
+	}
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.TeamID))
+	}
+	{
+		const prefix string = ",\"Team\":"
+		out.RawString(prefix)
+		out.String(string(in.Team))
+	}
+	{
+		const prefix string = ",\"ContractLength\":"
+		out.RawString(prefix)
+		out.Int(int(in.ContractLength))
+	}
+	{
+		const prefix string = ",\"Y1BaseSalary\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y1BaseSalary))
+	}
+	{
+		const prefix string = ",\"Y1Bonus\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y1Bonus))
+	}
+	{
+		const prefix string = ",\"Y2BaseSalary\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y2BaseSalary))
+	}
+	{
+		const prefix string = ",\"Y2Bonus\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y2Bonus))
+	}
+	{
+		const prefix string = ",\"Y3BaseSalary\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y3BaseSalary))
+	}
+	{
+		const prefix string = ",\"Y3Bonus\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y3Bonus))
+	}
+	{
+		const prefix string = ",\"Y4BaseSalary\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y4BaseSalary))
+	}
+	{
+		const prefix string = ",\"Y4Bonus\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y4Bonus))
+	}
+	{
+		const prefix string = ",\"Y5BaseSalary\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y5BaseSalary))
+	}
+	{
+		const prefix string = ",\"Y5Bonus\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Y5Bonus))
+	}
+	{
+		const prefix string = ",\"TotalBonus\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.TotalBonus))
+	}
+	{
+		const prefix string = ",\"TotalSalary\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.TotalSalary))
+	}
+	{
+		const prefix string = ",\"ContractValue\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.ContractValue))
+	}
+	{
+		const prefix string = ",\"BonusPercentage\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.BonusPercentage))
+	}
+	{
+		const prefix string = ",\"AAV\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.AAV))
+	}
+	{
+		const prefix string = ",\"Syncs\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.Syncs))
+	}
+	{
+		const prefix string = ",\"IsActive\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsActive))
+	}
+	{
+		const prefix string = ",\"IsRejected\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsRejected))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers2(in *jlexer.Lexer, out *BootstrapDataCommon) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
 		case "AllCollegeTeams":
 			if in.IsNull() {
 				in.Skip()
@@ -12105,217 +9233,13 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(in *jlexer.Lexer, o
 					out.AllCollegeTeams = (out.AllCollegeTeams)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v136 structs.CollegeTeam
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in, &v136)
-					out.AllCollegeTeams = append(out.AllCollegeTeams, v136)
+					var v89 structs.CollegeTeam
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs20(in, &v89)
+					out.AllCollegeTeams = append(out.AllCollegeTeams, v89)
 					in.WantComma()
 				}
 				in.Delim(']')
 			}
-		case "CollegeRosterMap":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				out.CollegeRosterMap = make(map[uint][]structs.CollegePlayer)
-				for !in.IsDelim('}') {
-					key := uint(in.UintStr())
-					in.WantColon()
-					var v137 []structs.CollegePlayer
-					if in.IsNull() {
-						in.Skip()
-						v137 = nil
-					} else {
-						in.Delim('[')
-						if v137 == nil {
-							if !in.IsDelim(']') {
-								v137 = make([]structs.CollegePlayer, 0, 0)
-							} else {
-								v137 = []structs.CollegePlayer{}
-							}
-						} else {
-							v137 = (v137)[:0]
-						}
-						for !in.IsDelim(']') {
-							var v138 structs.CollegePlayer
-							easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v138)
-							v137 = append(v137, v138)
-							in.WantComma()
-						}
-						in.Delim(']')
-					}
-					(out.CollegeRosterMap)[key] = v137
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
-		case "HistoricCollegePlayers":
-			if in.IsNull() {
-				in.Skip()
-				out.HistoricCollegePlayers = nil
-			} else {
-				in.Delim('[')
-				if out.HistoricCollegePlayers == nil {
-					if !in.IsDelim(']') {
-						out.HistoricCollegePlayers = make([]structs.HistoricCollegePlayer, 0, 0)
-					} else {
-						out.HistoricCollegePlayers = []structs.HistoricCollegePlayer{}
-					}
-				} else {
-					out.HistoricCollegePlayers = (out.HistoricCollegePlayers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v139 structs.HistoricCollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs30(in, &v139)
-					out.HistoricCollegePlayers = append(out.HistoricCollegePlayers, v139)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TopCFBPassers":
-			if in.IsNull() {
-				in.Skip()
-				out.TopCFBPassers = nil
-			} else {
-				in.Delim('[')
-				if out.TopCFBPassers == nil {
-					if !in.IsDelim(']') {
-						out.TopCFBPassers = make([]structs.CollegePlayer, 0, 0)
-					} else {
-						out.TopCFBPassers = []structs.CollegePlayer{}
-					}
-				} else {
-					out.TopCFBPassers = (out.TopCFBPassers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v140 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v140)
-					out.TopCFBPassers = append(out.TopCFBPassers, v140)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TopCFBRushers":
-			if in.IsNull() {
-				in.Skip()
-				out.TopCFBRushers = nil
-			} else {
-				in.Delim('[')
-				if out.TopCFBRushers == nil {
-					if !in.IsDelim(']') {
-						out.TopCFBRushers = make([]structs.CollegePlayer, 0, 0)
-					} else {
-						out.TopCFBRushers = []structs.CollegePlayer{}
-					}
-				} else {
-					out.TopCFBRushers = (out.TopCFBRushers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v141 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v141)
-					out.TopCFBRushers = append(out.TopCFBRushers, v141)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TopCFBReceivers":
-			if in.IsNull() {
-				in.Skip()
-				out.TopCFBReceivers = nil
-			} else {
-				in.Delim('[')
-				if out.TopCFBReceivers == nil {
-					if !in.IsDelim(']') {
-						out.TopCFBReceivers = make([]structs.CollegePlayer, 0, 0)
-					} else {
-						out.TopCFBReceivers = []structs.CollegePlayer{}
-					}
-				} else {
-					out.TopCFBReceivers = (out.TopCFBReceivers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v142 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v142)
-					out.TopCFBReceivers = append(out.TopCFBReceivers, v142)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "PortalPlayers":
-			if in.IsNull() {
-				in.Skip()
-				out.PortalPlayers = nil
-			} else {
-				in.Delim('[')
-				if out.PortalPlayers == nil {
-					if !in.IsDelim(']') {
-						out.PortalPlayers = make([]structs.CollegePlayer, 0, 0)
-					} else {
-						out.PortalPlayers = []structs.CollegePlayer{}
-					}
-				} else {
-					out.PortalPlayers = (out.PortalPlayers)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v143 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v143)
-					out.PortalPlayers = append(out.PortalPlayers, v143)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "CollegeInjuryReport":
-			if in.IsNull() {
-				in.Skip()
-				out.CollegeInjuryReport = nil
-			} else {
-				in.Delim('[')
-				if out.CollegeInjuryReport == nil {
-					if !in.IsDelim(']') {
-						out.CollegeInjuryReport = make([]structs.CollegePlayer, 0, 0)
-					} else {
-						out.CollegeInjuryReport = []structs.CollegePlayer{}
-					}
-				} else {
-					out.CollegeInjuryReport = (out.CollegeInjuryReport)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v144 structs.CollegePlayer
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v144)
-					out.CollegeInjuryReport = append(out.CollegeInjuryReport, v144)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "CollegeNotifications":
-			if in.IsNull() {
-				in.Skip()
-				out.CollegeNotifications = nil
-			} else {
-				in.Delim('[')
-				if out.CollegeNotifications == nil {
-					if !in.IsDelim(']') {
-						out.CollegeNotifications = make([]structs.Notification, 0, 0)
-					} else {
-						out.CollegeNotifications = []structs.Notification{}
-					}
-				} else {
-					out.CollegeNotifications = (out.CollegeNotifications)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v145 structs.Notification
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs31(in, &v145)
-					out.CollegeNotifications = append(out.CollegeNotifications, v145)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "CollegeGameplan":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs32(in, &out.CollegeGameplan)
-		case "CollegeDepthChart":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs23(in, &out.CollegeDepthChart)
-		case "ProTeam":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in, &out.ProTeam)
 		case "AllProTeams":
 			if in.IsNull() {
 				in.Skip()
@@ -12332,40 +9256,29 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(in *jlexer.Lexer, o
 					out.AllProTeams = (out.AllProTeams)[:0]
 				}
 				for !in.IsDelim(']') {
-					var v146 structs.NFLTeam
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in, &v146)
-					out.AllProTeams = append(out.AllProTeams, v146)
+					var v90 structs.NFLTeam
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in, &v90)
+					out.AllProTeams = append(out.AllProTeams, v90)
 					in.WantComma()
 				}
 				in.Delim(']')
 			}
-		case "ProNotifications":
+		case "FaceData":
 			if in.IsNull() {
 				in.Skip()
-				out.ProNotifications = nil
 			} else {
-				in.Delim('[')
-				if out.ProNotifications == nil {
-					if !in.IsDelim(']') {
-						out.ProNotifications = make([]structs.Notification, 0, 0)
-					} else {
-						out.ProNotifications = []structs.Notification{}
-					}
-				} else {
-					out.ProNotifications = (out.ProNotifications)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v147 structs.Notification
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs31(in, &v147)
-					out.ProNotifications = append(out.ProNotifications, v147)
+				in.Delim('{')
+				out.FaceData = make(map[uint]structs.FaceDataResponse)
+				for !in.IsDelim('}') {
+					key := uint(in.UintStr())
+					in.WantColon()
+					var v91 structs.FaceDataResponse
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs22(in, &v91)
+					(out.FaceData)[key] = v91
 					in.WantComma()
 				}
-				in.Delim(']')
+				in.Delim('}')
 			}
-		case "NFLGameplan":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in, &out.NFLGameplan)
-		case "NFLDepthChart":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in, &out.NFLDepthChart)
 		default:
 			in.SkipRecursive()
 		}
@@ -12376,189 +9289,25 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers3(out *jwriter.Writer, in BootstrapData) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers2(out *jwriter.Writer, in BootstrapDataCommon) {
 	out.RawByte('{')
 	first := true
 	_ = first
 	{
-		const prefix string = ",\"CollegeTeam\":"
-		out.RawString(prefix[1:])
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out, in.CollegeTeam)
-	}
-	{
 		const prefix string = ",\"AllCollegeTeams\":"
-		out.RawString(prefix)
+		out.RawString(prefix[1:])
 		if in.AllCollegeTeams == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v148, v149 := range in.AllCollegeTeams {
-				if v148 > 0 {
+			for v92, v93 := range in.AllCollegeTeams {
+				if v92 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out, v149)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs20(out, v93)
 			}
 			out.RawByte(']')
 		}
-	}
-	{
-		const prefix string = ",\"CollegeRosterMap\":"
-		out.RawString(prefix)
-		if in.CollegeRosterMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
-			out.RawString(`null`)
-		} else {
-			out.RawByte('{')
-			v150First := true
-			for v150Name, v150Value := range in.CollegeRosterMap {
-				if v150First {
-					v150First = false
-				} else {
-					out.RawByte(',')
-				}
-				out.UintStr(uint(v150Name))
-				out.RawByte(':')
-				if v150Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-					out.RawString("null")
-				} else {
-					out.RawByte('[')
-					for v151, v152 := range v150Value {
-						if v151 > 0 {
-							out.RawByte(',')
-						}
-						easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v152)
-					}
-					out.RawByte(']')
-				}
-			}
-			out.RawByte('}')
-		}
-	}
-	{
-		const prefix string = ",\"HistoricCollegePlayers\":"
-		out.RawString(prefix)
-		if in.HistoricCollegePlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v153, v154 := range in.HistoricCollegePlayers {
-				if v153 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs30(out, v154)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TopCFBPassers\":"
-		out.RawString(prefix)
-		if in.TopCFBPassers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v155, v156 := range in.TopCFBPassers {
-				if v155 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v156)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TopCFBRushers\":"
-		out.RawString(prefix)
-		if in.TopCFBRushers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v157, v158 := range in.TopCFBRushers {
-				if v157 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v158)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TopCFBReceivers\":"
-		out.RawString(prefix)
-		if in.TopCFBReceivers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v159, v160 := range in.TopCFBReceivers {
-				if v159 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v160)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"PortalPlayers\":"
-		out.RawString(prefix)
-		if in.PortalPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v161, v162 := range in.PortalPlayers {
-				if v161 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v162)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"CollegeInjuryReport\":"
-		out.RawString(prefix)
-		if in.CollegeInjuryReport == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v163, v164 := range in.CollegeInjuryReport {
-				if v163 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v164)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"CollegeNotifications\":"
-		out.RawString(prefix)
-		if in.CollegeNotifications == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v165, v166 := range in.CollegeNotifications {
-				if v165 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs31(out, v166)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"CollegeGameplan\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs32(out, in.CollegeGameplan)
-	}
-	{
-		const prefix string = ",\"CollegeDepthChart\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs23(out, in.CollegeDepthChart)
-	}
-	{
-		const prefix string = ",\"ProTeam\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out, in.ProTeam)
 	}
 	{
 		const prefix string = ",\"AllProTeams\":"
@@ -12567,68 +9316,873 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers3(out *jwriter.Writer
 			out.RawString("null")
 		} else {
 			out.RawByte('[')
-			for v167, v168 := range in.AllProTeams {
-				if v167 > 0 {
+			for v94, v95 := range in.AllProTeams {
+				if v94 > 0 {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out, v168)
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out, v95)
 			}
 			out.RawByte(']')
 		}
 	}
 	{
-		const prefix string = ",\"ProNotifications\":"
+		const prefix string = ",\"FaceData\":"
 		out.RawString(prefix)
-		if in.ProNotifications == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
+		if in.FaceData == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+			out.RawString(`null`)
 		} else {
-			out.RawByte('[')
-			for v169, v170 := range in.ProNotifications {
-				if v169 > 0 {
+			out.RawByte('{')
+			v96First := true
+			for v96Name, v96Value := range in.FaceData {
+				if v96First {
+					v96First = false
+				} else {
 					out.RawByte(',')
 				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs31(out, v170)
+				out.UintStr(uint(v96Name))
+				out.RawByte(':')
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs22(out, v96Value)
 			}
-			out.RawByte(']')
+			out.RawByte('}')
 		}
-	}
-	{
-		const prefix string = ",\"NFLGameplan\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out, in.NFLGameplan)
-	}
-	{
-		const prefix string = ",\"NFLDepthChart\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out, in.NFLDepthChart)
 	}
 	out.RawByte('}')
 }
 
 // MarshalJSON supports json.Marshaler interface
-func (v BootstrapData) MarshalJSON() ([]byte, error) {
+func (v BootstrapDataCommon) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers3(&w, v)
+	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers2(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
-func (v BootstrapData) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers3(w, v)
+func (v BootstrapDataCommon) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers2(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
-func (v *BootstrapData) UnmarshalJSON(data []byte) error {
+func (v *BootstrapDataCommon) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(&r, v)
+	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers2(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
-func (v *BootstrapData) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(l, v)
+func (v *BootstrapDataCommon) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers2(l, v)
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in *jlexer.Lexer, out *structs.NFLGameplan) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs22(in *jlexer.Lexer, out *structs.FaceDataResponse) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "PlayerID":
+			out.PlayerID = uint(in.Uint())
+		case "Accessories":
+			out.Accessories = string(in.String())
+		case "Body":
+			out.Body = string(in.String())
+		case "Ear":
+			out.Ear = string(in.String())
+		case "Eye":
+			out.Eye = string(in.String())
+		case "EyeLine":
+			out.EyeLine = string(in.String())
+		case "Eyebrow":
+			out.Eyebrow = string(in.String())
+		case "FacialHair":
+			out.FacialHair = string(in.String())
+		case "Glasses":
+			out.Glasses = string(in.String())
+		case "Hair":
+			out.Hair = string(in.String())
+		case "HairBG":
+			out.HairBG = string(in.String())
+		case "HairFlip":
+			out.HairFlip = bool(in.Bool())
+		case "Head":
+			out.Head = string(in.String())
+		case "Jersey":
+			out.Jersey = string(in.String())
+		case "MiscLine":
+			out.MiscLine = string(in.String())
+		case "Mouth":
+			out.Mouth = string(in.String())
+		case "MouthFlip":
+			out.MouthFlip = bool(in.Bool())
+		case "Nose":
+			out.Nose = string(in.String())
+		case "NoseFlip":
+			out.NoseFlip = bool(in.Bool())
+		case "SmileLine":
+			out.SmileLine = string(in.String())
+		case "BodySize":
+			out.BodySize = float32(in.Float32())
+		case "EarSize":
+			out.EarSize = float32(in.Float32())
+		case "EyeAngle":
+			out.EyeAngle = int8(in.Int8())
+		case "EyeBrowAngle":
+			out.EyeBrowAngle = int8(in.Int8())
+		case "FaceSize":
+			out.FaceSize = float32(in.Float32())
+		case "FacialHairShave":
+			out.FacialHairShave = string(in.String())
+		case "NoseSize":
+			out.NoseSize = float32(in.Float32())
+		case "SmileLineSize":
+			out.SmileLineSize = float32(in.Float32())
+		case "SkinColor":
+			out.SkinColor = string(in.String())
+		case "HairColor":
+			out.HairColor = string(in.String())
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs22(out *jwriter.Writer, in structs.FaceDataResponse) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"PlayerID\":"
+		out.RawString(prefix[1:])
+		out.Uint(uint(in.PlayerID))
+	}
+	{
+		const prefix string = ",\"Accessories\":"
+		out.RawString(prefix)
+		out.String(string(in.Accessories))
+	}
+	{
+		const prefix string = ",\"Body\":"
+		out.RawString(prefix)
+		out.String(string(in.Body))
+	}
+	{
+		const prefix string = ",\"Ear\":"
+		out.RawString(prefix)
+		out.String(string(in.Ear))
+	}
+	{
+		const prefix string = ",\"Eye\":"
+		out.RawString(prefix)
+		out.String(string(in.Eye))
+	}
+	{
+		const prefix string = ",\"EyeLine\":"
+		out.RawString(prefix)
+		out.String(string(in.EyeLine))
+	}
+	{
+		const prefix string = ",\"Eyebrow\":"
+		out.RawString(prefix)
+		out.String(string(in.Eyebrow))
+	}
+	{
+		const prefix string = ",\"FacialHair\":"
+		out.RawString(prefix)
+		out.String(string(in.FacialHair))
+	}
+	{
+		const prefix string = ",\"Glasses\":"
+		out.RawString(prefix)
+		out.String(string(in.Glasses))
+	}
+	{
+		const prefix string = ",\"Hair\":"
+		out.RawString(prefix)
+		out.String(string(in.Hair))
+	}
+	{
+		const prefix string = ",\"HairBG\":"
+		out.RawString(prefix)
+		out.String(string(in.HairBG))
+	}
+	{
+		const prefix string = ",\"HairFlip\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.HairFlip))
+	}
+	{
+		const prefix string = ",\"Head\":"
+		out.RawString(prefix)
+		out.String(string(in.Head))
+	}
+	{
+		const prefix string = ",\"Jersey\":"
+		out.RawString(prefix)
+		out.String(string(in.Jersey))
+	}
+	{
+		const prefix string = ",\"MiscLine\":"
+		out.RawString(prefix)
+		out.String(string(in.MiscLine))
+	}
+	{
+		const prefix string = ",\"Mouth\":"
+		out.RawString(prefix)
+		out.String(string(in.Mouth))
+	}
+	{
+		const prefix string = ",\"MouthFlip\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.MouthFlip))
+	}
+	{
+		const prefix string = ",\"Nose\":"
+		out.RawString(prefix)
+		out.String(string(in.Nose))
+	}
+	{
+		const prefix string = ",\"NoseFlip\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.NoseFlip))
+	}
+	{
+		const prefix string = ",\"SmileLine\":"
+		out.RawString(prefix)
+		out.String(string(in.SmileLine))
+	}
+	{
+		const prefix string = ",\"BodySize\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.BodySize))
+	}
+	{
+		const prefix string = ",\"EarSize\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.EarSize))
+	}
+	{
+		const prefix string = ",\"EyeAngle\":"
+		out.RawString(prefix)
+		out.Int8(int8(in.EyeAngle))
+	}
+	{
+		const prefix string = ",\"EyeBrowAngle\":"
+		out.RawString(prefix)
+		out.Int8(int8(in.EyeBrowAngle))
+	}
+	{
+		const prefix string = ",\"FaceSize\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.FaceSize))
+	}
+	{
+		const prefix string = ",\"FacialHairShave\":"
+		out.RawString(prefix)
+		out.String(string(in.FacialHairShave))
+	}
+	{
+		const prefix string = ",\"NoseSize\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.NoseSize))
+	}
+	{
+		const prefix string = ",\"SmileLineSize\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.SmileLineSize))
+	}
+	{
+		const prefix string = ",\"SkinColor\":"
+		out.RawString(prefix)
+		out.String(string(in.SkinColor))
+	}
+	{
+		const prefix string = ",\"HairColor\":"
+		out.RawString(prefix)
+		out.String(string(in.HairColor))
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in *jlexer.Lexer, out *structs.NFLTeam) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "ConferenceID":
+			out.ConferenceID = uint(in.Uint())
+		case "Conference":
+			out.Conference = string(in.String())
+		case "DivisionID":
+			out.DivisionID = uint(in.Uint())
+		case "Division":
+			out.Division = string(in.String())
+		case "NFLOwnerID":
+			out.NFLOwnerID = uint(in.Uint())
+		case "NFLOwnerName":
+			out.NFLOwnerName = string(in.String())
+		case "NFLCoachID":
+			out.NFLCoachID = uint(in.Uint())
+		case "NFLCoachName":
+			out.NFLCoachName = string(in.String())
+		case "NFLGMID":
+			out.NFLGMID = uint(in.Uint())
+		case "NFLGMName":
+			out.NFLGMName = string(in.String())
+		case "NFLAssistantID":
+			out.NFLAssistantID = uint(in.Uint())
+		case "NFLAssistantName":
+			out.NFLAssistantName = string(in.String())
+		case "WaiverOrder":
+			out.WaiverOrder = uint(in.Uint())
+		case "UsedTagThisSeason":
+			out.UsedTagThisSeason = bool(in.Bool())
+		case "Capsheet":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in, &out.Capsheet)
+		case "Contracts":
+			if in.IsNull() {
+				in.Skip()
+				out.Contracts = nil
+			} else {
+				in.Delim('[')
+				if out.Contracts == nil {
+					if !in.IsDelim(']') {
+						out.Contracts = make([]structs.NFLContract, 0, 0)
+					} else {
+						out.Contracts = []structs.NFLContract{}
+					}
+				} else {
+					out.Contracts = (out.Contracts)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v97 structs.NFLContract
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs11(in, &v97)
+					out.Contracts = append(out.Contracts, v97)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "DraftPicks":
+			if in.IsNull() {
+				in.Skip()
+				out.DraftPicks = nil
+			} else {
+				in.Delim('[')
+				if out.DraftPicks == nil {
+					if !in.IsDelim(']') {
+						out.DraftPicks = make([]structs.NFLDraftPick, 0, 0)
+					} else {
+						out.DraftPicks = []structs.NFLDraftPick{}
+					}
+				} else {
+					out.DraftPicks = (out.DraftPicks)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v98 structs.NFLDraftPick
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs23(in, &v98)
+					out.DraftPicks = append(out.DraftPicks, v98)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TeamStats":
+			if in.IsNull() {
+				in.Skip()
+				out.TeamStats = nil
+			} else {
+				in.Delim('[')
+				if out.TeamStats == nil {
+					if !in.IsDelim(']') {
+						out.TeamStats = make([]structs.NFLTeamStats, 0, 0)
+					} else {
+						out.TeamStats = []structs.NFLTeamStats{}
+					}
+				} else {
+					out.TeamStats = (out.TeamStats)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v99 structs.NFLTeamStats
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in, &v99)
+					out.TeamStats = append(out.TeamStats, v99)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TeamSeasonStats":
+			if in.IsNull() {
+				in.Skip()
+				out.TeamSeasonStats = nil
+			} else {
+				in.Delim('[')
+				if out.TeamSeasonStats == nil {
+					if !in.IsDelim(']') {
+						out.TeamSeasonStats = make([]structs.NFLTeamSeasonStats, 0, 0)
+					} else {
+						out.TeamSeasonStats = []structs.NFLTeamSeasonStats{}
+					}
+				} else {
+					out.TeamSeasonStats = (out.TeamSeasonStats)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v100 structs.NFLTeamSeasonStats
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs25(in, &v100)
+					out.TeamSeasonStats = append(out.TeamSeasonStats, v100)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TeamDepthChart":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &out.TeamDepthChart)
+		case "TeamGameplan":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs26(in, &out.TeamGameplan)
+		case "Standings":
+			if in.IsNull() {
+				in.Skip()
+				out.Standings = nil
+			} else {
+				in.Delim('[')
+				if out.Standings == nil {
+					if !in.IsDelim(']') {
+						out.Standings = make([]structs.NFLStandings, 0, 0)
+					} else {
+						out.Standings = []structs.NFLStandings{}
+					}
+				} else {
+					out.Standings = (out.Standings)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v101 structs.NFLStandings
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs13(in, &v101)
+					out.Standings = append(out.Standings, v101)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TeamName":
+			out.TeamName = string(in.String())
+		case "Mascot":
+			out.Mascot = string(in.String())
+		case "TeamAbbr":
+			out.TeamAbbr = string(in.String())
+		case "Coach":
+			out.Coach = string(in.String())
+		case "City":
+			out.City = string(in.String())
+		case "State":
+			out.State = string(in.String())
+		case "Country":
+			out.Country = string(in.String())
+		case "StadiumID":
+			out.StadiumID = uint(in.Uint())
+		case "Stadium":
+			out.Stadium = string(in.String())
+		case "StadiumCapacity":
+			out.StadiumCapacity = int(in.Int())
+		case "RecordAttendance":
+			out.RecordAttendance = int(in.Int())
+		case "Enrollment":
+			out.Enrollment = int(in.Int())
+		case "FirstPlayed":
+			out.FirstPlayed = int(in.Int())
+		case "ColorOne":
+			out.ColorOne = string(in.String())
+		case "ColorTwo":
+			out.ColorTwo = string(in.String())
+		case "ColorThree":
+			out.ColorThree = string(in.String())
+		case "DiscordID":
+			out.DiscordID = string(in.String())
+		case "OverallGrade":
+			out.OverallGrade = string(in.String())
+		case "OffenseGrade":
+			out.OffenseGrade = string(in.String())
+		case "DefenseGrade":
+			out.DefenseGrade = string(in.String())
+		case "SpecialTeamsGrade":
+			out.SpecialTeamsGrade = string(in.String())
+		case "PenaltyMarks":
+			out.PenaltyMarks = uint8(in.Uint8())
+		case "JerseyType":
+			out.JerseyType = uint8(in.Uint8())
+		case "LastLogin":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.LastLogin).UnmarshalJSON(data))
+			}
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out *jwriter.Writer, in structs.NFLTeam) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"ConferenceID\":"
+		out.RawString(prefix[1:])
+		out.Uint(uint(in.ConferenceID))
+	}
+	{
+		const prefix string = ",\"Conference\":"
+		out.RawString(prefix)
+		out.String(string(in.Conference))
+	}
+	{
+		const prefix string = ",\"DivisionID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.DivisionID))
+	}
+	{
+		const prefix string = ",\"Division\":"
+		out.RawString(prefix)
+		out.String(string(in.Division))
+	}
+	{
+		const prefix string = ",\"NFLOwnerID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.NFLOwnerID))
+	}
+	{
+		const prefix string = ",\"NFLOwnerName\":"
+		out.RawString(prefix)
+		out.String(string(in.NFLOwnerName))
+	}
+	{
+		const prefix string = ",\"NFLCoachID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.NFLCoachID))
+	}
+	{
+		const prefix string = ",\"NFLCoachName\":"
+		out.RawString(prefix)
+		out.String(string(in.NFLCoachName))
+	}
+	{
+		const prefix string = ",\"NFLGMID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.NFLGMID))
+	}
+	{
+		const prefix string = ",\"NFLGMName\":"
+		out.RawString(prefix)
+		out.String(string(in.NFLGMName))
+	}
+	{
+		const prefix string = ",\"NFLAssistantID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.NFLAssistantID))
+	}
+	{
+		const prefix string = ",\"NFLAssistantName\":"
+		out.RawString(prefix)
+		out.String(string(in.NFLAssistantName))
+	}
+	{
+		const prefix string = ",\"WaiverOrder\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.WaiverOrder))
+	}
+	{
+		const prefix string = ",\"UsedTagThisSeason\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.UsedTagThisSeason))
+	}
+	{
+		const prefix string = ",\"Capsheet\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out, in.Capsheet)
+	}
+	{
+		const prefix string = ",\"Contracts\":"
+		out.RawString(prefix)
+		if in.Contracts == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v102, v103 := range in.Contracts {
+				if v102 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs11(out, v103)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"DraftPicks\":"
+		out.RawString(prefix)
+		if in.DraftPicks == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v104, v105 := range in.DraftPicks {
+				if v104 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs23(out, v105)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TeamStats\":"
+		out.RawString(prefix)
+		if in.TeamStats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v106, v107 := range in.TeamStats {
+				if v106 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out, v107)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TeamSeasonStats\":"
+		out.RawString(prefix)
+		if in.TeamSeasonStats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v108, v109 := range in.TeamSeasonStats {
+				if v108 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs25(out, v109)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TeamDepthChart\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, in.TeamDepthChart)
+	}
+	{
+		const prefix string = ",\"TeamGameplan\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs26(out, in.TeamGameplan)
+	}
+	{
+		const prefix string = ",\"Standings\":"
+		out.RawString(prefix)
+		if in.Standings == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v110, v111 := range in.Standings {
+				if v110 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs13(out, v111)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TeamName\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamName))
+	}
+	{
+		const prefix string = ",\"Mascot\":"
+		out.RawString(prefix)
+		out.String(string(in.Mascot))
+	}
+	{
+		const prefix string = ",\"TeamAbbr\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamAbbr))
+	}
+	{
+		const prefix string = ",\"Coach\":"
+		out.RawString(prefix)
+		out.String(string(in.Coach))
+	}
+	{
+		const prefix string = ",\"City\":"
+		out.RawString(prefix)
+		out.String(string(in.City))
+	}
+	{
+		const prefix string = ",\"State\":"
+		out.RawString(prefix)
+		out.String(string(in.State))
+	}
+	{
+		const prefix string = ",\"Country\":"
+		out.RawString(prefix)
+		out.String(string(in.Country))
+	}
+	{
+		const prefix string = ",\"StadiumID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.StadiumID))
+	}
+	{
+		const prefix string = ",\"Stadium\":"
+		out.RawString(prefix)
+		out.String(string(in.Stadium))
+	}
+	{
+		const prefix string = ",\"StadiumCapacity\":"
+		out.RawString(prefix)
+		out.Int(int(in.StadiumCapacity))
+	}
+	{
+		const prefix string = ",\"RecordAttendance\":"
+		out.RawString(prefix)
+		out.Int(int(in.RecordAttendance))
+	}
+	{
+		const prefix string = ",\"Enrollment\":"
+		out.RawString(prefix)
+		out.Int(int(in.Enrollment))
+	}
+	{
+		const prefix string = ",\"FirstPlayed\":"
+		out.RawString(prefix)
+		out.Int(int(in.FirstPlayed))
+	}
+	{
+		const prefix string = ",\"ColorOne\":"
+		out.RawString(prefix)
+		out.String(string(in.ColorOne))
+	}
+	{
+		const prefix string = ",\"ColorTwo\":"
+		out.RawString(prefix)
+		out.String(string(in.ColorTwo))
+	}
+	{
+		const prefix string = ",\"ColorThree\":"
+		out.RawString(prefix)
+		out.String(string(in.ColorThree))
+	}
+	{
+		const prefix string = ",\"DiscordID\":"
+		out.RawString(prefix)
+		out.String(string(in.DiscordID))
+	}
+	{
+		const prefix string = ",\"OverallGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.OverallGrade))
+	}
+	{
+		const prefix string = ",\"OffenseGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.OffenseGrade))
+	}
+	{
+		const prefix string = ",\"DefenseGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.DefenseGrade))
+	}
+	{
+		const prefix string = ",\"SpecialTeamsGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.SpecialTeamsGrade))
+	}
+	{
+		const prefix string = ",\"PenaltyMarks\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.PenaltyMarks))
+	}
+	{
+		const prefix string = ",\"JerseyType\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.JerseyType))
+	}
+	{
+		const prefix string = ",\"LastLogin\":"
+		out.RawString(prefix)
+		out.Raw((in.LastLogin).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs26(in *jlexer.Lexer, out *structs.NFLGameplan) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -12855,6 +10409,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in *jlexer.Lexer, o
 			out.PassScreen = int(in.Int())
 		case "PassPAShort":
 			out.PassPAShort = int(in.Int())
+		case "PassPAMedium":
+			out.PassPAMedium = int(in.Int())
 		case "PassPALong":
 			out.PassPALong = int(in.Int())
 		case "PassPADeep":
@@ -12949,7 +10505,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out *jwriter.Writer, in structs.NFLGameplan) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs26(out *jwriter.Writer, in structs.NFLGameplan) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -13474,6 +11030,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out *jwriter.Writer
 		out.Int(int(in.PassPAShort))
 	}
 	{
+		const prefix string = ",\"PassPAMedium\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassPAMedium))
+	}
+	{
 		const prefix string = ",\"PassPALong\":"
 		out.RawString(prefix)
 		out.Int(int(in.PassPALong))
@@ -13654,572 +11215,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in *jlexer.Lexer, out *structs.NFLTeam) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "ConferenceID":
-			out.ConferenceID = uint(in.Uint())
-		case "Conference":
-			out.Conference = string(in.String())
-		case "DivisionID":
-			out.DivisionID = uint(in.Uint())
-		case "Division":
-			out.Division = string(in.String())
-		case "NFLOwnerID":
-			out.NFLOwnerID = uint(in.Uint())
-		case "NFLOwnerName":
-			out.NFLOwnerName = string(in.String())
-		case "NFLCoachID":
-			out.NFLCoachID = uint(in.Uint())
-		case "NFLCoachName":
-			out.NFLCoachName = string(in.String())
-		case "NFLGMID":
-			out.NFLGMID = uint(in.Uint())
-		case "NFLGMName":
-			out.NFLGMName = string(in.String())
-		case "NFLAssistantID":
-			out.NFLAssistantID = uint(in.Uint())
-		case "NFLAssistantName":
-			out.NFLAssistantName = string(in.String())
-		case "WaiverOrder":
-			out.WaiverOrder = uint(in.Uint())
-		case "UsedTagThisSeason":
-			out.UsedTagThisSeason = bool(in.Bool())
-		case "Capsheet":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &out.Capsheet)
-		case "Contracts":
-			if in.IsNull() {
-				in.Skip()
-				out.Contracts = nil
-			} else {
-				in.Delim('[')
-				if out.Contracts == nil {
-					if !in.IsDelim(']') {
-						out.Contracts = make([]structs.NFLContract, 0, 0)
-					} else {
-						out.Contracts = []structs.NFLContract{}
-					}
-				} else {
-					out.Contracts = (out.Contracts)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v171 structs.NFLContract
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs15(in, &v171)
-					out.Contracts = append(out.Contracts, v171)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "DraftPicks":
-			if in.IsNull() {
-				in.Skip()
-				out.DraftPicks = nil
-			} else {
-				in.Delim('[')
-				if out.DraftPicks == nil {
-					if !in.IsDelim(']') {
-						out.DraftPicks = make([]structs.NFLDraftPick, 0, 0)
-					} else {
-						out.DraftPicks = []structs.NFLDraftPick{}
-					}
-				} else {
-					out.DraftPicks = (out.DraftPicks)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v172 structs.NFLDraftPick
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs35(in, &v172)
-					out.DraftPicks = append(out.DraftPicks, v172)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TeamStats":
-			if in.IsNull() {
-				in.Skip()
-				out.TeamStats = nil
-			} else {
-				in.Delim('[')
-				if out.TeamStats == nil {
-					if !in.IsDelim(']') {
-						out.TeamStats = make([]structs.NFLTeamStats, 0, 0)
-					} else {
-						out.TeamStats = []structs.NFLTeamStats{}
-					}
-				} else {
-					out.TeamStats = (out.TeamStats)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v173 structs.NFLTeamStats
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs36(in, &v173)
-					out.TeamStats = append(out.TeamStats, v173)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TeamSeasonStats":
-			if in.IsNull() {
-				in.Skip()
-				out.TeamSeasonStats = nil
-			} else {
-				in.Delim('[')
-				if out.TeamSeasonStats == nil {
-					if !in.IsDelim(']') {
-						out.TeamSeasonStats = make([]structs.NFLTeamSeasonStats, 0, 0)
-					} else {
-						out.TeamSeasonStats = []structs.NFLTeamSeasonStats{}
-					}
-				} else {
-					out.TeamSeasonStats = (out.TeamSeasonStats)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v174 structs.NFLTeamSeasonStats
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs37(in, &v174)
-					out.TeamSeasonStats = append(out.TeamSeasonStats, v174)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TeamDepthChart":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in, &out.TeamDepthChart)
-		case "TeamGameplan":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in, &out.TeamGameplan)
-		case "Standings":
-			if in.IsNull() {
-				in.Skip()
-				out.Standings = nil
-			} else {
-				in.Delim('[')
-				if out.Standings == nil {
-					if !in.IsDelim(']') {
-						out.Standings = make([]structs.NFLStandings, 0, 0)
-					} else {
-						out.Standings = []structs.NFLStandings{}
-					}
-				} else {
-					out.Standings = (out.Standings)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v175 structs.NFLStandings
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v175)
-					out.Standings = append(out.Standings, v175)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TeamName":
-			out.TeamName = string(in.String())
-		case "Mascot":
-			out.Mascot = string(in.String())
-		case "TeamAbbr":
-			out.TeamAbbr = string(in.String())
-		case "Coach":
-			out.Coach = string(in.String())
-		case "City":
-			out.City = string(in.String())
-		case "State":
-			out.State = string(in.String())
-		case "Country":
-			out.Country = string(in.String())
-		case "StadiumID":
-			out.StadiumID = uint(in.Uint())
-		case "Stadium":
-			out.Stadium = string(in.String())
-		case "StadiumCapacity":
-			out.StadiumCapacity = int(in.Int())
-		case "RecordAttendance":
-			out.RecordAttendance = int(in.Int())
-		case "Enrollment":
-			out.Enrollment = int(in.Int())
-		case "FirstPlayed":
-			out.FirstPlayed = int(in.Int())
-		case "ColorOne":
-			out.ColorOne = string(in.String())
-		case "ColorTwo":
-			out.ColorTwo = string(in.String())
-		case "ColorThree":
-			out.ColorThree = string(in.String())
-		case "DiscordID":
-			out.DiscordID = string(in.String())
-		case "OverallGrade":
-			out.OverallGrade = string(in.String())
-		case "OffenseGrade":
-			out.OffenseGrade = string(in.String())
-		case "DefenseGrade":
-			out.DefenseGrade = string(in.String())
-		case "SpecialTeamsGrade":
-			out.SpecialTeamsGrade = string(in.String())
-		case "PenaltyMarks":
-			out.PenaltyMarks = uint8(in.Uint8())
-		case "JerseyType":
-			out.JerseyType = uint8(in.Uint8())
-		case "LastLogin":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.LastLogin).UnmarshalJSON(data))
-			}
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out *jwriter.Writer, in structs.NFLTeam) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"ConferenceID\":"
-		out.RawString(prefix[1:])
-		out.Uint(uint(in.ConferenceID))
-	}
-	{
-		const prefix string = ",\"Conference\":"
-		out.RawString(prefix)
-		out.String(string(in.Conference))
-	}
-	{
-		const prefix string = ",\"DivisionID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.DivisionID))
-	}
-	{
-		const prefix string = ",\"Division\":"
-		out.RawString(prefix)
-		out.String(string(in.Division))
-	}
-	{
-		const prefix string = ",\"NFLOwnerID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.NFLOwnerID))
-	}
-	{
-		const prefix string = ",\"NFLOwnerName\":"
-		out.RawString(prefix)
-		out.String(string(in.NFLOwnerName))
-	}
-	{
-		const prefix string = ",\"NFLCoachID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.NFLCoachID))
-	}
-	{
-		const prefix string = ",\"NFLCoachName\":"
-		out.RawString(prefix)
-		out.String(string(in.NFLCoachName))
-	}
-	{
-		const prefix string = ",\"NFLGMID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.NFLGMID))
-	}
-	{
-		const prefix string = ",\"NFLGMName\":"
-		out.RawString(prefix)
-		out.String(string(in.NFLGMName))
-	}
-	{
-		const prefix string = ",\"NFLAssistantID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.NFLAssistantID))
-	}
-	{
-		const prefix string = ",\"NFLAssistantName\":"
-		out.RawString(prefix)
-		out.String(string(in.NFLAssistantName))
-	}
-	{
-		const prefix string = ",\"WaiverOrder\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.WaiverOrder))
-	}
-	{
-		const prefix string = ",\"UsedTagThisSeason\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.UsedTagThisSeason))
-	}
-	{
-		const prefix string = ",\"Capsheet\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, in.Capsheet)
-	}
-	{
-		const prefix string = ",\"Contracts\":"
-		out.RawString(prefix)
-		if in.Contracts == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v176, v177 := range in.Contracts {
-				if v176 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs15(out, v177)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"DraftPicks\":"
-		out.RawString(prefix)
-		if in.DraftPicks == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v178, v179 := range in.DraftPicks {
-				if v178 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs35(out, v179)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TeamStats\":"
-		out.RawString(prefix)
-		if in.TeamStats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v180, v181 := range in.TeamStats {
-				if v180 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs36(out, v181)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TeamSeasonStats\":"
-		out.RawString(prefix)
-		if in.TeamSeasonStats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v182, v183 := range in.TeamSeasonStats {
-				if v182 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs37(out, v183)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TeamDepthChart\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out, in.TeamDepthChart)
-	}
-	{
-		const prefix string = ",\"TeamGameplan\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out, in.TeamGameplan)
-	}
-	{
-		const prefix string = ",\"Standings\":"
-		out.RawString(prefix)
-		if in.Standings == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v184, v185 := range in.Standings {
-				if v184 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v185)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TeamName\":"
-		out.RawString(prefix)
-		out.String(string(in.TeamName))
-	}
-	{
-		const prefix string = ",\"Mascot\":"
-		out.RawString(prefix)
-		out.String(string(in.Mascot))
-	}
-	{
-		const prefix string = ",\"TeamAbbr\":"
-		out.RawString(prefix)
-		out.String(string(in.TeamAbbr))
-	}
-	{
-		const prefix string = ",\"Coach\":"
-		out.RawString(prefix)
-		out.String(string(in.Coach))
-	}
-	{
-		const prefix string = ",\"City\":"
-		out.RawString(prefix)
-		out.String(string(in.City))
-	}
-	{
-		const prefix string = ",\"State\":"
-		out.RawString(prefix)
-		out.String(string(in.State))
-	}
-	{
-		const prefix string = ",\"Country\":"
-		out.RawString(prefix)
-		out.String(string(in.Country))
-	}
-	{
-		const prefix string = ",\"StadiumID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.StadiumID))
-	}
-	{
-		const prefix string = ",\"Stadium\":"
-		out.RawString(prefix)
-		out.String(string(in.Stadium))
-	}
-	{
-		const prefix string = ",\"StadiumCapacity\":"
-		out.RawString(prefix)
-		out.Int(int(in.StadiumCapacity))
-	}
-	{
-		const prefix string = ",\"RecordAttendance\":"
-		out.RawString(prefix)
-		out.Int(int(in.RecordAttendance))
-	}
-	{
-		const prefix string = ",\"Enrollment\":"
-		out.RawString(prefix)
-		out.Int(int(in.Enrollment))
-	}
-	{
-		const prefix string = ",\"FirstPlayed\":"
-		out.RawString(prefix)
-		out.Int(int(in.FirstPlayed))
-	}
-	{
-		const prefix string = ",\"ColorOne\":"
-		out.RawString(prefix)
-		out.String(string(in.ColorOne))
-	}
-	{
-		const prefix string = ",\"ColorTwo\":"
-		out.RawString(prefix)
-		out.String(string(in.ColorTwo))
-	}
-	{
-		const prefix string = ",\"ColorThree\":"
-		out.RawString(prefix)
-		out.String(string(in.ColorThree))
-	}
-	{
-		const prefix string = ",\"DiscordID\":"
-		out.RawString(prefix)
-		out.String(string(in.DiscordID))
-	}
-	{
-		const prefix string = ",\"OverallGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.OverallGrade))
-	}
-	{
-		const prefix string = ",\"OffenseGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.OffenseGrade))
-	}
-	{
-		const prefix string = ",\"DefenseGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.DefenseGrade))
-	}
-	{
-		const prefix string = ",\"SpecialTeamsGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.SpecialTeamsGrade))
-	}
-	{
-		const prefix string = ",\"PenaltyMarks\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.PenaltyMarks))
-	}
-	{
-		const prefix string = ",\"JerseyType\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.JerseyType))
-	}
-	{
-		const prefix string = ",\"LastLogin\":"
-		out.RawString(prefix)
-		out.Raw((in.LastLogin).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs37(in *jlexer.Lexer, out *structs.NFLTeamSeasonStats) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs25(in *jlexer.Lexer, out *structs.NFLTeamSeasonStats) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -14442,7 +11438,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs37(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs37(out *jwriter.Writer, in structs.NFLTeamSeasonStats) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs25(out *jwriter.Writer, in structs.NFLTeamSeasonStats) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -14902,7 +11898,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs37(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs36(in *jlexer.Lexer, out *structs.NFLTeamStats) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs24(in *jlexer.Lexer, out *structs.NFLTeamStats) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -15119,7 +12115,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs36(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs36(out *jwriter.Writer, in structs.NFLTeamStats) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs24(out *jwriter.Writer, in structs.NFLTeamStats) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -15564,7 +12560,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs36(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs35(in *jlexer.Lexer, out *structs.NFLDraftPick) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs23(in *jlexer.Lexer, out *structs.NFLDraftPick) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -15651,7 +12647,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs35(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs35(out *jwriter.Writer, in structs.NFLDraftPick) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs23(out *jwriter.Writer, in structs.NFLDraftPick) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -15744,6 +12740,718 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs35(out *jwriter.Writer
 		const prefix string = ",\"IsVoid\":"
 		out.RawString(prefix)
 		out.Bool(bool(in.IsVoid))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs20(in *jlexer.Lexer, out *structs.CollegeTeam) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "ConferenceID":
+			out.ConferenceID = int(in.Int())
+		case "Conference":
+			out.Conference = string(in.String())
+		case "DivisionID":
+			out.DivisionID = int(in.Int())
+		case "Division":
+			out.Division = string(in.String())
+		case "ProgramPrestige":
+			out.ProgramPrestige = int(in.Int())
+		case "AcademicPrestige":
+			out.AcademicPrestige = int(in.Int())
+		case "Facilities":
+			out.Facilities = int(in.Int())
+		case "IsFBS":
+			out.IsFBS = bool(in.Bool())
+		case "IsActive":
+			out.IsActive = bool(in.Bool())
+		case "PlayersProgressed":
+			out.PlayersProgressed = bool(in.Bool())
+		case "RecruitsAdded":
+			out.RecruitsAdded = bool(in.Bool())
+		case "CollegeCoach":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs27(in, &out.CollegeCoach)
+		case "RecruitingProfile":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in, &out.RecruitingProfile)
+		case "TeamStats":
+			if in.IsNull() {
+				in.Skip()
+				out.TeamStats = nil
+			} else {
+				in.Delim('[')
+				if out.TeamStats == nil {
+					if !in.IsDelim(']') {
+						out.TeamStats = make([]structs.CollegeTeamStats, 0, 0)
+					} else {
+						out.TeamStats = []structs.CollegeTeamStats{}
+					}
+				} else {
+					out.TeamStats = (out.TeamStats)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v112 structs.CollegeTeamStats
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in, &v112)
+					out.TeamStats = append(out.TeamStats, v112)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TeamSeasonStats":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs30(in, &out.TeamSeasonStats)
+		case "TeamRecord":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs31(in, &out.TeamRecord)
+		case "TeamGameplan":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs32(in, &out.TeamGameplan)
+		case "TeamDepthChart":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in, &out.TeamDepthChart)
+		case "TeamStandings":
+			if in.IsNull() {
+				in.Skip()
+				out.TeamStandings = nil
+			} else {
+				in.Delim('[')
+				if out.TeamStandings == nil {
+					if !in.IsDelim(']') {
+						out.TeamStandings = make([]structs.CollegeStandings, 0, 0)
+					} else {
+						out.TeamStandings = []structs.CollegeStandings{}
+					}
+				} else {
+					out.TeamStandings = (out.TeamStandings)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v113 structs.CollegeStandings
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs1(in, &v113)
+					out.TeamStandings = append(out.TeamStandings, v113)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TeamName":
+			out.TeamName = string(in.String())
+		case "Mascot":
+			out.Mascot = string(in.String())
+		case "TeamAbbr":
+			out.TeamAbbr = string(in.String())
+		case "Coach":
+			out.Coach = string(in.String())
+		case "City":
+			out.City = string(in.String())
+		case "State":
+			out.State = string(in.String())
+		case "Country":
+			out.Country = string(in.String())
+		case "StadiumID":
+			out.StadiumID = uint(in.Uint())
+		case "Stadium":
+			out.Stadium = string(in.String())
+		case "StadiumCapacity":
+			out.StadiumCapacity = int(in.Int())
+		case "RecordAttendance":
+			out.RecordAttendance = int(in.Int())
+		case "Enrollment":
+			out.Enrollment = int(in.Int())
+		case "FirstPlayed":
+			out.FirstPlayed = int(in.Int())
+		case "ColorOne":
+			out.ColorOne = string(in.String())
+		case "ColorTwo":
+			out.ColorTwo = string(in.String())
+		case "ColorThree":
+			out.ColorThree = string(in.String())
+		case "DiscordID":
+			out.DiscordID = string(in.String())
+		case "OverallGrade":
+			out.OverallGrade = string(in.String())
+		case "OffenseGrade":
+			out.OffenseGrade = string(in.String())
+		case "DefenseGrade":
+			out.DefenseGrade = string(in.String())
+		case "SpecialTeamsGrade":
+			out.SpecialTeamsGrade = string(in.String())
+		case "PenaltyMarks":
+			out.PenaltyMarks = uint8(in.Uint8())
+		case "JerseyType":
+			out.JerseyType = uint8(in.Uint8())
+		case "LastLogin":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.LastLogin).UnmarshalJSON(data))
+			}
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs20(out *jwriter.Writer, in structs.CollegeTeam) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"ConferenceID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.ConferenceID))
+	}
+	{
+		const prefix string = ",\"Conference\":"
+		out.RawString(prefix)
+		out.String(string(in.Conference))
+	}
+	{
+		const prefix string = ",\"DivisionID\":"
+		out.RawString(prefix)
+		out.Int(int(in.DivisionID))
+	}
+	{
+		const prefix string = ",\"Division\":"
+		out.RawString(prefix)
+		out.String(string(in.Division))
+	}
+	{
+		const prefix string = ",\"ProgramPrestige\":"
+		out.RawString(prefix)
+		out.Int(int(in.ProgramPrestige))
+	}
+	{
+		const prefix string = ",\"AcademicPrestige\":"
+		out.RawString(prefix)
+		out.Int(int(in.AcademicPrestige))
+	}
+	{
+		const prefix string = ",\"Facilities\":"
+		out.RawString(prefix)
+		out.Int(int(in.Facilities))
+	}
+	{
+		const prefix string = ",\"IsFBS\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsFBS))
+	}
+	{
+		const prefix string = ",\"IsActive\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsActive))
+	}
+	{
+		const prefix string = ",\"PlayersProgressed\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.PlayersProgressed))
+	}
+	{
+		const prefix string = ",\"RecruitsAdded\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.RecruitsAdded))
+	}
+	{
+		const prefix string = ",\"CollegeCoach\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs27(out, in.CollegeCoach)
+	}
+	{
+		const prefix string = ",\"RecruitingProfile\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out, in.RecruitingProfile)
+	}
+	{
+		const prefix string = ",\"TeamStats\":"
+		out.RawString(prefix)
+		if in.TeamStats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v114, v115 := range in.TeamStats {
+				if v114 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out, v115)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TeamSeasonStats\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs30(out, in.TeamSeasonStats)
+	}
+	{
+		const prefix string = ",\"TeamRecord\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs31(out, in.TeamRecord)
+	}
+	{
+		const prefix string = ",\"TeamGameplan\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs32(out, in.TeamGameplan)
+	}
+	{
+		const prefix string = ",\"TeamDepthChart\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out, in.TeamDepthChart)
+	}
+	{
+		const prefix string = ",\"TeamStandings\":"
+		out.RawString(prefix)
+		if in.TeamStandings == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v116, v117 := range in.TeamStandings {
+				if v116 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs1(out, v117)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TeamName\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamName))
+	}
+	{
+		const prefix string = ",\"Mascot\":"
+		out.RawString(prefix)
+		out.String(string(in.Mascot))
+	}
+	{
+		const prefix string = ",\"TeamAbbr\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamAbbr))
+	}
+	{
+		const prefix string = ",\"Coach\":"
+		out.RawString(prefix)
+		out.String(string(in.Coach))
+	}
+	{
+		const prefix string = ",\"City\":"
+		out.RawString(prefix)
+		out.String(string(in.City))
+	}
+	{
+		const prefix string = ",\"State\":"
+		out.RawString(prefix)
+		out.String(string(in.State))
+	}
+	{
+		const prefix string = ",\"Country\":"
+		out.RawString(prefix)
+		out.String(string(in.Country))
+	}
+	{
+		const prefix string = ",\"StadiumID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.StadiumID))
+	}
+	{
+		const prefix string = ",\"Stadium\":"
+		out.RawString(prefix)
+		out.String(string(in.Stadium))
+	}
+	{
+		const prefix string = ",\"StadiumCapacity\":"
+		out.RawString(prefix)
+		out.Int(int(in.StadiumCapacity))
+	}
+	{
+		const prefix string = ",\"RecordAttendance\":"
+		out.RawString(prefix)
+		out.Int(int(in.RecordAttendance))
+	}
+	{
+		const prefix string = ",\"Enrollment\":"
+		out.RawString(prefix)
+		out.Int(int(in.Enrollment))
+	}
+	{
+		const prefix string = ",\"FirstPlayed\":"
+		out.RawString(prefix)
+		out.Int(int(in.FirstPlayed))
+	}
+	{
+		const prefix string = ",\"ColorOne\":"
+		out.RawString(prefix)
+		out.String(string(in.ColorOne))
+	}
+	{
+		const prefix string = ",\"ColorTwo\":"
+		out.RawString(prefix)
+		out.String(string(in.ColorTwo))
+	}
+	{
+		const prefix string = ",\"ColorThree\":"
+		out.RawString(prefix)
+		out.String(string(in.ColorThree))
+	}
+	{
+		const prefix string = ",\"DiscordID\":"
+		out.RawString(prefix)
+		out.String(string(in.DiscordID))
+	}
+	{
+		const prefix string = ",\"OverallGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.OverallGrade))
+	}
+	{
+		const prefix string = ",\"OffenseGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.OffenseGrade))
+	}
+	{
+		const prefix string = ",\"DefenseGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.DefenseGrade))
+	}
+	{
+		const prefix string = ",\"SpecialTeamsGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.SpecialTeamsGrade))
+	}
+	{
+		const prefix string = ",\"PenaltyMarks\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.PenaltyMarks))
+	}
+	{
+		const prefix string = ",\"JerseyType\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.JerseyType))
+	}
+	{
+		const prefix string = ",\"LastLogin\":"
+		out.RawString(prefix)
+		out.Raw((in.LastLogin).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in *jlexer.Lexer, out *structs.CollegeTeamDepthChart) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "TeamID":
+			out.TeamID = int(in.Int())
+		case "DepthChartPlayers":
+			if in.IsNull() {
+				in.Skip()
+				out.DepthChartPlayers = nil
+			} else {
+				in.Delim('[')
+				if out.DepthChartPlayers == nil {
+					if !in.IsDelim(']') {
+						out.DepthChartPlayers = make([]structs.CollegeDepthChartPosition, 0, 0)
+					} else {
+						out.DepthChartPlayers = []structs.CollegeDepthChartPosition{}
+					}
+				} else {
+					out.DepthChartPlayers = (out.DepthChartPlayers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v118 structs.CollegeDepthChartPosition
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in, &v118)
+					out.DepthChartPlayers = append(out.DepthChartPlayers, v118)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out *jwriter.Writer, in structs.CollegeTeamDepthChart) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.TeamID))
+	}
+	{
+		const prefix string = ",\"DepthChartPlayers\":"
+		out.RawString(prefix)
+		if in.DepthChartPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v119, v120 := range in.DepthChartPlayers {
+				if v119 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out, v120)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs34(in *jlexer.Lexer, out *structs.CollegeDepthChartPosition) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "DepthChartID":
+			out.DepthChartID = int(in.Int())
+		case "PlayerID":
+			out.PlayerID = int(in.Int())
+		case "Position":
+			out.Position = string(in.String())
+		case "PositionLevel":
+			out.PositionLevel = string(in.String())
+		case "FirstName":
+			out.FirstName = string(in.String())
+		case "LastName":
+			out.LastName = string(in.String())
+		case "OriginalPosition":
+			out.OriginalPosition = string(in.String())
+		case "CollegePlayer":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &out.CollegePlayer)
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs34(out *jwriter.Writer, in structs.CollegeDepthChartPosition) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"DepthChartID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.DepthChartID))
+	}
+	{
+		const prefix string = ",\"PlayerID\":"
+		out.RawString(prefix)
+		out.Int(int(in.PlayerID))
+	}
+	{
+		const prefix string = ",\"Position\":"
+		out.RawString(prefix)
+		out.String(string(in.Position))
+	}
+	{
+		const prefix string = ",\"PositionLevel\":"
+		out.RawString(prefix)
+		out.String(string(in.PositionLevel))
+	}
+	{
+		const prefix string = ",\"FirstName\":"
+		out.RawString(prefix)
+		out.String(string(in.FirstName))
+	}
+	{
+		const prefix string = ",\"LastName\":"
+		out.RawString(prefix)
+		out.String(string(in.LastName))
+	}
+	{
+		const prefix string = ",\"OriginalPosition\":"
+		out.RawString(prefix)
+		out.String(string(in.OriginalPosition))
+	}
+	{
+		const prefix string = ",\"CollegePlayer\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, in.CollegePlayer)
 	}
 	{
 		const prefix string = ",\"ID\":"
@@ -15998,6 +13706,8 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs32(in *jlexer.Lexer, o
 			out.PassScreen = int(in.Int())
 		case "PassPAShort":
 			out.PassPAShort = int(in.Int())
+		case "PassPAMedium":
+			out.PassPAMedium = int(in.Int())
 		case "PassPALong":
 			out.PassPALong = int(in.Int())
 		case "PassPADeep":
@@ -16617,6 +14327,11 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs32(out *jwriter.Writer
 		out.Int(int(in.PassPAShort))
 	}
 	{
+		const prefix string = ",\"PassPAMedium\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassPAMedium))
+	}
+	{
 		const prefix string = ",\"PassPALong\":"
 		out.RawString(prefix)
 		out.Int(int(in.PassPALong))
@@ -16797,1176 +14512,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs32(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs31(in *jlexer.Lexer, out *structs.Notification) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "TeamID":
-			out.TeamID = uint(in.Uint())
-		case "League":
-			out.League = string(in.String())
-		case "NotificationType":
-			out.NotificationType = string(in.String())
-		case "Message":
-			out.Message = string(in.String())
-		case "Subject":
-			out.Subject = string(in.String())
-		case "IsRead":
-			out.IsRead = bool(in.Bool())
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.DeletedAt).UnmarshalJSON(data))
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs31(out *jwriter.Writer, in structs.Notification) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix[1:])
-		out.Uint(uint(in.TeamID))
-	}
-	{
-		const prefix string = ",\"League\":"
-		out.RawString(prefix)
-		out.String(string(in.League))
-	}
-	{
-		const prefix string = ",\"NotificationType\":"
-		out.RawString(prefix)
-		out.String(string(in.NotificationType))
-	}
-	{
-		const prefix string = ",\"Message\":"
-		out.RawString(prefix)
-		out.String(string(in.Message))
-	}
-	{
-		const prefix string = ",\"Subject\":"
-		out.RawString(prefix)
-		out.String(string(in.Subject))
-	}
-	{
-		const prefix string = ",\"IsRead\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsRead))
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.DeletedAt).MarshalJSON())
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs30(in *jlexer.Lexer, out *structs.HistoricCollegePlayer) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "PlayerID":
-			out.PlayerID = int(in.Int())
-		case "TeamID":
-			out.TeamID = int(in.Int())
-		case "TeamAbbr":
-			out.TeamAbbr = string(in.String())
-		case "HighSchool":
-			out.HighSchool = string(in.String())
-		case "City":
-			out.City = string(in.String())
-		case "State":
-			out.State = string(in.String())
-		case "Year":
-			out.Year = int(in.Int())
-		case "IsRedshirt":
-			out.IsRedshirt = bool(in.Bool())
-		case "IsRedshirting":
-			out.IsRedshirting = bool(in.Bool())
-		case "HasGraduated":
-			out.HasGraduated = bool(in.Bool())
-		case "TransferStatus":
-			out.TransferStatus = int(in.Int())
-		case "TransferLikeliness":
-			out.TransferLikeliness = string(in.String())
-		case "Stats":
-			if in.IsNull() {
-				in.Skip()
-				out.Stats = nil
-			} else {
-				in.Delim('[')
-				if out.Stats == nil {
-					if !in.IsDelim(']') {
-						out.Stats = make([]structs.CollegePlayerStats, 0, 0)
-					} else {
-						out.Stats = []structs.CollegePlayerStats{}
-					}
-				} else {
-					out.Stats = (out.Stats)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v186 structs.CollegePlayerStats
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs5(in, &v186)
-					out.Stats = append(out.Stats, v186)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "SeasonStats":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs(in, &out.SeasonStats)
-		case "HasProgressed":
-			out.HasProgressed = bool(in.Bool())
-		case "WillDeclare":
-			out.WillDeclare = bool(in.Bool())
-		case "LegacyID":
-			out.LegacyID = uint(in.Uint())
-		case "FirstName":
-			out.FirstName = string(in.String())
-		case "LastName":
-			out.LastName = string(in.String())
-		case "Position":
-			out.Position = string(in.String())
-		case "Archetype":
-			out.Archetype = string(in.String())
-		case "PreviousTeamID":
-			out.PreviousTeamID = uint(in.Uint())
-		case "PreviousTeam":
-			out.PreviousTeam = string(in.String())
-		case "Height":
-			out.Height = int(in.Int())
-		case "Weight":
-			out.Weight = int(in.Int())
-		case "Age":
-			out.Age = int(in.Int())
-		case "Stars":
-			out.Stars = int(in.Int())
-		case "Overall":
-			out.Overall = int(in.Int())
-		case "Stamina":
-			out.Stamina = int(in.Int())
-		case "Injury":
-			out.Injury = int(in.Int())
-		case "FootballIQ":
-			out.FootballIQ = int(in.Int())
-		case "Speed":
-			out.Speed = int(in.Int())
-		case "Carrying":
-			out.Carrying = int(in.Int())
-		case "Agility":
-			out.Agility = int(in.Int())
-		case "Catching":
-			out.Catching = int(in.Int())
-		case "RouteRunning":
-			out.RouteRunning = int(in.Int())
-		case "ZoneCoverage":
-			out.ZoneCoverage = int(in.Int())
-		case "ManCoverage":
-			out.ManCoverage = int(in.Int())
-		case "Strength":
-			out.Strength = int(in.Int())
-		case "Tackle":
-			out.Tackle = int(in.Int())
-		case "PassBlock":
-			out.PassBlock = int(in.Int())
-		case "RunBlock":
-			out.RunBlock = int(in.Int())
-		case "PassRush":
-			out.PassRush = int(in.Int())
-		case "RunDefense":
-			out.RunDefense = int(in.Int())
-		case "ThrowPower":
-			out.ThrowPower = int(in.Int())
-		case "ThrowAccuracy":
-			out.ThrowAccuracy = int(in.Int())
-		case "KickAccuracy":
-			out.KickAccuracy = int(in.Int())
-		case "KickPower":
-			out.KickPower = int(in.Int())
-		case "PuntAccuracy":
-			out.PuntAccuracy = int(in.Int())
-		case "PuntPower":
-			out.PuntPower = int(in.Int())
-		case "Progression":
-			out.Progression = int(in.Int())
-		case "Discipline":
-			out.Discipline = int(in.Int())
-		case "PotentialGrade":
-			out.PotentialGrade = string(in.String())
-		case "FreeAgency":
-			out.FreeAgency = string(in.String())
-		case "Personality":
-			out.Personality = string(in.String())
-		case "RecruitingBias":
-			out.RecruitingBias = string(in.String())
-		case "WorkEthic":
-			out.WorkEthic = string(in.String())
-		case "AcademicBias":
-			out.AcademicBias = string(in.String())
-		case "IsInjured":
-			out.IsInjured = bool(in.Bool())
-		case "InjuryName":
-			out.InjuryName = string(in.String())
-		case "InjuryType":
-			out.InjuryType = string(in.String())
-		case "WeeksOfRecovery":
-			out.WeeksOfRecovery = uint(in.Uint())
-		case "InjuryReserve":
-			out.InjuryReserve = bool(in.Bool())
-		case "PrimeAge":
-			out.PrimeAge = uint(in.Uint())
-		case "Clutch":
-			out.Clutch = int(in.Int())
-		case "Shotgun":
-			out.Shotgun = int(in.Int())
-		case "PositionTwo":
-			out.PositionTwo = string(in.String())
-		case "ArchetypeTwo":
-			out.ArchetypeTwo = string(in.String())
-		case "RelativeID":
-			out.RelativeID = uint(in.Uint())
-		case "RelativeType":
-			out.RelativeType = uint(in.Uint())
-		case "Notes":
-			out.Notes = string(in.String())
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs30(out *jwriter.Writer, in structs.HistoricCollegePlayer) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"PlayerID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.PlayerID))
-	}
-	{
-		const prefix string = ",\"TeamID\":"
-		out.RawString(prefix)
-		out.Int(int(in.TeamID))
-	}
-	{
-		const prefix string = ",\"TeamAbbr\":"
-		out.RawString(prefix)
-		out.String(string(in.TeamAbbr))
-	}
-	{
-		const prefix string = ",\"HighSchool\":"
-		out.RawString(prefix)
-		out.String(string(in.HighSchool))
-	}
-	{
-		const prefix string = ",\"City\":"
-		out.RawString(prefix)
-		out.String(string(in.City))
-	}
-	{
-		const prefix string = ",\"State\":"
-		out.RawString(prefix)
-		out.String(string(in.State))
-	}
-	{
-		const prefix string = ",\"Year\":"
-		out.RawString(prefix)
-		out.Int(int(in.Year))
-	}
-	{
-		const prefix string = ",\"IsRedshirt\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsRedshirt))
-	}
-	{
-		const prefix string = ",\"IsRedshirting\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsRedshirting))
-	}
-	{
-		const prefix string = ",\"HasGraduated\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.HasGraduated))
-	}
-	{
-		const prefix string = ",\"TransferStatus\":"
-		out.RawString(prefix)
-		out.Int(int(in.TransferStatus))
-	}
-	{
-		const prefix string = ",\"TransferLikeliness\":"
-		out.RawString(prefix)
-		out.String(string(in.TransferLikeliness))
-	}
-	{
-		const prefix string = ",\"Stats\":"
-		out.RawString(prefix)
-		if in.Stats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v187, v188 := range in.Stats {
-				if v187 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs5(out, v188)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"SeasonStats\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs(out, in.SeasonStats)
-	}
-	{
-		const prefix string = ",\"HasProgressed\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.HasProgressed))
-	}
-	{
-		const prefix string = ",\"WillDeclare\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.WillDeclare))
-	}
-	{
-		const prefix string = ",\"LegacyID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.LegacyID))
-	}
-	{
-		const prefix string = ",\"FirstName\":"
-		out.RawString(prefix)
-		out.String(string(in.FirstName))
-	}
-	{
-		const prefix string = ",\"LastName\":"
-		out.RawString(prefix)
-		out.String(string(in.LastName))
-	}
-	{
-		const prefix string = ",\"Position\":"
-		out.RawString(prefix)
-		out.String(string(in.Position))
-	}
-	{
-		const prefix string = ",\"Archetype\":"
-		out.RawString(prefix)
-		out.String(string(in.Archetype))
-	}
-	{
-		const prefix string = ",\"PreviousTeamID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.PreviousTeamID))
-	}
-	{
-		const prefix string = ",\"PreviousTeam\":"
-		out.RawString(prefix)
-		out.String(string(in.PreviousTeam))
-	}
-	{
-		const prefix string = ",\"Height\":"
-		out.RawString(prefix)
-		out.Int(int(in.Height))
-	}
-	{
-		const prefix string = ",\"Weight\":"
-		out.RawString(prefix)
-		out.Int(int(in.Weight))
-	}
-	{
-		const prefix string = ",\"Age\":"
-		out.RawString(prefix)
-		out.Int(int(in.Age))
-	}
-	{
-		const prefix string = ",\"Stars\":"
-		out.RawString(prefix)
-		out.Int(int(in.Stars))
-	}
-	{
-		const prefix string = ",\"Overall\":"
-		out.RawString(prefix)
-		out.Int(int(in.Overall))
-	}
-	{
-		const prefix string = ",\"Stamina\":"
-		out.RawString(prefix)
-		out.Int(int(in.Stamina))
-	}
-	{
-		const prefix string = ",\"Injury\":"
-		out.RawString(prefix)
-		out.Int(int(in.Injury))
-	}
-	{
-		const prefix string = ",\"FootballIQ\":"
-		out.RawString(prefix)
-		out.Int(int(in.FootballIQ))
-	}
-	{
-		const prefix string = ",\"Speed\":"
-		out.RawString(prefix)
-		out.Int(int(in.Speed))
-	}
-	{
-		const prefix string = ",\"Carrying\":"
-		out.RawString(prefix)
-		out.Int(int(in.Carrying))
-	}
-	{
-		const prefix string = ",\"Agility\":"
-		out.RawString(prefix)
-		out.Int(int(in.Agility))
-	}
-	{
-		const prefix string = ",\"Catching\":"
-		out.RawString(prefix)
-		out.Int(int(in.Catching))
-	}
-	{
-		const prefix string = ",\"RouteRunning\":"
-		out.RawString(prefix)
-		out.Int(int(in.RouteRunning))
-	}
-	{
-		const prefix string = ",\"ZoneCoverage\":"
-		out.RawString(prefix)
-		out.Int(int(in.ZoneCoverage))
-	}
-	{
-		const prefix string = ",\"ManCoverage\":"
-		out.RawString(prefix)
-		out.Int(int(in.ManCoverage))
-	}
-	{
-		const prefix string = ",\"Strength\":"
-		out.RawString(prefix)
-		out.Int(int(in.Strength))
-	}
-	{
-		const prefix string = ",\"Tackle\":"
-		out.RawString(prefix)
-		out.Int(int(in.Tackle))
-	}
-	{
-		const prefix string = ",\"PassBlock\":"
-		out.RawString(prefix)
-		out.Int(int(in.PassBlock))
-	}
-	{
-		const prefix string = ",\"RunBlock\":"
-		out.RawString(prefix)
-		out.Int(int(in.RunBlock))
-	}
-	{
-		const prefix string = ",\"PassRush\":"
-		out.RawString(prefix)
-		out.Int(int(in.PassRush))
-	}
-	{
-		const prefix string = ",\"RunDefense\":"
-		out.RawString(prefix)
-		out.Int(int(in.RunDefense))
-	}
-	{
-		const prefix string = ",\"ThrowPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.ThrowPower))
-	}
-	{
-		const prefix string = ",\"ThrowAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.ThrowAccuracy))
-	}
-	{
-		const prefix string = ",\"KickAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.KickAccuracy))
-	}
-	{
-		const prefix string = ",\"KickPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.KickPower))
-	}
-	{
-		const prefix string = ",\"PuntAccuracy\":"
-		out.RawString(prefix)
-		out.Int(int(in.PuntAccuracy))
-	}
-	{
-		const prefix string = ",\"PuntPower\":"
-		out.RawString(prefix)
-		out.Int(int(in.PuntPower))
-	}
-	{
-		const prefix string = ",\"Progression\":"
-		out.RawString(prefix)
-		out.Int(int(in.Progression))
-	}
-	{
-		const prefix string = ",\"Discipline\":"
-		out.RawString(prefix)
-		out.Int(int(in.Discipline))
-	}
-	{
-		const prefix string = ",\"PotentialGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.PotentialGrade))
-	}
-	{
-		const prefix string = ",\"FreeAgency\":"
-		out.RawString(prefix)
-		out.String(string(in.FreeAgency))
-	}
-	{
-		const prefix string = ",\"Personality\":"
-		out.RawString(prefix)
-		out.String(string(in.Personality))
-	}
-	{
-		const prefix string = ",\"RecruitingBias\":"
-		out.RawString(prefix)
-		out.String(string(in.RecruitingBias))
-	}
-	{
-		const prefix string = ",\"WorkEthic\":"
-		out.RawString(prefix)
-		out.String(string(in.WorkEthic))
-	}
-	{
-		const prefix string = ",\"AcademicBias\":"
-		out.RawString(prefix)
-		out.String(string(in.AcademicBias))
-	}
-	{
-		const prefix string = ",\"IsInjured\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsInjured))
-	}
-	{
-		const prefix string = ",\"InjuryName\":"
-		out.RawString(prefix)
-		out.String(string(in.InjuryName))
-	}
-	{
-		const prefix string = ",\"InjuryType\":"
-		out.RawString(prefix)
-		out.String(string(in.InjuryType))
-	}
-	{
-		const prefix string = ",\"WeeksOfRecovery\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.WeeksOfRecovery))
-	}
-	{
-		const prefix string = ",\"InjuryReserve\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.InjuryReserve))
-	}
-	{
-		const prefix string = ",\"PrimeAge\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.PrimeAge))
-	}
-	{
-		const prefix string = ",\"Clutch\":"
-		out.RawString(prefix)
-		out.Int(int(in.Clutch))
-	}
-	{
-		const prefix string = ",\"Shotgun\":"
-		out.RawString(prefix)
-		out.Int(int(in.Shotgun))
-	}
-	{
-		const prefix string = ",\"PositionTwo\":"
-		out.RawString(prefix)
-		out.String(string(in.PositionTwo))
-	}
-	{
-		const prefix string = ",\"ArchetypeTwo\":"
-		out.RawString(prefix)
-		out.String(string(in.ArchetypeTwo))
-	}
-	{
-		const prefix string = ",\"RelativeID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.RelativeID))
-	}
-	{
-		const prefix string = ",\"RelativeType\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.RelativeType))
-	}
-	{
-		const prefix string = ",\"Notes\":"
-		out.RawString(prefix)
-		out.String(string(in.Notes))
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in *jlexer.Lexer, out *structs.CollegeTeam) {
-	isTopLevel := in.IsStart()
-	if in.IsNull() {
-		if isTopLevel {
-			in.Consumed()
-		}
-		in.Skip()
-		return
-	}
-	in.Delim('{')
-	for !in.IsDelim('}') {
-		key := in.UnsafeFieldName(false)
-		in.WantColon()
-		if in.IsNull() {
-			in.Skip()
-			in.WantComma()
-			continue
-		}
-		switch key {
-		case "ConferenceID":
-			out.ConferenceID = int(in.Int())
-		case "Conference":
-			out.Conference = string(in.String())
-		case "DivisionID":
-			out.DivisionID = int(in.Int())
-		case "Division":
-			out.Division = string(in.String())
-		case "ProgramPrestige":
-			out.ProgramPrestige = int(in.Int())
-		case "AcademicPrestige":
-			out.AcademicPrestige = int(in.Int())
-		case "Facilities":
-			out.Facilities = int(in.Int())
-		case "IsFBS":
-			out.IsFBS = bool(in.Bool())
-		case "IsActive":
-			out.IsActive = bool(in.Bool())
-		case "PlayersProgressed":
-			out.PlayersProgressed = bool(in.Bool())
-		case "RecruitsAdded":
-			out.RecruitsAdded = bool(in.Bool())
-		case "CollegeCoach":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs38(in, &out.CollegeCoach)
-		case "RecruitingProfile":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs7(in, &out.RecruitingProfile)
-		case "TeamStats":
-			if in.IsNull() {
-				in.Skip()
-				out.TeamStats = nil
-			} else {
-				in.Delim('[')
-				if out.TeamStats == nil {
-					if !in.IsDelim(']') {
-						out.TeamStats = make([]structs.CollegeTeamStats, 0, 0)
-					} else {
-						out.TeamStats = []structs.CollegeTeamStats{}
-					}
-				} else {
-					out.TeamStats = (out.TeamStats)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v189 structs.CollegeTeamStats
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in, &v189)
-					out.TeamStats = append(out.TeamStats, v189)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TeamSeasonStats":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs40(in, &out.TeamSeasonStats)
-		case "TeamRecord":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs41(in, &out.TeamRecord)
-		case "TeamGameplan":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs32(in, &out.TeamGameplan)
-		case "TeamDepthChart":
-			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs23(in, &out.TeamDepthChart)
-		case "TeamStandings":
-			if in.IsNull() {
-				in.Skip()
-				out.TeamStandings = nil
-			} else {
-				in.Delim('[')
-				if out.TeamStandings == nil {
-					if !in.IsDelim(']') {
-						out.TeamStandings = make([]structs.CollegeStandings, 0, 0)
-					} else {
-						out.TeamStandings = []structs.CollegeStandings{}
-					}
-				} else {
-					out.TeamStandings = (out.TeamStandings)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v190 structs.CollegeStandings
-					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs1(in, &v190)
-					out.TeamStandings = append(out.TeamStandings, v190)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "TeamName":
-			out.TeamName = string(in.String())
-		case "Mascot":
-			out.Mascot = string(in.String())
-		case "TeamAbbr":
-			out.TeamAbbr = string(in.String())
-		case "Coach":
-			out.Coach = string(in.String())
-		case "City":
-			out.City = string(in.String())
-		case "State":
-			out.State = string(in.String())
-		case "Country":
-			out.Country = string(in.String())
-		case "StadiumID":
-			out.StadiumID = uint(in.Uint())
-		case "Stadium":
-			out.Stadium = string(in.String())
-		case "StadiumCapacity":
-			out.StadiumCapacity = int(in.Int())
-		case "RecordAttendance":
-			out.RecordAttendance = int(in.Int())
-		case "Enrollment":
-			out.Enrollment = int(in.Int())
-		case "FirstPlayed":
-			out.FirstPlayed = int(in.Int())
-		case "ColorOne":
-			out.ColorOne = string(in.String())
-		case "ColorTwo":
-			out.ColorTwo = string(in.String())
-		case "ColorThree":
-			out.ColorThree = string(in.String())
-		case "DiscordID":
-			out.DiscordID = string(in.String())
-		case "OverallGrade":
-			out.OverallGrade = string(in.String())
-		case "OffenseGrade":
-			out.OffenseGrade = string(in.String())
-		case "DefenseGrade":
-			out.DefenseGrade = string(in.String())
-		case "SpecialTeamsGrade":
-			out.SpecialTeamsGrade = string(in.String())
-		case "PenaltyMarks":
-			out.PenaltyMarks = uint8(in.Uint8())
-		case "JerseyType":
-			out.JerseyType = uint8(in.Uint8())
-		case "LastLogin":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.LastLogin).UnmarshalJSON(data))
-			}
-		case "ID":
-			out.ID = uint(in.Uint())
-		case "CreatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.CreatedAt).UnmarshalJSON(data))
-			}
-		case "UpdatedAt":
-			if data := in.Raw(); in.Ok() {
-				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
-			}
-		case "DeletedAt":
-			if in.IsNull() {
-				in.Skip()
-				out.DeletedAt = nil
-			} else {
-				if out.DeletedAt == nil {
-					out.DeletedAt = new(time.Time)
-				}
-				if data := in.Raw(); in.Ok() {
-					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
-				}
-			}
-		default:
-			in.SkipRecursive()
-		}
-		in.WantComma()
-	}
-	in.Delim('}')
-	if isTopLevel {
-		in.Consumed()
-	}
-}
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out *jwriter.Writer, in structs.CollegeTeam) {
-	out.RawByte('{')
-	first := true
-	_ = first
-	{
-		const prefix string = ",\"ConferenceID\":"
-		out.RawString(prefix[1:])
-		out.Int(int(in.ConferenceID))
-	}
-	{
-		const prefix string = ",\"Conference\":"
-		out.RawString(prefix)
-		out.String(string(in.Conference))
-	}
-	{
-		const prefix string = ",\"DivisionID\":"
-		out.RawString(prefix)
-		out.Int(int(in.DivisionID))
-	}
-	{
-		const prefix string = ",\"Division\":"
-		out.RawString(prefix)
-		out.String(string(in.Division))
-	}
-	{
-		const prefix string = ",\"ProgramPrestige\":"
-		out.RawString(prefix)
-		out.Int(int(in.ProgramPrestige))
-	}
-	{
-		const prefix string = ",\"AcademicPrestige\":"
-		out.RawString(prefix)
-		out.Int(int(in.AcademicPrestige))
-	}
-	{
-		const prefix string = ",\"Facilities\":"
-		out.RawString(prefix)
-		out.Int(int(in.Facilities))
-	}
-	{
-		const prefix string = ",\"IsFBS\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsFBS))
-	}
-	{
-		const prefix string = ",\"IsActive\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.IsActive))
-	}
-	{
-		const prefix string = ",\"PlayersProgressed\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.PlayersProgressed))
-	}
-	{
-		const prefix string = ",\"RecruitsAdded\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.RecruitsAdded))
-	}
-	{
-		const prefix string = ",\"CollegeCoach\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out, in.CollegeCoach)
-	}
-	{
-		const prefix string = ",\"RecruitingProfile\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs7(out, in.RecruitingProfile)
-	}
-	{
-		const prefix string = ",\"TeamStats\":"
-		out.RawString(prefix)
-		if in.TeamStats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v191, v192 := range in.TeamStats {
-				if v191 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out, v192)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TeamSeasonStats\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out, in.TeamSeasonStats)
-	}
-	{
-		const prefix string = ",\"TeamRecord\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs41(out, in.TeamRecord)
-	}
-	{
-		const prefix string = ",\"TeamGameplan\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs32(out, in.TeamGameplan)
-	}
-	{
-		const prefix string = ",\"TeamDepthChart\":"
-		out.RawString(prefix)
-		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs23(out, in.TeamDepthChart)
-	}
-	{
-		const prefix string = ",\"TeamStandings\":"
-		out.RawString(prefix)
-		if in.TeamStandings == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v193, v194 := range in.TeamStandings {
-				if v193 > 0 {
-					out.RawByte(',')
-				}
-				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs1(out, v194)
-			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"TeamName\":"
-		out.RawString(prefix)
-		out.String(string(in.TeamName))
-	}
-	{
-		const prefix string = ",\"Mascot\":"
-		out.RawString(prefix)
-		out.String(string(in.Mascot))
-	}
-	{
-		const prefix string = ",\"TeamAbbr\":"
-		out.RawString(prefix)
-		out.String(string(in.TeamAbbr))
-	}
-	{
-		const prefix string = ",\"Coach\":"
-		out.RawString(prefix)
-		out.String(string(in.Coach))
-	}
-	{
-		const prefix string = ",\"City\":"
-		out.RawString(prefix)
-		out.String(string(in.City))
-	}
-	{
-		const prefix string = ",\"State\":"
-		out.RawString(prefix)
-		out.String(string(in.State))
-	}
-	{
-		const prefix string = ",\"Country\":"
-		out.RawString(prefix)
-		out.String(string(in.Country))
-	}
-	{
-		const prefix string = ",\"StadiumID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.StadiumID))
-	}
-	{
-		const prefix string = ",\"Stadium\":"
-		out.RawString(prefix)
-		out.String(string(in.Stadium))
-	}
-	{
-		const prefix string = ",\"StadiumCapacity\":"
-		out.RawString(prefix)
-		out.Int(int(in.StadiumCapacity))
-	}
-	{
-		const prefix string = ",\"RecordAttendance\":"
-		out.RawString(prefix)
-		out.Int(int(in.RecordAttendance))
-	}
-	{
-		const prefix string = ",\"Enrollment\":"
-		out.RawString(prefix)
-		out.Int(int(in.Enrollment))
-	}
-	{
-		const prefix string = ",\"FirstPlayed\":"
-		out.RawString(prefix)
-		out.Int(int(in.FirstPlayed))
-	}
-	{
-		const prefix string = ",\"ColorOne\":"
-		out.RawString(prefix)
-		out.String(string(in.ColorOne))
-	}
-	{
-		const prefix string = ",\"ColorTwo\":"
-		out.RawString(prefix)
-		out.String(string(in.ColorTwo))
-	}
-	{
-		const prefix string = ",\"ColorThree\":"
-		out.RawString(prefix)
-		out.String(string(in.ColorThree))
-	}
-	{
-		const prefix string = ",\"DiscordID\":"
-		out.RawString(prefix)
-		out.String(string(in.DiscordID))
-	}
-	{
-		const prefix string = ",\"OverallGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.OverallGrade))
-	}
-	{
-		const prefix string = ",\"OffenseGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.OffenseGrade))
-	}
-	{
-		const prefix string = ",\"DefenseGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.DefenseGrade))
-	}
-	{
-		const prefix string = ",\"SpecialTeamsGrade\":"
-		out.RawString(prefix)
-		out.String(string(in.SpecialTeamsGrade))
-	}
-	{
-		const prefix string = ",\"PenaltyMarks\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.PenaltyMarks))
-	}
-	{
-		const prefix string = ",\"JerseyType\":"
-		out.RawString(prefix)
-		out.Uint8(uint8(in.JerseyType))
-	}
-	{
-		const prefix string = ",\"LastLogin\":"
-		out.RawString(prefix)
-		out.Raw((in.LastLogin).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"ID\":"
-		out.RawString(prefix)
-		out.Uint(uint(in.ID))
-	}
-	{
-		const prefix string = ",\"CreatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.CreatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"UpdatedAt\":"
-		out.RawString(prefix)
-		out.Raw((in.UpdatedAt).MarshalJSON())
-	}
-	{
-		const prefix string = ",\"DeletedAt\":"
-		out.RawString(prefix)
-		if in.DeletedAt == nil {
-			out.RawString("null")
-		} else {
-			out.Raw((*in.DeletedAt).MarshalJSON())
-		}
-	}
-	out.RawByte('}')
-}
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs41(in *jlexer.Lexer, out *structs.CollegeTeamRecords) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs31(in *jlexer.Lexer, out *structs.CollegeTeamRecords) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -18199,7 +14745,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs41(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs41(out *jwriter.Writer, in structs.CollegeTeamRecords) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs31(out *jwriter.Writer, in structs.CollegeTeamRecords) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -18684,7 +15230,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs41(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs40(in *jlexer.Lexer, out *structs.CollegeTeamSeasonStats) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs30(in *jlexer.Lexer, out *structs.CollegeTeamSeasonStats) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -18899,7 +15445,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs40(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out *jwriter.Writer, in structs.CollegeTeamSeasonStats) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs30(out *jwriter.Writer, in structs.CollegeTeamSeasonStats) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -19355,7 +15901,7 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in *jlexer.Lexer, out *structs.CollegeTeamStats) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs29(in *jlexer.Lexer, out *structs.CollegeTeamStats) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -19570,7 +16116,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out *jwriter.Writer, in structs.CollegeTeamStats) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs29(out *jwriter.Writer, in structs.CollegeTeamStats) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -20010,7 +16556,1505 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out *jwriter.Writer
 	}
 	out.RawByte('}')
 }
-func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs38(in *jlexer.Lexer, out *structs.CollegeCoach) {
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in *jlexer.Lexer, out *structs.RecruitingTeamProfile) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "TeamID":
+			out.TeamID = int(in.Int())
+		case "Team":
+			out.Team = string(in.String())
+		case "TeamAbbreviation":
+			out.TeamAbbreviation = string(in.String())
+		case "State":
+			out.State = string(in.String())
+		case "ScholarshipsAvailable":
+			out.ScholarshipsAvailable = int(in.Int())
+		case "WeeklyPoints":
+			out.WeeklyPoints = float64(in.Float64())
+		case "SpentPoints":
+			out.SpentPoints = float64(in.Float64())
+		case "TotalCommitments":
+			out.TotalCommitments = int(in.Int())
+		case "RecruitClassSize":
+			out.RecruitClassSize = int(in.Int())
+		case "PortalReputation":
+			out.PortalReputation = int(in.Int())
+		case "BaseEfficiencyScore":
+			out.BaseEfficiencyScore = float64(in.Float64())
+		case "RecruitingEfficiencyScore":
+			out.RecruitingEfficiencyScore = float64(in.Float64())
+		case "PreviousOverallWinPer":
+			out.PreviousOverallWinPer = float64(in.Float64())
+		case "PreviousConferenceWinPer":
+			out.PreviousConferenceWinPer = float64(in.Float64())
+		case "CurrentOverallWinPer":
+			out.CurrentOverallWinPer = float64(in.Float64())
+		case "CurrentConferenceWinPer":
+			out.CurrentConferenceWinPer = float64(in.Float64())
+		case "ESPNScore":
+			out.ESPNScore = float64(in.Float64())
+		case "RivalsScore":
+			out.RivalsScore = float64(in.Float64())
+		case "Rank247Score":
+			out.Rank247Score = float64(in.Float64())
+		case "CompositeScore":
+			out.CompositeScore = float64(in.Float64())
+		case "ThreeStars":
+			out.ThreeStars = uint8(in.Uint8())
+		case "FourStars":
+			out.FourStars = uint8(in.Uint8())
+		case "FiveStars":
+			out.FiveStars = uint8(in.Uint8())
+		case "RecruitingClassRank":
+			out.RecruitingClassRank = int(in.Int())
+		case "CaughtCheating":
+			out.CaughtCheating = bool(in.Bool())
+		case "IsFBS":
+			out.IsFBS = bool(in.Bool())
+		case "IsAI":
+			out.IsAI = bool(in.Bool())
+		case "IsUserTeam":
+			out.IsUserTeam = bool(in.Bool())
+		case "AIBehavior":
+			out.AIBehavior = string(in.String())
+		case "AIQuality":
+			out.AIQuality = string(in.String())
+		case "WeeksMissed":
+			out.WeeksMissed = int(in.Int())
+		case "BattlesWon":
+			out.BattlesWon = int(in.Int())
+		case "BattlesLost":
+			out.BattlesLost = int(in.Int())
+		case "AIMinThreshold":
+			out.AIMinThreshold = int(in.Int())
+		case "AIMaxThreshold":
+			out.AIMaxThreshold = int(in.Int())
+		case "AIStarMin":
+			out.AIStarMin = int(in.Int())
+		case "AIStarMax":
+			out.AIStarMax = int(in.Int())
+		case "AIAutoOfferscholarships":
+			out.AIAutoOfferscholarships = bool(in.Bool())
+		case "OffensiveScheme":
+			out.OffensiveScheme = string(in.String())
+		case "DefensiveScheme":
+			out.DefensiveScheme = string(in.String())
+		case "Recruiter":
+			out.Recruiter = string(in.String())
+		case "AcademicsAffinity":
+			out.AcademicsAffinity = bool(in.Bool())
+		case "FrontrunnerAffinity":
+			out.FrontrunnerAffinity = bool(in.Bool())
+		case "LargeCrowdsAffinity":
+			out.LargeCrowdsAffinity = bool(in.Bool())
+		case "ReligionAffinity":
+			out.ReligionAffinity = bool(in.Bool())
+		case "ServiceAffinity":
+			out.ServiceAffinity = bool(in.Bool())
+		case "SmallSchoolAffinity":
+			out.SmallSchoolAffinity = bool(in.Bool())
+		case "SmallTownAffinity":
+			out.SmallTownAffinity = bool(in.Bool())
+		case "BigCityAffinity":
+			out.BigCityAffinity = bool(in.Bool())
+		case "MediaSpotlightAffinity":
+			out.MediaSpotlightAffinity = bool(in.Bool())
+		case "RisingStarsAffinity":
+			out.RisingStarsAffinity = bool(in.Bool())
+		case "Recruits":
+			if in.IsNull() {
+				in.Skip()
+				out.Recruits = nil
+			} else {
+				in.Delim('[')
+				if out.Recruits == nil {
+					if !in.IsDelim(']') {
+						out.Recruits = make([]structs.RecruitPlayerProfile, 0, 0)
+					} else {
+						out.Recruits = []structs.RecruitPlayerProfile{}
+					}
+				} else {
+					out.Recruits = (out.Recruits)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v121 structs.RecruitPlayerProfile
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs35(in, &v121)
+					out.Recruits = append(out.Recruits, v121)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "Affinities":
+			if in.IsNull() {
+				in.Skip()
+				out.Affinities = nil
+			} else {
+				in.Delim('[')
+				if out.Affinities == nil {
+					if !in.IsDelim(']') {
+						out.Affinities = make([]structs.ProfileAffinity, 0, 0)
+					} else {
+						out.Affinities = []structs.ProfileAffinity{}
+					}
+				} else {
+					out.Affinities = (out.Affinities)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v122 structs.ProfileAffinity
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs36(in, &v122)
+					out.Affinities = append(out.Affinities, v122)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out *jwriter.Writer, in structs.RecruitingTeamProfile) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.TeamID))
+	}
+	{
+		const prefix string = ",\"Team\":"
+		out.RawString(prefix)
+		out.String(string(in.Team))
+	}
+	{
+		const prefix string = ",\"TeamAbbreviation\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamAbbreviation))
+	}
+	{
+		const prefix string = ",\"State\":"
+		out.RawString(prefix)
+		out.String(string(in.State))
+	}
+	{
+		const prefix string = ",\"ScholarshipsAvailable\":"
+		out.RawString(prefix)
+		out.Int(int(in.ScholarshipsAvailable))
+	}
+	{
+		const prefix string = ",\"WeeklyPoints\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.WeeklyPoints))
+	}
+	{
+		const prefix string = ",\"SpentPoints\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.SpentPoints))
+	}
+	{
+		const prefix string = ",\"TotalCommitments\":"
+		out.RawString(prefix)
+		out.Int(int(in.TotalCommitments))
+	}
+	{
+		const prefix string = ",\"RecruitClassSize\":"
+		out.RawString(prefix)
+		out.Int(int(in.RecruitClassSize))
+	}
+	{
+		const prefix string = ",\"PortalReputation\":"
+		out.RawString(prefix)
+		out.Int(int(in.PortalReputation))
+	}
+	{
+		const prefix string = ",\"BaseEfficiencyScore\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.BaseEfficiencyScore))
+	}
+	{
+		const prefix string = ",\"RecruitingEfficiencyScore\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.RecruitingEfficiencyScore))
+	}
+	{
+		const prefix string = ",\"PreviousOverallWinPer\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.PreviousOverallWinPer))
+	}
+	{
+		const prefix string = ",\"PreviousConferenceWinPer\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.PreviousConferenceWinPer))
+	}
+	{
+		const prefix string = ",\"CurrentOverallWinPer\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.CurrentOverallWinPer))
+	}
+	{
+		const prefix string = ",\"CurrentConferenceWinPer\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.CurrentConferenceWinPer))
+	}
+	{
+		const prefix string = ",\"ESPNScore\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.ESPNScore))
+	}
+	{
+		const prefix string = ",\"RivalsScore\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.RivalsScore))
+	}
+	{
+		const prefix string = ",\"Rank247Score\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Rank247Score))
+	}
+	{
+		const prefix string = ",\"CompositeScore\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.CompositeScore))
+	}
+	{
+		const prefix string = ",\"ThreeStars\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.ThreeStars))
+	}
+	{
+		const prefix string = ",\"FourStars\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FourStars))
+	}
+	{
+		const prefix string = ",\"FiveStars\":"
+		out.RawString(prefix)
+		out.Uint8(uint8(in.FiveStars))
+	}
+	{
+		const prefix string = ",\"RecruitingClassRank\":"
+		out.RawString(prefix)
+		out.Int(int(in.RecruitingClassRank))
+	}
+	{
+		const prefix string = ",\"CaughtCheating\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.CaughtCheating))
+	}
+	{
+		const prefix string = ",\"IsFBS\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsFBS))
+	}
+	{
+		const prefix string = ",\"IsAI\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsAI))
+	}
+	{
+		const prefix string = ",\"IsUserTeam\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsUserTeam))
+	}
+	{
+		const prefix string = ",\"AIBehavior\":"
+		out.RawString(prefix)
+		out.String(string(in.AIBehavior))
+	}
+	{
+		const prefix string = ",\"AIQuality\":"
+		out.RawString(prefix)
+		out.String(string(in.AIQuality))
+	}
+	{
+		const prefix string = ",\"WeeksMissed\":"
+		out.RawString(prefix)
+		out.Int(int(in.WeeksMissed))
+	}
+	{
+		const prefix string = ",\"BattlesWon\":"
+		out.RawString(prefix)
+		out.Int(int(in.BattlesWon))
+	}
+	{
+		const prefix string = ",\"BattlesLost\":"
+		out.RawString(prefix)
+		out.Int(int(in.BattlesLost))
+	}
+	{
+		const prefix string = ",\"AIMinThreshold\":"
+		out.RawString(prefix)
+		out.Int(int(in.AIMinThreshold))
+	}
+	{
+		const prefix string = ",\"AIMaxThreshold\":"
+		out.RawString(prefix)
+		out.Int(int(in.AIMaxThreshold))
+	}
+	{
+		const prefix string = ",\"AIStarMin\":"
+		out.RawString(prefix)
+		out.Int(int(in.AIStarMin))
+	}
+	{
+		const prefix string = ",\"AIStarMax\":"
+		out.RawString(prefix)
+		out.Int(int(in.AIStarMax))
+	}
+	{
+		const prefix string = ",\"AIAutoOfferscholarships\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.AIAutoOfferscholarships))
+	}
+	{
+		const prefix string = ",\"OffensiveScheme\":"
+		out.RawString(prefix)
+		out.String(string(in.OffensiveScheme))
+	}
+	{
+		const prefix string = ",\"DefensiveScheme\":"
+		out.RawString(prefix)
+		out.String(string(in.DefensiveScheme))
+	}
+	{
+		const prefix string = ",\"Recruiter\":"
+		out.RawString(prefix)
+		out.String(string(in.Recruiter))
+	}
+	{
+		const prefix string = ",\"AcademicsAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.AcademicsAffinity))
+	}
+	{
+		const prefix string = ",\"FrontrunnerAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.FrontrunnerAffinity))
+	}
+	{
+		const prefix string = ",\"LargeCrowdsAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.LargeCrowdsAffinity))
+	}
+	{
+		const prefix string = ",\"ReligionAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.ReligionAffinity))
+	}
+	{
+		const prefix string = ",\"ServiceAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.ServiceAffinity))
+	}
+	{
+		const prefix string = ",\"SmallSchoolAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.SmallSchoolAffinity))
+	}
+	{
+		const prefix string = ",\"SmallTownAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.SmallTownAffinity))
+	}
+	{
+		const prefix string = ",\"BigCityAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.BigCityAffinity))
+	}
+	{
+		const prefix string = ",\"MediaSpotlightAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.MediaSpotlightAffinity))
+	}
+	{
+		const prefix string = ",\"RisingStarsAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.RisingStarsAffinity))
+	}
+	{
+		const prefix string = ",\"Recruits\":"
+		out.RawString(prefix)
+		if in.Recruits == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v123, v124 := range in.Recruits {
+				if v123 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs35(out, v124)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"Affinities\":"
+		out.RawString(prefix)
+		if in.Affinities == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v125, v126 := range in.Affinities {
+				if v125 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs36(out, v126)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs36(in *jlexer.Lexer, out *structs.ProfileAffinity) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "AffinityID":
+			out.AffinityID = int(in.Int())
+		case "ProfileID":
+			out.ProfileID = int(in.Int())
+		case "AffinityName":
+			out.AffinityName = string(in.String())
+		case "IsApplicable":
+			out.IsApplicable = bool(in.Bool())
+		case "IsDynamicAffinity":
+			out.IsDynamicAffinity = bool(in.Bool())
+		case "IsCheckedWeekly":
+			out.IsCheckedWeekly = bool(in.Bool())
+		case "IsCheckedSeasonal":
+			out.IsCheckedSeasonal = bool(in.Bool())
+		case "AffinityValue":
+			out.AffinityValue = float32(in.Float32())
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs36(out *jwriter.Writer, in structs.ProfileAffinity) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"AffinityID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.AffinityID))
+	}
+	{
+		const prefix string = ",\"ProfileID\":"
+		out.RawString(prefix)
+		out.Int(int(in.ProfileID))
+	}
+	{
+		const prefix string = ",\"AffinityName\":"
+		out.RawString(prefix)
+		out.String(string(in.AffinityName))
+	}
+	{
+		const prefix string = ",\"IsApplicable\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsApplicable))
+	}
+	{
+		const prefix string = ",\"IsDynamicAffinity\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsDynamicAffinity))
+	}
+	{
+		const prefix string = ",\"IsCheckedWeekly\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsCheckedWeekly))
+	}
+	{
+		const prefix string = ",\"IsCheckedSeasonal\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsCheckedSeasonal))
+	}
+	{
+		const prefix string = ",\"AffinityValue\":"
+		out.RawString(prefix)
+		out.Float32(float32(in.AffinityValue))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs35(in *jlexer.Lexer, out *structs.RecruitPlayerProfile) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "SeasonID":
+			out.SeasonID = int(in.Int())
+		case "RecruitID":
+			out.RecruitID = int(in.Int())
+		case "ProfileID":
+			out.ProfileID = int(in.Int())
+		case "TotalPoints":
+			out.TotalPoints = float64(in.Float64())
+		case "CurrentWeeksPoints":
+			out.CurrentWeeksPoints = float64(in.Float64())
+		case "PreviousWeekPoints":
+			out.PreviousWeekPoints = float64(in.Float64())
+		case "SpendingCount":
+			out.SpendingCount = int(in.Int())
+		case "RecruitingEfficiencyScore":
+			out.RecruitingEfficiencyScore = float64(in.Float64())
+		case "Scholarship":
+			out.Scholarship = bool(in.Bool())
+		case "ScholarshipRevoked":
+			out.ScholarshipRevoked = bool(in.Bool())
+		case "AffinityOneEligible":
+			out.AffinityOneEligible = bool(in.Bool())
+		case "AffinityTwoEligible":
+			out.AffinityTwoEligible = bool(in.Bool())
+		case "TeamAbbreviation":
+			out.TeamAbbreviation = string(in.String())
+		case "Recruiter":
+			out.Recruiter = string(in.String())
+		case "RemovedFromBoard":
+			out.RemovedFromBoard = bool(in.Bool())
+		case "IsSigned":
+			out.IsSigned = bool(in.Bool())
+		case "IsLocked":
+			out.IsLocked = bool(in.Bool())
+		case "CaughtCheating":
+			out.CaughtCheating = bool(in.Bool())
+		case "TeamReachedMax":
+			out.TeamReachedMax = bool(in.Bool())
+		case "Recruit":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs37(in, &out.Recruit)
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs35(out *jwriter.Writer, in structs.RecruitPlayerProfile) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"SeasonID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.SeasonID))
+	}
+	{
+		const prefix string = ",\"RecruitID\":"
+		out.RawString(prefix)
+		out.Int(int(in.RecruitID))
+	}
+	{
+		const prefix string = ",\"ProfileID\":"
+		out.RawString(prefix)
+		out.Int(int(in.ProfileID))
+	}
+	{
+		const prefix string = ",\"TotalPoints\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.TotalPoints))
+	}
+	{
+		const prefix string = ",\"CurrentWeeksPoints\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.CurrentWeeksPoints))
+	}
+	{
+		const prefix string = ",\"PreviousWeekPoints\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.PreviousWeekPoints))
+	}
+	{
+		const prefix string = ",\"SpendingCount\":"
+		out.RawString(prefix)
+		out.Int(int(in.SpendingCount))
+	}
+	{
+		const prefix string = ",\"RecruitingEfficiencyScore\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.RecruitingEfficiencyScore))
+	}
+	{
+		const prefix string = ",\"Scholarship\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.Scholarship))
+	}
+	{
+		const prefix string = ",\"ScholarshipRevoked\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.ScholarshipRevoked))
+	}
+	{
+		const prefix string = ",\"AffinityOneEligible\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.AffinityOneEligible))
+	}
+	{
+		const prefix string = ",\"AffinityTwoEligible\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.AffinityTwoEligible))
+	}
+	{
+		const prefix string = ",\"TeamAbbreviation\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamAbbreviation))
+	}
+	{
+		const prefix string = ",\"Recruiter\":"
+		out.RawString(prefix)
+		out.String(string(in.Recruiter))
+	}
+	{
+		const prefix string = ",\"RemovedFromBoard\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.RemovedFromBoard))
+	}
+	{
+		const prefix string = ",\"IsSigned\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsSigned))
+	}
+	{
+		const prefix string = ",\"IsLocked\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsLocked))
+	}
+	{
+		const prefix string = ",\"CaughtCheating\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.CaughtCheating))
+	}
+	{
+		const prefix string = ",\"TeamReachedMax\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.TeamReachedMax))
+	}
+	{
+		const prefix string = ",\"Recruit\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs37(out, in.Recruit)
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs37(in *jlexer.Lexer, out *structs.Recruit) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "PlayerID":
+			out.PlayerID = int(in.Int())
+		case "TeamID":
+			out.TeamID = int(in.Int())
+		case "HighSchool":
+			out.HighSchool = string(in.String())
+		case "City":
+			out.City = string(in.String())
+		case "State":
+			out.State = string(in.String())
+		case "AffinityOne":
+			out.AffinityOne = string(in.String())
+		case "AffinityTwo":
+			out.AffinityTwo = string(in.String())
+		case "IsSigned":
+			out.IsSigned = bool(in.Bool())
+		case "IsCustomCroot":
+			out.IsCustomCroot = bool(in.Bool())
+		case "CustomCrootFor":
+			out.CustomCrootFor = string(in.String())
+		case "College":
+			out.College = string(in.String())
+		case "OverallRank":
+			out.OverallRank = float64(in.Float64())
+		case "RivalsRank":
+			out.RivalsRank = float64(in.Float64())
+		case "ESPNRank":
+			out.ESPNRank = float64(in.Float64())
+		case "Rank247":
+			out.Rank247 = float64(in.Float64())
+		case "TopRankModifier":
+			out.TopRankModifier = float64(in.Float64())
+		case "RecruitingModifier":
+			out.RecruitingModifier = float64(in.Float64())
+		case "RecruitingStatus":
+			out.RecruitingStatus = string(in.String())
+		case "RecruitPlayerProfiles":
+			if in.IsNull() {
+				in.Skip()
+				out.RecruitPlayerProfiles = nil
+			} else {
+				in.Delim('[')
+				if out.RecruitPlayerProfiles == nil {
+					if !in.IsDelim(']') {
+						out.RecruitPlayerProfiles = make([]structs.RecruitPlayerProfile, 0, 0)
+					} else {
+						out.RecruitPlayerProfiles = []structs.RecruitPlayerProfile{}
+					}
+				} else {
+					out.RecruitPlayerProfiles = (out.RecruitPlayerProfiles)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v127 structs.RecruitPlayerProfile
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs35(in, &v127)
+					out.RecruitPlayerProfiles = append(out.RecruitPlayerProfiles, v127)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "FirstName":
+			out.FirstName = string(in.String())
+		case "LastName":
+			out.LastName = string(in.String())
+		case "Position":
+			out.Position = string(in.String())
+		case "Archetype":
+			out.Archetype = string(in.String())
+		case "PreviousTeamID":
+			out.PreviousTeamID = uint(in.Uint())
+		case "PreviousTeam":
+			out.PreviousTeam = string(in.String())
+		case "Height":
+			out.Height = int(in.Int())
+		case "Weight":
+			out.Weight = int(in.Int())
+		case "Age":
+			out.Age = int(in.Int())
+		case "Stars":
+			out.Stars = int(in.Int())
+		case "Overall":
+			out.Overall = int(in.Int())
+		case "Stamina":
+			out.Stamina = int(in.Int())
+		case "Injury":
+			out.Injury = int(in.Int())
+		case "FootballIQ":
+			out.FootballIQ = int(in.Int())
+		case "Speed":
+			out.Speed = int(in.Int())
+		case "Carrying":
+			out.Carrying = int(in.Int())
+		case "Agility":
+			out.Agility = int(in.Int())
+		case "Catching":
+			out.Catching = int(in.Int())
+		case "RouteRunning":
+			out.RouteRunning = int(in.Int())
+		case "ZoneCoverage":
+			out.ZoneCoverage = int(in.Int())
+		case "ManCoverage":
+			out.ManCoverage = int(in.Int())
+		case "Strength":
+			out.Strength = int(in.Int())
+		case "Tackle":
+			out.Tackle = int(in.Int())
+		case "PassBlock":
+			out.PassBlock = int(in.Int())
+		case "RunBlock":
+			out.RunBlock = int(in.Int())
+		case "PassRush":
+			out.PassRush = int(in.Int())
+		case "RunDefense":
+			out.RunDefense = int(in.Int())
+		case "ThrowPower":
+			out.ThrowPower = int(in.Int())
+		case "ThrowAccuracy":
+			out.ThrowAccuracy = int(in.Int())
+		case "KickAccuracy":
+			out.KickAccuracy = int(in.Int())
+		case "KickPower":
+			out.KickPower = int(in.Int())
+		case "PuntAccuracy":
+			out.PuntAccuracy = int(in.Int())
+		case "PuntPower":
+			out.PuntPower = int(in.Int())
+		case "Progression":
+			out.Progression = int(in.Int())
+		case "Discipline":
+			out.Discipline = int(in.Int())
+		case "PotentialGrade":
+			out.PotentialGrade = string(in.String())
+		case "FreeAgency":
+			out.FreeAgency = string(in.String())
+		case "Personality":
+			out.Personality = string(in.String())
+		case "RecruitingBias":
+			out.RecruitingBias = string(in.String())
+		case "WorkEthic":
+			out.WorkEthic = string(in.String())
+		case "AcademicBias":
+			out.AcademicBias = string(in.String())
+		case "IsInjured":
+			out.IsInjured = bool(in.Bool())
+		case "InjuryName":
+			out.InjuryName = string(in.String())
+		case "InjuryType":
+			out.InjuryType = string(in.String())
+		case "WeeksOfRecovery":
+			out.WeeksOfRecovery = uint(in.Uint())
+		case "InjuryReserve":
+			out.InjuryReserve = bool(in.Bool())
+		case "PrimeAge":
+			out.PrimeAge = uint(in.Uint())
+		case "Clutch":
+			out.Clutch = int(in.Int())
+		case "Shotgun":
+			out.Shotgun = int(in.Int())
+		case "PositionTwo":
+			out.PositionTwo = string(in.String())
+		case "ArchetypeTwo":
+			out.ArchetypeTwo = string(in.String())
+		case "RelativeID":
+			out.RelativeID = uint(in.Uint())
+		case "RelativeType":
+			out.RelativeType = uint(in.Uint())
+		case "Notes":
+			out.Notes = string(in.String())
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs37(out *jwriter.Writer, in structs.Recruit) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"PlayerID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.PlayerID))
+	}
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix)
+		out.Int(int(in.TeamID))
+	}
+	{
+		const prefix string = ",\"HighSchool\":"
+		out.RawString(prefix)
+		out.String(string(in.HighSchool))
+	}
+	{
+		const prefix string = ",\"City\":"
+		out.RawString(prefix)
+		out.String(string(in.City))
+	}
+	{
+		const prefix string = ",\"State\":"
+		out.RawString(prefix)
+		out.String(string(in.State))
+	}
+	{
+		const prefix string = ",\"AffinityOne\":"
+		out.RawString(prefix)
+		out.String(string(in.AffinityOne))
+	}
+	{
+		const prefix string = ",\"AffinityTwo\":"
+		out.RawString(prefix)
+		out.String(string(in.AffinityTwo))
+	}
+	{
+		const prefix string = ",\"IsSigned\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsSigned))
+	}
+	{
+		const prefix string = ",\"IsCustomCroot\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsCustomCroot))
+	}
+	{
+		const prefix string = ",\"CustomCrootFor\":"
+		out.RawString(prefix)
+		out.String(string(in.CustomCrootFor))
+	}
+	{
+		const prefix string = ",\"College\":"
+		out.RawString(prefix)
+		out.String(string(in.College))
+	}
+	{
+		const prefix string = ",\"OverallRank\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.OverallRank))
+	}
+	{
+		const prefix string = ",\"RivalsRank\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.RivalsRank))
+	}
+	{
+		const prefix string = ",\"ESPNRank\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.ESPNRank))
+	}
+	{
+		const prefix string = ",\"Rank247\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Rank247))
+	}
+	{
+		const prefix string = ",\"TopRankModifier\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.TopRankModifier))
+	}
+	{
+		const prefix string = ",\"RecruitingModifier\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.RecruitingModifier))
+	}
+	{
+		const prefix string = ",\"RecruitingStatus\":"
+		out.RawString(prefix)
+		out.String(string(in.RecruitingStatus))
+	}
+	{
+		const prefix string = ",\"RecruitPlayerProfiles\":"
+		out.RawString(prefix)
+		if in.RecruitPlayerProfiles == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v128, v129 := range in.RecruitPlayerProfiles {
+				if v128 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs35(out, v129)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"FirstName\":"
+		out.RawString(prefix)
+		out.String(string(in.FirstName))
+	}
+	{
+		const prefix string = ",\"LastName\":"
+		out.RawString(prefix)
+		out.String(string(in.LastName))
+	}
+	{
+		const prefix string = ",\"Position\":"
+		out.RawString(prefix)
+		out.String(string(in.Position))
+	}
+	{
+		const prefix string = ",\"Archetype\":"
+		out.RawString(prefix)
+		out.String(string(in.Archetype))
+	}
+	{
+		const prefix string = ",\"PreviousTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.PreviousTeamID))
+	}
+	{
+		const prefix string = ",\"PreviousTeam\":"
+		out.RawString(prefix)
+		out.String(string(in.PreviousTeam))
+	}
+	{
+		const prefix string = ",\"Height\":"
+		out.RawString(prefix)
+		out.Int(int(in.Height))
+	}
+	{
+		const prefix string = ",\"Weight\":"
+		out.RawString(prefix)
+		out.Int(int(in.Weight))
+	}
+	{
+		const prefix string = ",\"Age\":"
+		out.RawString(prefix)
+		out.Int(int(in.Age))
+	}
+	{
+		const prefix string = ",\"Stars\":"
+		out.RawString(prefix)
+		out.Int(int(in.Stars))
+	}
+	{
+		const prefix string = ",\"Overall\":"
+		out.RawString(prefix)
+		out.Int(int(in.Overall))
+	}
+	{
+		const prefix string = ",\"Stamina\":"
+		out.RawString(prefix)
+		out.Int(int(in.Stamina))
+	}
+	{
+		const prefix string = ",\"Injury\":"
+		out.RawString(prefix)
+		out.Int(int(in.Injury))
+	}
+	{
+		const prefix string = ",\"FootballIQ\":"
+		out.RawString(prefix)
+		out.Int(int(in.FootballIQ))
+	}
+	{
+		const prefix string = ",\"Speed\":"
+		out.RawString(prefix)
+		out.Int(int(in.Speed))
+	}
+	{
+		const prefix string = ",\"Carrying\":"
+		out.RawString(prefix)
+		out.Int(int(in.Carrying))
+	}
+	{
+		const prefix string = ",\"Agility\":"
+		out.RawString(prefix)
+		out.Int(int(in.Agility))
+	}
+	{
+		const prefix string = ",\"Catching\":"
+		out.RawString(prefix)
+		out.Int(int(in.Catching))
+	}
+	{
+		const prefix string = ",\"RouteRunning\":"
+		out.RawString(prefix)
+		out.Int(int(in.RouteRunning))
+	}
+	{
+		const prefix string = ",\"ZoneCoverage\":"
+		out.RawString(prefix)
+		out.Int(int(in.ZoneCoverage))
+	}
+	{
+		const prefix string = ",\"ManCoverage\":"
+		out.RawString(prefix)
+		out.Int(int(in.ManCoverage))
+	}
+	{
+		const prefix string = ",\"Strength\":"
+		out.RawString(prefix)
+		out.Int(int(in.Strength))
+	}
+	{
+		const prefix string = ",\"Tackle\":"
+		out.RawString(prefix)
+		out.Int(int(in.Tackle))
+	}
+	{
+		const prefix string = ",\"PassBlock\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassBlock))
+	}
+	{
+		const prefix string = ",\"RunBlock\":"
+		out.RawString(prefix)
+		out.Int(int(in.RunBlock))
+	}
+	{
+		const prefix string = ",\"PassRush\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassRush))
+	}
+	{
+		const prefix string = ",\"RunDefense\":"
+		out.RawString(prefix)
+		out.Int(int(in.RunDefense))
+	}
+	{
+		const prefix string = ",\"ThrowPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.ThrowPower))
+	}
+	{
+		const prefix string = ",\"ThrowAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.ThrowAccuracy))
+	}
+	{
+		const prefix string = ",\"KickAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.KickAccuracy))
+	}
+	{
+		const prefix string = ",\"KickPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.KickPower))
+	}
+	{
+		const prefix string = ",\"PuntAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.PuntAccuracy))
+	}
+	{
+		const prefix string = ",\"PuntPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.PuntPower))
+	}
+	{
+		const prefix string = ",\"Progression\":"
+		out.RawString(prefix)
+		out.Int(int(in.Progression))
+	}
+	{
+		const prefix string = ",\"Discipline\":"
+		out.RawString(prefix)
+		out.Int(int(in.Discipline))
+	}
+	{
+		const prefix string = ",\"PotentialGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.PotentialGrade))
+	}
+	{
+		const prefix string = ",\"FreeAgency\":"
+		out.RawString(prefix)
+		out.String(string(in.FreeAgency))
+	}
+	{
+		const prefix string = ",\"Personality\":"
+		out.RawString(prefix)
+		out.String(string(in.Personality))
+	}
+	{
+		const prefix string = ",\"RecruitingBias\":"
+		out.RawString(prefix)
+		out.String(string(in.RecruitingBias))
+	}
+	{
+		const prefix string = ",\"WorkEthic\":"
+		out.RawString(prefix)
+		out.String(string(in.WorkEthic))
+	}
+	{
+		const prefix string = ",\"AcademicBias\":"
+		out.RawString(prefix)
+		out.String(string(in.AcademicBias))
+	}
+	{
+		const prefix string = ",\"IsInjured\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsInjured))
+	}
+	{
+		const prefix string = ",\"InjuryName\":"
+		out.RawString(prefix)
+		out.String(string(in.InjuryName))
+	}
+	{
+		const prefix string = ",\"InjuryType\":"
+		out.RawString(prefix)
+		out.String(string(in.InjuryType))
+	}
+	{
+		const prefix string = ",\"WeeksOfRecovery\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.WeeksOfRecovery))
+	}
+	{
+		const prefix string = ",\"InjuryReserve\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.InjuryReserve))
+	}
+	{
+		const prefix string = ",\"PrimeAge\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.PrimeAge))
+	}
+	{
+		const prefix string = ",\"Clutch\":"
+		out.RawString(prefix)
+		out.Int(int(in.Clutch))
+	}
+	{
+		const prefix string = ",\"Shotgun\":"
+		out.RawString(prefix)
+		out.Int(int(in.Shotgun))
+	}
+	{
+		const prefix string = ",\"PositionTwo\":"
+		out.RawString(prefix)
+		out.String(string(in.PositionTwo))
+	}
+	{
+		const prefix string = ",\"ArchetypeTwo\":"
+		out.RawString(prefix)
+		out.String(string(in.ArchetypeTwo))
+	}
+	{
+		const prefix string = ",\"RelativeID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.RelativeID))
+	}
+	{
+		const prefix string = ",\"RelativeType\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.RelativeType))
+	}
+	{
+		const prefix string = ",\"Notes\":"
+		out.RawString(prefix)
+		out.String(string(in.Notes))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs27(in *jlexer.Lexer, out *structs.CollegeCoach) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -20145,7 +18189,7 @@ func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs38(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out *jwriter.Writer, in structs.CollegeCoach) {
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs27(out *jwriter.Writer, in structs.CollegeCoach) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -20382,6 +18426,2153 @@ func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out *jwriter.Writer
 		} else {
 			out.Raw((*in.DeletedAt).MarshalJSON())
 		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(in *jlexer.Lexer, out *BootstrapDataTwo) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "Recruits":
+			if in.IsNull() {
+				in.Skip()
+				out.Recruits = nil
+			} else {
+				in.Delim('[')
+				if out.Recruits == nil {
+					if !in.IsDelim(']') {
+						out.Recruits = make([]structs.Croot, 0, 0)
+					} else {
+						out.Recruits = []structs.Croot{}
+					}
+				} else {
+					out.Recruits = (out.Recruits)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v130 structs.Croot
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs38(in, &v130)
+					out.Recruits = append(out.Recruits, v130)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "CollegeDepthChartMap":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				in.Delim('{')
+				out.CollegeDepthChartMap = make(map[uint]structs.CollegeTeamDepthChart)
+				for !in.IsDelim('}') {
+					key := uint(in.UintStr())
+					in.WantColon()
+					var v131 structs.CollegeTeamDepthChart
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in, &v131)
+					(out.CollegeDepthChartMap)[key] = v131
+					in.WantComma()
+				}
+				in.Delim('}')
+			}
+		case "CollegeNews":
+			if in.IsNull() {
+				in.Skip()
+				out.CollegeNews = nil
+			} else {
+				in.Delim('[')
+				if out.CollegeNews == nil {
+					if !in.IsDelim(']') {
+						out.CollegeNews = make([]structs.NewsLog, 0, 0)
+					} else {
+						out.CollegeNews = []structs.NewsLog{}
+					}
+				} else {
+					out.CollegeNews = (out.CollegeNews)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v132 structs.NewsLog
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs9(in, &v132)
+					out.CollegeNews = append(out.CollegeNews, v132)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "AllCollegeGames":
+			if in.IsNull() {
+				in.Skip()
+				out.AllCollegeGames = nil
+			} else {
+				in.Delim('[')
+				if out.AllCollegeGames == nil {
+					if !in.IsDelim(']') {
+						out.AllCollegeGames = make([]structs.CollegeGame, 0, 0)
+					} else {
+						out.AllCollegeGames = []structs.CollegeGame{}
+					}
+				} else {
+					out.AllCollegeGames = (out.AllCollegeGames)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v133 structs.CollegeGame
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs4(in, &v133)
+					out.AllCollegeGames = append(out.AllCollegeGames, v133)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TeamProfileMap":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				in.Delim('{')
+				out.TeamProfileMap = make(map[string]*structs.RecruitingTeamProfile)
+				for !in.IsDelim('}') {
+					key := string(in.String())
+					in.WantColon()
+					var v134 *structs.RecruitingTeamProfile
+					if in.IsNull() {
+						in.Skip()
+						v134 = nil
+					} else {
+						if v134 == nil {
+							v134 = new(structs.RecruitingTeamProfile)
+						}
+						easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs28(in, v134)
+					}
+					(out.TeamProfileMap)[key] = v134
+					in.WantComma()
+				}
+				in.Delim('}')
+			}
+		case "CollegeStandings":
+			if in.IsNull() {
+				in.Skip()
+				out.CollegeStandings = nil
+			} else {
+				in.Delim('[')
+				if out.CollegeStandings == nil {
+					if !in.IsDelim(']') {
+						out.CollegeStandings = make([]structs.CollegeStandings, 0, 0)
+					} else {
+						out.CollegeStandings = []structs.CollegeStandings{}
+					}
+				} else {
+					out.CollegeStandings = (out.CollegeStandings)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v135 structs.CollegeStandings
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs1(in, &v135)
+					out.CollegeStandings = append(out.CollegeStandings, v135)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "HistoricCollegePlayers":
+			if in.IsNull() {
+				in.Skip()
+				out.HistoricCollegePlayers = nil
+			} else {
+				in.Delim('[')
+				if out.HistoricCollegePlayers == nil {
+					if !in.IsDelim(']') {
+						out.HistoricCollegePlayers = make([]structs.HistoricCollegePlayer, 0, 0)
+					} else {
+						out.HistoricCollegePlayers = []structs.HistoricCollegePlayer{}
+					}
+				} else {
+					out.HistoricCollegePlayers = (out.HistoricCollegePlayers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v136 structs.HistoricCollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in, &v136)
+					out.HistoricCollegePlayers = append(out.HistoricCollegePlayers, v136)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers3(out *jwriter.Writer, in BootstrapDataTwo) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"Recruits\":"
+		out.RawString(prefix[1:])
+		if in.Recruits == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v137, v138 := range in.Recruits {
+				if v137 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out, v138)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"CollegeDepthChartMap\":"
+		out.RawString(prefix)
+		if in.CollegeDepthChartMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+			out.RawString(`null`)
+		} else {
+			out.RawByte('{')
+			v139First := true
+			for v139Name, v139Value := range in.CollegeDepthChartMap {
+				if v139First {
+					v139First = false
+				} else {
+					out.RawByte(',')
+				}
+				out.UintStr(uint(v139Name))
+				out.RawByte(':')
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out, v139Value)
+			}
+			out.RawByte('}')
+		}
+	}
+	{
+		const prefix string = ",\"CollegeNews\":"
+		out.RawString(prefix)
+		if in.CollegeNews == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v140, v141 := range in.CollegeNews {
+				if v140 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs9(out, v141)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"AllCollegeGames\":"
+		out.RawString(prefix)
+		if in.AllCollegeGames == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v142, v143 := range in.AllCollegeGames {
+				if v142 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs4(out, v143)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TeamProfileMap\":"
+		out.RawString(prefix)
+		if in.TeamProfileMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+			out.RawString(`null`)
+		} else {
+			out.RawByte('{')
+			v144First := true
+			for v144Name, v144Value := range in.TeamProfileMap {
+				if v144First {
+					v144First = false
+				} else {
+					out.RawByte(',')
+				}
+				out.String(string(v144Name))
+				out.RawByte(':')
+				if v144Value == nil {
+					out.RawString("null")
+				} else {
+					easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs28(out, *v144Value)
+				}
+			}
+			out.RawByte('}')
+		}
+	}
+	{
+		const prefix string = ",\"CollegeStandings\":"
+		out.RawString(prefix)
+		if in.CollegeStandings == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v145, v146 := range in.CollegeStandings {
+				if v145 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs1(out, v146)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"HistoricCollegePlayers\":"
+		out.RawString(prefix)
+		if in.HistoricCollegePlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v147, v148 := range in.HistoricCollegePlayers {
+				if v147 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out, v148)
+			}
+			out.RawByte(']')
+		}
+	}
+	out.RawByte('}')
+}
+
+// MarshalJSON supports json.Marshaler interface
+func (v BootstrapDataTwo) MarshalJSON() ([]byte, error) {
+	w := jwriter.Writer{}
+	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers3(&w, v)
+	return w.Buffer.BuildBytes(), w.Error
+}
+
+// MarshalEasyJSON supports easyjson.Marshaler interface
+func (v BootstrapDataTwo) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers3(w, v)
+}
+
+// UnmarshalJSON supports json.Unmarshaler interface
+func (v *BootstrapDataTwo) UnmarshalJSON(data []byte) error {
+	r := jlexer.Lexer{Data: data}
+	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(&r, v)
+	return r.Error()
+}
+
+// UnmarshalEasyJSON supports easyjson.Unmarshaler interface
+func (v *BootstrapDataTwo) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers3(l, v)
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs39(in *jlexer.Lexer, out *structs.HistoricCollegePlayer) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "PlayerID":
+			out.PlayerID = int(in.Int())
+		case "TeamID":
+			out.TeamID = int(in.Int())
+		case "TeamAbbr":
+			out.TeamAbbr = string(in.String())
+		case "HighSchool":
+			out.HighSchool = string(in.String())
+		case "City":
+			out.City = string(in.String())
+		case "State":
+			out.State = string(in.String())
+		case "Year":
+			out.Year = int(in.Int())
+		case "IsRedshirt":
+			out.IsRedshirt = bool(in.Bool())
+		case "IsRedshirting":
+			out.IsRedshirting = bool(in.Bool())
+		case "HasGraduated":
+			out.HasGraduated = bool(in.Bool())
+		case "TransferStatus":
+			out.TransferStatus = int(in.Int())
+		case "TransferLikeliness":
+			out.TransferLikeliness = string(in.String())
+		case "Stats":
+			if in.IsNull() {
+				in.Skip()
+				out.Stats = nil
+			} else {
+				in.Delim('[')
+				if out.Stats == nil {
+					if !in.IsDelim(']') {
+						out.Stats = make([]structs.CollegePlayerStats, 0, 0)
+					} else {
+						out.Stats = []structs.CollegePlayerStats{}
+					}
+				} else {
+					out.Stats = (out.Stats)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v149 structs.CollegePlayerStats
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs5(in, &v149)
+					out.Stats = append(out.Stats, v149)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "SeasonStats":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs(in, &out.SeasonStats)
+		case "HasProgressed":
+			out.HasProgressed = bool(in.Bool())
+		case "WillDeclare":
+			out.WillDeclare = bool(in.Bool())
+		case "LegacyID":
+			out.LegacyID = uint(in.Uint())
+		case "FirstName":
+			out.FirstName = string(in.String())
+		case "LastName":
+			out.LastName = string(in.String())
+		case "Position":
+			out.Position = string(in.String())
+		case "Archetype":
+			out.Archetype = string(in.String())
+		case "PreviousTeamID":
+			out.PreviousTeamID = uint(in.Uint())
+		case "PreviousTeam":
+			out.PreviousTeam = string(in.String())
+		case "Height":
+			out.Height = int(in.Int())
+		case "Weight":
+			out.Weight = int(in.Int())
+		case "Age":
+			out.Age = int(in.Int())
+		case "Stars":
+			out.Stars = int(in.Int())
+		case "Overall":
+			out.Overall = int(in.Int())
+		case "Stamina":
+			out.Stamina = int(in.Int())
+		case "Injury":
+			out.Injury = int(in.Int())
+		case "FootballIQ":
+			out.FootballIQ = int(in.Int())
+		case "Speed":
+			out.Speed = int(in.Int())
+		case "Carrying":
+			out.Carrying = int(in.Int())
+		case "Agility":
+			out.Agility = int(in.Int())
+		case "Catching":
+			out.Catching = int(in.Int())
+		case "RouteRunning":
+			out.RouteRunning = int(in.Int())
+		case "ZoneCoverage":
+			out.ZoneCoverage = int(in.Int())
+		case "ManCoverage":
+			out.ManCoverage = int(in.Int())
+		case "Strength":
+			out.Strength = int(in.Int())
+		case "Tackle":
+			out.Tackle = int(in.Int())
+		case "PassBlock":
+			out.PassBlock = int(in.Int())
+		case "RunBlock":
+			out.RunBlock = int(in.Int())
+		case "PassRush":
+			out.PassRush = int(in.Int())
+		case "RunDefense":
+			out.RunDefense = int(in.Int())
+		case "ThrowPower":
+			out.ThrowPower = int(in.Int())
+		case "ThrowAccuracy":
+			out.ThrowAccuracy = int(in.Int())
+		case "KickAccuracy":
+			out.KickAccuracy = int(in.Int())
+		case "KickPower":
+			out.KickPower = int(in.Int())
+		case "PuntAccuracy":
+			out.PuntAccuracy = int(in.Int())
+		case "PuntPower":
+			out.PuntPower = int(in.Int())
+		case "Progression":
+			out.Progression = int(in.Int())
+		case "Discipline":
+			out.Discipline = int(in.Int())
+		case "PotentialGrade":
+			out.PotentialGrade = string(in.String())
+		case "FreeAgency":
+			out.FreeAgency = string(in.String())
+		case "Personality":
+			out.Personality = string(in.String())
+		case "RecruitingBias":
+			out.RecruitingBias = string(in.String())
+		case "WorkEthic":
+			out.WorkEthic = string(in.String())
+		case "AcademicBias":
+			out.AcademicBias = string(in.String())
+		case "IsInjured":
+			out.IsInjured = bool(in.Bool())
+		case "InjuryName":
+			out.InjuryName = string(in.String())
+		case "InjuryType":
+			out.InjuryType = string(in.String())
+		case "WeeksOfRecovery":
+			out.WeeksOfRecovery = uint(in.Uint())
+		case "InjuryReserve":
+			out.InjuryReserve = bool(in.Bool())
+		case "PrimeAge":
+			out.PrimeAge = uint(in.Uint())
+		case "Clutch":
+			out.Clutch = int(in.Int())
+		case "Shotgun":
+			out.Shotgun = int(in.Int())
+		case "PositionTwo":
+			out.PositionTwo = string(in.String())
+		case "ArchetypeTwo":
+			out.ArchetypeTwo = string(in.String())
+		case "RelativeID":
+			out.RelativeID = uint(in.Uint())
+		case "RelativeType":
+			out.RelativeType = uint(in.Uint())
+		case "Notes":
+			out.Notes = string(in.String())
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if in.IsNull() {
+				in.Skip()
+				out.DeletedAt = nil
+			} else {
+				if out.DeletedAt == nil {
+					out.DeletedAt = new(time.Time)
+				}
+				if data := in.Raw(); in.Ok() {
+					in.AddError((*out.DeletedAt).UnmarshalJSON(data))
+				}
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs39(out *jwriter.Writer, in structs.HistoricCollegePlayer) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"PlayerID\":"
+		out.RawString(prefix[1:])
+		out.Int(int(in.PlayerID))
+	}
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix)
+		out.Int(int(in.TeamID))
+	}
+	{
+		const prefix string = ",\"TeamAbbr\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamAbbr))
+	}
+	{
+		const prefix string = ",\"HighSchool\":"
+		out.RawString(prefix)
+		out.String(string(in.HighSchool))
+	}
+	{
+		const prefix string = ",\"City\":"
+		out.RawString(prefix)
+		out.String(string(in.City))
+	}
+	{
+		const prefix string = ",\"State\":"
+		out.RawString(prefix)
+		out.String(string(in.State))
+	}
+	{
+		const prefix string = ",\"Year\":"
+		out.RawString(prefix)
+		out.Int(int(in.Year))
+	}
+	{
+		const prefix string = ",\"IsRedshirt\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsRedshirt))
+	}
+	{
+		const prefix string = ",\"IsRedshirting\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsRedshirting))
+	}
+	{
+		const prefix string = ",\"HasGraduated\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.HasGraduated))
+	}
+	{
+		const prefix string = ",\"TransferStatus\":"
+		out.RawString(prefix)
+		out.Int(int(in.TransferStatus))
+	}
+	{
+		const prefix string = ",\"TransferLikeliness\":"
+		out.RawString(prefix)
+		out.String(string(in.TransferLikeliness))
+	}
+	{
+		const prefix string = ",\"Stats\":"
+		out.RawString(prefix)
+		if in.Stats == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v150, v151 := range in.Stats {
+				if v150 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs5(out, v151)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"SeasonStats\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs(out, in.SeasonStats)
+	}
+	{
+		const prefix string = ",\"HasProgressed\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.HasProgressed))
+	}
+	{
+		const prefix string = ",\"WillDeclare\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.WillDeclare))
+	}
+	{
+		const prefix string = ",\"LegacyID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.LegacyID))
+	}
+	{
+		const prefix string = ",\"FirstName\":"
+		out.RawString(prefix)
+		out.String(string(in.FirstName))
+	}
+	{
+		const prefix string = ",\"LastName\":"
+		out.RawString(prefix)
+		out.String(string(in.LastName))
+	}
+	{
+		const prefix string = ",\"Position\":"
+		out.RawString(prefix)
+		out.String(string(in.Position))
+	}
+	{
+		const prefix string = ",\"Archetype\":"
+		out.RawString(prefix)
+		out.String(string(in.Archetype))
+	}
+	{
+		const prefix string = ",\"PreviousTeamID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.PreviousTeamID))
+	}
+	{
+		const prefix string = ",\"PreviousTeam\":"
+		out.RawString(prefix)
+		out.String(string(in.PreviousTeam))
+	}
+	{
+		const prefix string = ",\"Height\":"
+		out.RawString(prefix)
+		out.Int(int(in.Height))
+	}
+	{
+		const prefix string = ",\"Weight\":"
+		out.RawString(prefix)
+		out.Int(int(in.Weight))
+	}
+	{
+		const prefix string = ",\"Age\":"
+		out.RawString(prefix)
+		out.Int(int(in.Age))
+	}
+	{
+		const prefix string = ",\"Stars\":"
+		out.RawString(prefix)
+		out.Int(int(in.Stars))
+	}
+	{
+		const prefix string = ",\"Overall\":"
+		out.RawString(prefix)
+		out.Int(int(in.Overall))
+	}
+	{
+		const prefix string = ",\"Stamina\":"
+		out.RawString(prefix)
+		out.Int(int(in.Stamina))
+	}
+	{
+		const prefix string = ",\"Injury\":"
+		out.RawString(prefix)
+		out.Int(int(in.Injury))
+	}
+	{
+		const prefix string = ",\"FootballIQ\":"
+		out.RawString(prefix)
+		out.Int(int(in.FootballIQ))
+	}
+	{
+		const prefix string = ",\"Speed\":"
+		out.RawString(prefix)
+		out.Int(int(in.Speed))
+	}
+	{
+		const prefix string = ",\"Carrying\":"
+		out.RawString(prefix)
+		out.Int(int(in.Carrying))
+	}
+	{
+		const prefix string = ",\"Agility\":"
+		out.RawString(prefix)
+		out.Int(int(in.Agility))
+	}
+	{
+		const prefix string = ",\"Catching\":"
+		out.RawString(prefix)
+		out.Int(int(in.Catching))
+	}
+	{
+		const prefix string = ",\"RouteRunning\":"
+		out.RawString(prefix)
+		out.Int(int(in.RouteRunning))
+	}
+	{
+		const prefix string = ",\"ZoneCoverage\":"
+		out.RawString(prefix)
+		out.Int(int(in.ZoneCoverage))
+	}
+	{
+		const prefix string = ",\"ManCoverage\":"
+		out.RawString(prefix)
+		out.Int(int(in.ManCoverage))
+	}
+	{
+		const prefix string = ",\"Strength\":"
+		out.RawString(prefix)
+		out.Int(int(in.Strength))
+	}
+	{
+		const prefix string = ",\"Tackle\":"
+		out.RawString(prefix)
+		out.Int(int(in.Tackle))
+	}
+	{
+		const prefix string = ",\"PassBlock\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassBlock))
+	}
+	{
+		const prefix string = ",\"RunBlock\":"
+		out.RawString(prefix)
+		out.Int(int(in.RunBlock))
+	}
+	{
+		const prefix string = ",\"PassRush\":"
+		out.RawString(prefix)
+		out.Int(int(in.PassRush))
+	}
+	{
+		const prefix string = ",\"RunDefense\":"
+		out.RawString(prefix)
+		out.Int(int(in.RunDefense))
+	}
+	{
+		const prefix string = ",\"ThrowPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.ThrowPower))
+	}
+	{
+		const prefix string = ",\"ThrowAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.ThrowAccuracy))
+	}
+	{
+		const prefix string = ",\"KickAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.KickAccuracy))
+	}
+	{
+		const prefix string = ",\"KickPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.KickPower))
+	}
+	{
+		const prefix string = ",\"PuntAccuracy\":"
+		out.RawString(prefix)
+		out.Int(int(in.PuntAccuracy))
+	}
+	{
+		const prefix string = ",\"PuntPower\":"
+		out.RawString(prefix)
+		out.Int(int(in.PuntPower))
+	}
+	{
+		const prefix string = ",\"Progression\":"
+		out.RawString(prefix)
+		out.Int(int(in.Progression))
+	}
+	{
+		const prefix string = ",\"Discipline\":"
+		out.RawString(prefix)
+		out.Int(int(in.Discipline))
+	}
+	{
+		const prefix string = ",\"PotentialGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.PotentialGrade))
+	}
+	{
+		const prefix string = ",\"FreeAgency\":"
+		out.RawString(prefix)
+		out.String(string(in.FreeAgency))
+	}
+	{
+		const prefix string = ",\"Personality\":"
+		out.RawString(prefix)
+		out.String(string(in.Personality))
+	}
+	{
+		const prefix string = ",\"RecruitingBias\":"
+		out.RawString(prefix)
+		out.String(string(in.RecruitingBias))
+	}
+	{
+		const prefix string = ",\"WorkEthic\":"
+		out.RawString(prefix)
+		out.String(string(in.WorkEthic))
+	}
+	{
+		const prefix string = ",\"AcademicBias\":"
+		out.RawString(prefix)
+		out.String(string(in.AcademicBias))
+	}
+	{
+		const prefix string = ",\"IsInjured\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsInjured))
+	}
+	{
+		const prefix string = ",\"InjuryName\":"
+		out.RawString(prefix)
+		out.String(string(in.InjuryName))
+	}
+	{
+		const prefix string = ",\"InjuryType\":"
+		out.RawString(prefix)
+		out.String(string(in.InjuryType))
+	}
+	{
+		const prefix string = ",\"WeeksOfRecovery\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.WeeksOfRecovery))
+	}
+	{
+		const prefix string = ",\"InjuryReserve\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.InjuryReserve))
+	}
+	{
+		const prefix string = ",\"PrimeAge\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.PrimeAge))
+	}
+	{
+		const prefix string = ",\"Clutch\":"
+		out.RawString(prefix)
+		out.Int(int(in.Clutch))
+	}
+	{
+		const prefix string = ",\"Shotgun\":"
+		out.RawString(prefix)
+		out.Int(int(in.Shotgun))
+	}
+	{
+		const prefix string = ",\"PositionTwo\":"
+		out.RawString(prefix)
+		out.String(string(in.PositionTwo))
+	}
+	{
+		const prefix string = ",\"ArchetypeTwo\":"
+		out.RawString(prefix)
+		out.String(string(in.ArchetypeTwo))
+	}
+	{
+		const prefix string = ",\"RelativeID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.RelativeID))
+	}
+	{
+		const prefix string = ",\"RelativeType\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.RelativeType))
+	}
+	{
+		const prefix string = ",\"Notes\":"
+		out.RawString(prefix)
+		out.String(string(in.Notes))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		if in.DeletedAt == nil {
+			out.RawString("null")
+		} else {
+			out.Raw((*in.DeletedAt).MarshalJSON())
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs38(in *jlexer.Lexer, out *structs.Croot) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "PlayerID":
+			out.PlayerID = int(in.Int())
+		case "TeamID":
+			out.TeamID = int(in.Int())
+		case "College":
+			out.College = string(in.String())
+		case "FirstName":
+			out.FirstName = string(in.String())
+		case "LastName":
+			out.LastName = string(in.String())
+		case "Position":
+			out.Position = string(in.String())
+		case "Archetype":
+			out.Archetype = string(in.String())
+		case "Height":
+			out.Height = int(in.Int())
+		case "Weight":
+			out.Weight = int(in.Int())
+		case "Stars":
+			out.Stars = int(in.Int())
+		case "PotentialGrade":
+			out.PotentialGrade = string(in.String())
+		case "Personality":
+			out.Personality = string(in.String())
+		case "RecruitingBias":
+			out.RecruitingBias = string(in.String())
+		case "AcademicBias":
+			out.AcademicBias = string(in.String())
+		case "WorkEthic":
+			out.WorkEthic = string(in.String())
+		case "HighSchool":
+			out.HighSchool = string(in.String())
+		case "City":
+			out.City = string(in.String())
+		case "State":
+			out.State = string(in.String())
+		case "AffinityOne":
+			out.AffinityOne = string(in.String())
+		case "AffinityTwo":
+			out.AffinityTwo = string(in.String())
+		case "RecruitingStatus":
+			out.RecruitingStatus = string(in.String())
+		case "RecruitModifier":
+			out.RecruitModifier = float64(in.Float64())
+		case "IsCustomCroot":
+			out.IsCustomCroot = bool(in.Bool())
+		case "CustomCrootFor":
+			out.CustomCrootFor = string(in.String())
+		case "IsSigned":
+			out.IsSigned = bool(in.Bool())
+		case "OverallGrade":
+			out.OverallGrade = string(in.String())
+		case "TotalRank":
+			out.TotalRank = float64(in.Float64())
+		case "LeadingTeams":
+			if in.IsNull() {
+				in.Skip()
+				out.LeadingTeams = nil
+			} else {
+				in.Delim('[')
+				if out.LeadingTeams == nil {
+					if !in.IsDelim(']') {
+						out.LeadingTeams = make([]structs.LeadingTeams, 0, 2)
+					} else {
+						out.LeadingTeams = []structs.LeadingTeams{}
+					}
+				} else {
+					out.LeadingTeams = (out.LeadingTeams)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v152 structs.LeadingTeams
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs40(in, &v152)
+					out.LeadingTeams = append(out.LeadingTeams, v152)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs38(out *jwriter.Writer, in structs.Croot) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix[1:])
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"PlayerID\":"
+		out.RawString(prefix)
+		out.Int(int(in.PlayerID))
+	}
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix)
+		out.Int(int(in.TeamID))
+	}
+	{
+		const prefix string = ",\"College\":"
+		out.RawString(prefix)
+		out.String(string(in.College))
+	}
+	{
+		const prefix string = ",\"FirstName\":"
+		out.RawString(prefix)
+		out.String(string(in.FirstName))
+	}
+	{
+		const prefix string = ",\"LastName\":"
+		out.RawString(prefix)
+		out.String(string(in.LastName))
+	}
+	{
+		const prefix string = ",\"Position\":"
+		out.RawString(prefix)
+		out.String(string(in.Position))
+	}
+	{
+		const prefix string = ",\"Archetype\":"
+		out.RawString(prefix)
+		out.String(string(in.Archetype))
+	}
+	{
+		const prefix string = ",\"Height\":"
+		out.RawString(prefix)
+		out.Int(int(in.Height))
+	}
+	{
+		const prefix string = ",\"Weight\":"
+		out.RawString(prefix)
+		out.Int(int(in.Weight))
+	}
+	{
+		const prefix string = ",\"Stars\":"
+		out.RawString(prefix)
+		out.Int(int(in.Stars))
+	}
+	{
+		const prefix string = ",\"PotentialGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.PotentialGrade))
+	}
+	{
+		const prefix string = ",\"Personality\":"
+		out.RawString(prefix)
+		out.String(string(in.Personality))
+	}
+	{
+		const prefix string = ",\"RecruitingBias\":"
+		out.RawString(prefix)
+		out.String(string(in.RecruitingBias))
+	}
+	{
+		const prefix string = ",\"AcademicBias\":"
+		out.RawString(prefix)
+		out.String(string(in.AcademicBias))
+	}
+	{
+		const prefix string = ",\"WorkEthic\":"
+		out.RawString(prefix)
+		out.String(string(in.WorkEthic))
+	}
+	{
+		const prefix string = ",\"HighSchool\":"
+		out.RawString(prefix)
+		out.String(string(in.HighSchool))
+	}
+	{
+		const prefix string = ",\"City\":"
+		out.RawString(prefix)
+		out.String(string(in.City))
+	}
+	{
+		const prefix string = ",\"State\":"
+		out.RawString(prefix)
+		out.String(string(in.State))
+	}
+	{
+		const prefix string = ",\"AffinityOne\":"
+		out.RawString(prefix)
+		out.String(string(in.AffinityOne))
+	}
+	{
+		const prefix string = ",\"AffinityTwo\":"
+		out.RawString(prefix)
+		out.String(string(in.AffinityTwo))
+	}
+	{
+		const prefix string = ",\"RecruitingStatus\":"
+		out.RawString(prefix)
+		out.String(string(in.RecruitingStatus))
+	}
+	{
+		const prefix string = ",\"RecruitModifier\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.RecruitModifier))
+	}
+	{
+		const prefix string = ",\"IsCustomCroot\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsCustomCroot))
+	}
+	{
+		const prefix string = ",\"CustomCrootFor\":"
+		out.RawString(prefix)
+		out.String(string(in.CustomCrootFor))
+	}
+	{
+		const prefix string = ",\"IsSigned\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsSigned))
+	}
+	{
+		const prefix string = ",\"OverallGrade\":"
+		out.RawString(prefix)
+		out.String(string(in.OverallGrade))
+	}
+	{
+		const prefix string = ",\"TotalRank\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.TotalRank))
+	}
+	{
+		const prefix string = ",\"LeadingTeams\":"
+		out.RawString(prefix)
+		if in.LeadingTeams == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v153, v154 := range in.LeadingTeams {
+				if v153 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out, v154)
+			}
+			out.RawByte(']')
+		}
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs40(in *jlexer.Lexer, out *structs.LeadingTeams) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "TeamID":
+			out.TeamID = uint(in.Uint())
+		case "TeamName":
+			out.TeamName = string(in.String())
+		case "TeamAbbr":
+			out.TeamAbbr = string(in.String())
+		case "Odds":
+			out.Odds = float64(in.Float64())
+		case "HasScholarship":
+			out.HasScholarship = bool(in.Bool())
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs40(out *jwriter.Writer, in structs.LeadingTeams) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix[1:])
+		out.Uint(uint(in.TeamID))
+	}
+	{
+		const prefix string = ",\"TeamName\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamName))
+	}
+	{
+		const prefix string = ",\"TeamAbbr\":"
+		out.RawString(prefix)
+		out.String(string(in.TeamAbbr))
+	}
+	{
+		const prefix string = ",\"Odds\":"
+		out.RawString(prefix)
+		out.Float64(float64(in.Odds))
+	}
+	{
+		const prefix string = ",\"HasScholarship\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.HasScholarship))
+	}
+	out.RawByte('}')
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers4(in *jlexer.Lexer, out *BootstrapDataOne) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "CollegeTeam":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs20(in, &out.CollegeTeam)
+		case "CollegeRosterMap":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				in.Delim('{')
+				out.CollegeRosterMap = make(map[uint][]structs.CollegePlayer)
+				for !in.IsDelim('}') {
+					key := uint(in.UintStr())
+					in.WantColon()
+					var v155 []structs.CollegePlayer
+					if in.IsNull() {
+						in.Skip()
+						v155 = nil
+					} else {
+						in.Delim('[')
+						if v155 == nil {
+							if !in.IsDelim(']') {
+								v155 = make([]structs.CollegePlayer, 0, 0)
+							} else {
+								v155 = []structs.CollegePlayer{}
+							}
+						} else {
+							v155 = (v155)[:0]
+						}
+						for !in.IsDelim(']') {
+							var v156 structs.CollegePlayer
+							easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v156)
+							v155 = append(v155, v156)
+							in.WantComma()
+						}
+						in.Delim(']')
+					}
+					(out.CollegeRosterMap)[key] = v155
+					in.WantComma()
+				}
+				in.Delim('}')
+			}
+		case "RecruitProfiles":
+			if in.IsNull() {
+				in.Skip()
+				out.RecruitProfiles = nil
+			} else {
+				in.Delim('[')
+				if out.RecruitProfiles == nil {
+					if !in.IsDelim(']') {
+						out.RecruitProfiles = make([]structs.RecruitPlayerProfile, 0, 0)
+					} else {
+						out.RecruitProfiles = []structs.RecruitPlayerProfile{}
+					}
+				} else {
+					out.RecruitProfiles = (out.RecruitProfiles)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v157 structs.RecruitPlayerProfile
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs35(in, &v157)
+					out.RecruitProfiles = append(out.RecruitProfiles, v157)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TopCFBPassers":
+			if in.IsNull() {
+				in.Skip()
+				out.TopCFBPassers = nil
+			} else {
+				in.Delim('[')
+				if out.TopCFBPassers == nil {
+					if !in.IsDelim(']') {
+						out.TopCFBPassers = make([]structs.CollegePlayer, 0, 0)
+					} else {
+						out.TopCFBPassers = []structs.CollegePlayer{}
+					}
+				} else {
+					out.TopCFBPassers = (out.TopCFBPassers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v158 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v158)
+					out.TopCFBPassers = append(out.TopCFBPassers, v158)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TopCFBRushers":
+			if in.IsNull() {
+				in.Skip()
+				out.TopCFBRushers = nil
+			} else {
+				in.Delim('[')
+				if out.TopCFBRushers == nil {
+					if !in.IsDelim(']') {
+						out.TopCFBRushers = make([]structs.CollegePlayer, 0, 0)
+					} else {
+						out.TopCFBRushers = []structs.CollegePlayer{}
+					}
+				} else {
+					out.TopCFBRushers = (out.TopCFBRushers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v159 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v159)
+					out.TopCFBRushers = append(out.TopCFBRushers, v159)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TopCFBReceivers":
+			if in.IsNull() {
+				in.Skip()
+				out.TopCFBReceivers = nil
+			} else {
+				in.Delim('[')
+				if out.TopCFBReceivers == nil {
+					if !in.IsDelim(']') {
+						out.TopCFBReceivers = make([]structs.CollegePlayer, 0, 0)
+					} else {
+						out.TopCFBReceivers = []structs.CollegePlayer{}
+					}
+				} else {
+					out.TopCFBReceivers = (out.TopCFBReceivers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v160 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v160)
+					out.TopCFBReceivers = append(out.TopCFBReceivers, v160)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "PortalPlayers":
+			if in.IsNull() {
+				in.Skip()
+				out.PortalPlayers = nil
+			} else {
+				in.Delim('[')
+				if out.PortalPlayers == nil {
+					if !in.IsDelim(']') {
+						out.PortalPlayers = make([]structs.CollegePlayer, 0, 0)
+					} else {
+						out.PortalPlayers = []structs.CollegePlayer{}
+					}
+				} else {
+					out.PortalPlayers = (out.PortalPlayers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v161 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v161)
+					out.PortalPlayers = append(out.PortalPlayers, v161)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "CollegeInjuryReport":
+			if in.IsNull() {
+				in.Skip()
+				out.CollegeInjuryReport = nil
+			} else {
+				in.Delim('[')
+				if out.CollegeInjuryReport == nil {
+					if !in.IsDelim(']') {
+						out.CollegeInjuryReport = make([]structs.CollegePlayer, 0, 0)
+					} else {
+						out.CollegeInjuryReport = []structs.CollegePlayer{}
+					}
+				} else {
+					out.CollegeInjuryReport = (out.CollegeInjuryReport)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v162 structs.CollegePlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs3(in, &v162)
+					out.CollegeInjuryReport = append(out.CollegeInjuryReport, v162)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "CollegeNotifications":
+			if in.IsNull() {
+				in.Skip()
+				out.CollegeNotifications = nil
+			} else {
+				in.Delim('[')
+				if out.CollegeNotifications == nil {
+					if !in.IsDelim(']') {
+						out.CollegeNotifications = make([]structs.Notification, 0, 0)
+					} else {
+						out.CollegeNotifications = []structs.Notification{}
+					}
+				} else {
+					out.CollegeNotifications = (out.CollegeNotifications)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v163 structs.Notification
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs41(in, &v163)
+					out.CollegeNotifications = append(out.CollegeNotifications, v163)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "CollegeGameplan":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs32(in, &out.CollegeGameplan)
+		case "CollegeDepthChart":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs33(in, &out.CollegeDepthChart)
+		case "ProTeam":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs21(in, &out.ProTeam)
+		case "ProNotifications":
+			if in.IsNull() {
+				in.Skip()
+				out.ProNotifications = nil
+			} else {
+				in.Delim('[')
+				if out.ProNotifications == nil {
+					if !in.IsDelim(']') {
+						out.ProNotifications = make([]structs.Notification, 0, 0)
+					} else {
+						out.ProNotifications = []structs.Notification{}
+					}
+				} else {
+					out.ProNotifications = (out.ProNotifications)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v164 structs.Notification
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs41(in, &v164)
+					out.ProNotifications = append(out.ProNotifications, v164)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "NFLGameplan":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs26(in, &out.NFLGameplan)
+		case "NFLDepthChart":
+			easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs10(in, &out.NFLDepthChart)
+		case "TopNFLPassers":
+			if in.IsNull() {
+				in.Skip()
+				out.TopNFLPassers = nil
+			} else {
+				in.Delim('[')
+				if out.TopNFLPassers == nil {
+					if !in.IsDelim(']') {
+						out.TopNFLPassers = make([]structs.NFLPlayer, 0, 0)
+					} else {
+						out.TopNFLPassers = []structs.NFLPlayer{}
+					}
+				} else {
+					out.TopNFLPassers = (out.TopNFLPassers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v165 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v165)
+					out.TopNFLPassers = append(out.TopNFLPassers, v165)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TopNFLRushers":
+			if in.IsNull() {
+				in.Skip()
+				out.TopNFLRushers = nil
+			} else {
+				in.Delim('[')
+				if out.TopNFLRushers == nil {
+					if !in.IsDelim(']') {
+						out.TopNFLRushers = make([]structs.NFLPlayer, 0, 0)
+					} else {
+						out.TopNFLRushers = []structs.NFLPlayer{}
+					}
+				} else {
+					out.TopNFLRushers = (out.TopNFLRushers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v166 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v166)
+					out.TopNFLRushers = append(out.TopNFLRushers, v166)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "TopNFLReceivers":
+			if in.IsNull() {
+				in.Skip()
+				out.TopNFLReceivers = nil
+			} else {
+				in.Delim('[')
+				if out.TopNFLReceivers == nil {
+					if !in.IsDelim(']') {
+						out.TopNFLReceivers = make([]structs.NFLPlayer, 0, 0)
+					} else {
+						out.TopNFLReceivers = []structs.NFLPlayer{}
+					}
+				} else {
+					out.TopNFLReceivers = (out.TopNFLReceivers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v167 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v167)
+					out.TopNFLReceivers = append(out.TopNFLReceivers, v167)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "ProRosterMap":
+			if in.IsNull() {
+				in.Skip()
+			} else {
+				in.Delim('{')
+				out.ProRosterMap = make(map[uint][]structs.NFLPlayer)
+				for !in.IsDelim('}') {
+					key := uint(in.UintStr())
+					in.WantColon()
+					var v168 []structs.NFLPlayer
+					if in.IsNull() {
+						in.Skip()
+						v168 = nil
+					} else {
+						in.Delim('[')
+						if v168 == nil {
+							if !in.IsDelim(']') {
+								v168 = make([]structs.NFLPlayer, 0, 0)
+							} else {
+								v168 = []structs.NFLPlayer{}
+							}
+						} else {
+							v168 = (v168)[:0]
+						}
+						for !in.IsDelim(']') {
+							var v169 structs.NFLPlayer
+							easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v169)
+							v168 = append(v168, v169)
+							in.WantComma()
+						}
+						in.Delim(']')
+					}
+					(out.ProRosterMap)[key] = v168
+					in.WantComma()
+				}
+				in.Delim('}')
+			}
+		case "ProInjuryReport":
+			if in.IsNull() {
+				in.Skip()
+				out.ProInjuryReport = nil
+			} else {
+				in.Delim('[')
+				if out.ProInjuryReport == nil {
+					if !in.IsDelim(']') {
+						out.ProInjuryReport = make([]structs.NFLPlayer, 0, 0)
+					} else {
+						out.ProInjuryReport = []structs.NFLPlayer{}
+					}
+				} else {
+					out.ProInjuryReport = (out.ProInjuryReport)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v170 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v170)
+					out.ProInjuryReport = append(out.ProInjuryReport, v170)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		case "PracticeSquadPlayers":
+			if in.IsNull() {
+				in.Skip()
+				out.PracticeSquadPlayers = nil
+			} else {
+				in.Delim('[')
+				if out.PracticeSquadPlayers == nil {
+					if !in.IsDelim(']') {
+						out.PracticeSquadPlayers = make([]structs.NFLPlayer, 0, 0)
+					} else {
+						out.PracticeSquadPlayers = []structs.NFLPlayer{}
+					}
+				} else {
+					out.PracticeSquadPlayers = (out.PracticeSquadPlayers)[:0]
+				}
+				for !in.IsDelim(']') {
+					var v171 structs.NFLPlayer
+					easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs8(in, &v171)
+					out.PracticeSquadPlayers = append(out.PracticeSquadPlayers, v171)
+					in.WantComma()
+				}
+				in.Delim(']')
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers4(out *jwriter.Writer, in BootstrapDataOne) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"CollegeTeam\":"
+		out.RawString(prefix[1:])
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs20(out, in.CollegeTeam)
+	}
+	{
+		const prefix string = ",\"CollegeRosterMap\":"
+		out.RawString(prefix)
+		if in.CollegeRosterMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+			out.RawString(`null`)
+		} else {
+			out.RawByte('{')
+			v172First := true
+			for v172Name, v172Value := range in.CollegeRosterMap {
+				if v172First {
+					v172First = false
+				} else {
+					out.RawByte(',')
+				}
+				out.UintStr(uint(v172Name))
+				out.RawByte(':')
+				if v172Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+					out.RawString("null")
+				} else {
+					out.RawByte('[')
+					for v173, v174 := range v172Value {
+						if v173 > 0 {
+							out.RawByte(',')
+						}
+						easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v174)
+					}
+					out.RawByte(']')
+				}
+			}
+			out.RawByte('}')
+		}
+	}
+	{
+		const prefix string = ",\"RecruitProfiles\":"
+		out.RawString(prefix)
+		if in.RecruitProfiles == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v175, v176 := range in.RecruitProfiles {
+				if v175 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs35(out, v176)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TopCFBPassers\":"
+		out.RawString(prefix)
+		if in.TopCFBPassers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v177, v178 := range in.TopCFBPassers {
+				if v177 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v178)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TopCFBRushers\":"
+		out.RawString(prefix)
+		if in.TopCFBRushers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v179, v180 := range in.TopCFBRushers {
+				if v179 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v180)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TopCFBReceivers\":"
+		out.RawString(prefix)
+		if in.TopCFBReceivers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v181, v182 := range in.TopCFBReceivers {
+				if v181 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v182)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"PortalPlayers\":"
+		out.RawString(prefix)
+		if in.PortalPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v183, v184 := range in.PortalPlayers {
+				if v183 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v184)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"CollegeInjuryReport\":"
+		out.RawString(prefix)
+		if in.CollegeInjuryReport == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v185, v186 := range in.CollegeInjuryReport {
+				if v185 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs3(out, v186)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"CollegeNotifications\":"
+		out.RawString(prefix)
+		if in.CollegeNotifications == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v187, v188 := range in.CollegeNotifications {
+				if v187 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs41(out, v188)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"CollegeGameplan\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs32(out, in.CollegeGameplan)
+	}
+	{
+		const prefix string = ",\"CollegeDepthChart\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs33(out, in.CollegeDepthChart)
+	}
+	{
+		const prefix string = ",\"ProTeam\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs21(out, in.ProTeam)
+	}
+	{
+		const prefix string = ",\"ProNotifications\":"
+		out.RawString(prefix)
+		if in.ProNotifications == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v189, v190 := range in.ProNotifications {
+				if v189 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs41(out, v190)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"NFLGameplan\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs26(out, in.NFLGameplan)
+	}
+	{
+		const prefix string = ",\"NFLDepthChart\":"
+		out.RawString(prefix)
+		easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs10(out, in.NFLDepthChart)
+	}
+	{
+		const prefix string = ",\"TopNFLPassers\":"
+		out.RawString(prefix)
+		if in.TopNFLPassers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v191, v192 := range in.TopNFLPassers {
+				if v191 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v192)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TopNFLRushers\":"
+		out.RawString(prefix)
+		if in.TopNFLRushers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v193, v194 := range in.TopNFLRushers {
+				if v193 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v194)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"TopNFLReceivers\":"
+		out.RawString(prefix)
+		if in.TopNFLReceivers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v195, v196 := range in.TopNFLReceivers {
+				if v195 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v196)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"ProRosterMap\":"
+		out.RawString(prefix)
+		if in.ProRosterMap == nil && (out.Flags&jwriter.NilMapAsEmpty) == 0 {
+			out.RawString(`null`)
+		} else {
+			out.RawByte('{')
+			v197First := true
+			for v197Name, v197Value := range in.ProRosterMap {
+				if v197First {
+					v197First = false
+				} else {
+					out.RawByte(',')
+				}
+				out.UintStr(uint(v197Name))
+				out.RawByte(':')
+				if v197Value == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+					out.RawString("null")
+				} else {
+					out.RawByte('[')
+					for v198, v199 := range v197Value {
+						if v198 > 0 {
+							out.RawByte(',')
+						}
+						easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v199)
+					}
+					out.RawByte(']')
+				}
+			}
+			out.RawByte('}')
+		}
+	}
+	{
+		const prefix string = ",\"ProInjuryReport\":"
+		out.RawString(prefix)
+		if in.ProInjuryReport == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v200, v201 := range in.ProInjuryReport {
+				if v200 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v201)
+			}
+			out.RawByte(']')
+		}
+	}
+	{
+		const prefix string = ",\"PracticeSquadPlayers\":"
+		out.RawString(prefix)
+		if in.PracticeSquadPlayers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
+			out.RawByte('[')
+			for v202, v203 := range in.PracticeSquadPlayers {
+				if v202 > 0 {
+					out.RawByte(',')
+				}
+				easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs8(out, v203)
+			}
+			out.RawByte(']')
+		}
+	}
+	out.RawByte('}')
+}
+
+// MarshalJSON supports json.Marshaler interface
+func (v BootstrapDataOne) MarshalJSON() ([]byte, error) {
+	w := jwriter.Writer{}
+	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers4(&w, v)
+	return w.Buffer.BuildBytes(), w.Error
+}
+
+// MarshalEasyJSON supports easyjson.Marshaler interface
+func (v BootstrapDataOne) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjson83226b63EncodeGithubComCalebRoseSimFBAManagers4(w, v)
+}
+
+// UnmarshalJSON supports json.Unmarshaler interface
+func (v *BootstrapDataOne) UnmarshalJSON(data []byte) error {
+	r := jlexer.Lexer{Data: data}
+	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers4(&r, v)
+	return r.Error()
+}
+
+// UnmarshalEasyJSON supports easyjson.Unmarshaler interface
+func (v *BootstrapDataOne) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjson83226b63DecodeGithubComCalebRoseSimFBAManagers4(l, v)
+}
+func easyjson83226b63DecodeGithubComCalebRoseSimFBAStructs41(in *jlexer.Lexer, out *structs.Notification) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeFieldName(false)
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "TeamID":
+			out.TeamID = uint(in.Uint())
+		case "League":
+			out.League = string(in.String())
+		case "NotificationType":
+			out.NotificationType = string(in.String())
+		case "Message":
+			out.Message = string(in.String())
+		case "Subject":
+			out.Subject = string(in.String())
+		case "IsRead":
+			out.IsRead = bool(in.Bool())
+		case "ID":
+			out.ID = uint(in.Uint())
+		case "CreatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.CreatedAt).UnmarshalJSON(data))
+			}
+		case "UpdatedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.UpdatedAt).UnmarshalJSON(data))
+			}
+		case "DeletedAt":
+			if data := in.Raw(); in.Ok() {
+				in.AddError((out.DeletedAt).UnmarshalJSON(data))
+			}
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson83226b63EncodeGithubComCalebRoseSimFBAStructs41(out *jwriter.Writer, in structs.Notification) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"TeamID\":"
+		out.RawString(prefix[1:])
+		out.Uint(uint(in.TeamID))
+	}
+	{
+		const prefix string = ",\"League\":"
+		out.RawString(prefix)
+		out.String(string(in.League))
+	}
+	{
+		const prefix string = ",\"NotificationType\":"
+		out.RawString(prefix)
+		out.String(string(in.NotificationType))
+	}
+	{
+		const prefix string = ",\"Message\":"
+		out.RawString(prefix)
+		out.String(string(in.Message))
+	}
+	{
+		const prefix string = ",\"Subject\":"
+		out.RawString(prefix)
+		out.String(string(in.Subject))
+	}
+	{
+		const prefix string = ",\"IsRead\":"
+		out.RawString(prefix)
+		out.Bool(bool(in.IsRead))
+	}
+	{
+		const prefix string = ",\"ID\":"
+		out.RawString(prefix)
+		out.Uint(uint(in.ID))
+	}
+	{
+		const prefix string = ",\"CreatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.CreatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"UpdatedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.UpdatedAt).MarshalJSON())
+	}
+	{
+		const prefix string = ",\"DeletedAt\":"
+		out.RawString(prefix)
+		out.Raw((in.DeletedAt).MarshalJSON())
 	}
 	out.RawByte('}')
 }

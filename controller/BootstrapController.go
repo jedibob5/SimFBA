@@ -37,10 +37,7 @@ func FirstBootstrapFootballData(w http.ResponseWriter, r *http.Request) {
 
 func SecondBootstrapFootballData(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
-	vars := mux.Vars(r)
-	collegeID := vars["collegeID"]
-	proID := vars["proID"]
-	data := managers.GetSecondBootstrapData(collegeID, proID)
+	data := managers.GetSecondBootstrapData()
 	bootstrapData, err := easyjson.Marshal(data)
 	if err != nil {
 		log.Printf("Failed to encode JSON response: %v", err)
@@ -51,10 +48,7 @@ func SecondBootstrapFootballData(w http.ResponseWriter, r *http.Request) {
 
 func ThirdBootstrapFootballData(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
-	vars := mux.Vars(r)
-	collegeID := vars["collegeID"]
-	proID := vars["proID"]
-	data := managers.GetThirdBootstrapData(collegeID, proID)
+	data := managers.GetThirdBootstrapData()
 	bootstrapData, err := easyjson.Marshal(data)
 	if err != nil {
 		log.Printf("Failed to encode JSON response: %v", err)

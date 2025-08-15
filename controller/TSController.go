@@ -43,7 +43,8 @@ func FireItUp(w http.ResponseWriter, r *http.Request) {
 
 func CreateTSModelsFile(w http.ResponseWriter, r *http.Request) {
 	converter := typescriptify.New().
-		Add(managers.BootstrapData{}).
+		Add(managers.BootstrapDataCommon{}).
+		Add(managers.BootstrapDataOne{}).
 		Add(managers.BootstrapDataTwo{}).
 		Add(managers.BootstrapDataThree{}).
 		Add(managers.CollegeTeamProfileData{}).

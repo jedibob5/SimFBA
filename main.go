@@ -123,8 +123,8 @@ func handleRequests() http.Handler {
 	// Bootstrap
 	apiRouter.HandleFunc("/bootstrap/teams/", controller.BootstrapTeamData).Methods("GET")
 	apiRouter.HandleFunc("/bootstrap/one/{collegeID}/{proID}", controller.FirstBootstrapFootballData).Methods("GET")
-	apiRouter.HandleFunc("/bootstrap/two/{collegeID}/{proID}", controller.SecondBootstrapFootballData).Methods("GET")
-	apiRouter.HandleFunc("/bootstrap/three/{collegeID}/{proID}", controller.ThirdBootstrapFootballData).Methods("GET")
+	apiRouter.HandleFunc("/bootstrap/two", controller.SecondBootstrapFootballData).Methods("GET")
+	apiRouter.HandleFunc("/bootstrap/three", controller.ThirdBootstrapFootballData).Methods("GET")
 
 	// Capsheet Controls
 	apiRouter.HandleFunc("/nfl/capsheet/generate", controller.GenerateCapsheets).Methods("GET")
