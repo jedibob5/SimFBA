@@ -434,6 +434,9 @@ func GetThirdBootstrapData() BootstrapDataThree {
 		FreeAgents:       freeAgents,
 		WaiverPlayers:    waiverPlayers,
 		NFLDraftees:      nflDraftees,
+		ProStandings:     proStandings,
+		AllProGames:      proGames,
+		CapsheetMap:      capsheetMap,
 		RetiredPlayers:   retiredPlayers,
 	}
 }

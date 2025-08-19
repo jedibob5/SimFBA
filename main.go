@@ -72,13 +72,15 @@ func handleRequests() http.Handler {
 
 	cacheClient, err := cache.NewClient(
 		cache.ClientWithAdapter(memcached),
-		cache.ClientWithTTL(30 * time.Minute),
+		cache.ClientWithTTL(10 * time.Minute),
 		cache.ClientWithRefreshKey("opn"),
 	)
 	if err != nil {
 		log.Fatal(err)
 	}
-	apiRouter.Use(cacheClient.Middleware)
+	cachedApiRouter := myRouter.PathPrefix("/api").Subrouter()
+	cachedApiRouter.Use(middleware.GzipMiddleware)
+	cachedApiRouter.Use(cacheClient.Middleware)
 
 	// Health Controls
 	HealthCheck := health.New(
@@ -121,10 +123,10 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/admin/trades/cleanup", controller.CleanUpRejectedTrades).Methods("GET")
 
 	// Bootstrap
-	apiRouter.HandleFunc("/bootstrap/teams/", controller.BootstrapTeamData).Methods("GET")
-	apiRouter.HandleFunc("/bootstrap/one/{collegeID}/{proID}", controller.FirstBootstrapFootballData).Methods("GET")
-	apiRouter.HandleFunc("/bootstrap/two", controller.SecondBootstrapFootballData).Methods("GET")
-	apiRouter.HandleFunc("/bootstrap/three", controller.ThirdBootstrapFootballData).Methods("GET")
+	cachedApiRouter.HandleFunc("/bootstrap/teams/", controller.BootstrapTeamData).Methods("GET")
+	cachedApiRouter.HandleFunc("/bootstrap/one/{collegeID}/{proID}", controller.FirstBootstrapFootballData).Methods("GET")
+	cachedApiRouter.HandleFunc("/bootstrap/two", controller.SecondBootstrapFootballData).Methods("GET")
+	cachedApiRouter.HandleFunc("/bootstrap/three", controller.ThirdBootstrapFootballData).Methods("GET")
 
 	// Capsheet Controls
 	apiRouter.HandleFunc("/nfl/capsheet/generate", controller.GenerateCapsheets).Methods("GET")
@@ -188,7 +190,7 @@ func handleRequests() http.Handler {
 	// apiRouter.HandleFunc("/admin/generate/walkons", controller.GenerateWalkOns).Methods("GET")
 
 	// History Controls
-	apiRouter.HandleFunc("/history/college", controller.GetCollegeHistoryProfile).Methods("GET")
+	cachedApiRouter.HandleFunc("/history/college", controller.GetCollegeHistoryProfile).Methods("GET")
 
 	// Import Controls
 	// apiRouter.HandleFunc("/admin/import/fcs/gameplans", controller.GenerateNewGameplans).Methods("GET")
@@ -223,26 +225,26 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/run/predraft/events", controller.RunPreDraftEvents).Methods("GET")
 
 	// News Controls
-	apiRouter.HandleFunc("/cfb/news/all/", controller.GetAllNewsLogsForASeason).Methods("GET")
-	apiRouter.HandleFunc("/nfl/news/all/", controller.GetAllNFLNewsBySeason).Methods("GET")
-	apiRouter.HandleFunc("/news/feed/{league}/{teamID}/", controller.GetNewsFeed).Methods("GET")
+	cachedApiRouter.HandleFunc("/cfb/news/all/", controller.GetAllNewsLogsForASeason).Methods("GET")
+	cachedApiRouter.HandleFunc("/nfl/news/all/", controller.GetAllNFLNewsBySeason).Methods("GET")
+	cachedApiRouter.HandleFunc("/news/feed/{league}/{teamID}/", controller.GetNewsFeed).Methods("GET")
 
 	// Notification Controls
-	apiRouter.HandleFunc("/fba/inbox/get/{cfbID}/{nflID}/", controller.GetFBAInbox).Methods("GET")
-	apiRouter.HandleFunc("/notification/toggle/{notiID}", controller.ToggleNotificationAsRead).Methods("GET")
-	apiRouter.HandleFunc("/notification/delete/{notiID}", controller.DeleteNotification).Methods("GET")
+	cachedApiRouter.HandleFunc("/fba/inbox/get/{cfbID}/{nflID}/", controller.GetFBAInbox).Methods("GET")
+	cachedApiRouter.HandleFunc("/notification/toggle/{notiID}", controller.ToggleNotificationAsRead).Methods("GET")
+	cachedApiRouter.HandleFunc("/notification/delete/{notiID}", controller.DeleteNotification).Methods("GET")
 
 	// Player Controls
-	apiRouter.HandleFunc("/players/all/", controller.AllPlayers).Methods("GET")
+	cachedApiRouter.HandleFunc("/players/all/", controller.AllPlayers).Methods("GET")
 	apiRouter.HandleFunc("/collegeplayers/cut/player/{PlayerID}/", controller.CutCFBPlayerFromRoster).Methods("GET")
 	apiRouter.HandleFunc("/collegeplayers/heisman/", controller.GetHeismanList).Methods("GET")
-	apiRouter.HandleFunc("/collegeplayers/team/{teamID}/", controller.AllCollegePlayersByTeamID).Methods("GET")
-	apiRouter.HandleFunc("/collegeplayers/team/nors/{teamID}/", controller.AllCollegePlayersByTeamIDWithoutRedshirts).Methods("GET")
-	apiRouter.HandleFunc("/collegeplayers/team/export/{teamID}/", controller.ExportRosterToCSV).Methods("GET")
+	cachedApiRouter.HandleFunc("/collegeplayers/team/{teamID}/", controller.AllCollegePlayersByTeamID).Methods("GET")
+	cachedApiRouter.HandleFunc("/collegeplayers/team/nors/{teamID}/", controller.AllCollegePlayersByTeamIDWithoutRedshirts).Methods("GET")
+	cachedApiRouter.HandleFunc("/collegeplayers/team/export/{teamID}/", controller.ExportRosterToCSV).Methods("GET")
 	apiRouter.HandleFunc("/collegeplayers/assign/redshirt/{PlayerID}", controller.ToggleRedshirtStatusForPlayer).Methods("GET", "OPTIONS")
-	apiRouter.HandleFunc("/nflplayers/team/{teamID}/", controller.AllNFLPlayersByTeamIDForDC).Methods("GET")
-	apiRouter.HandleFunc("/nflplayers/freeagency/available/{teamID}", controller.FreeAgencyAvailablePlayers).Methods("GET")
-	apiRouter.HandleFunc("/nflplayers/team/export/{teamID}/", controller.ExportNFLRosterToCSV).Methods("GET")
+	cachedApiRouter.HandleFunc("/nflplayers/team/{teamID}/", controller.AllNFLPlayersByTeamIDForDC).Methods("GET")
+	cachedApiRouter.HandleFunc("/nflplayers/freeagency/available/{teamID}", controller.FreeAgencyAvailablePlayers).Methods("GET")
+	cachedApiRouter.HandleFunc("/nflplayers/team/export/{teamID}/", controller.ExportNFLRosterToCSV).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/tag/player/", controller.TagPlayer).Methods("POST")
 	apiRouter.HandleFunc("/nflplayers/cut/player/{PlayerID}/", controller.CutNFLPlayerFromRoster).Methods("GET")
 	apiRouter.HandleFunc("/nflplayers/place/player/squad/{PlayerID}/", controller.PlaceNFLPlayerOnPracticeSquad).Methods("GET")
@@ -299,49 +301,49 @@ func handleRequests() http.Handler {
 	apiRouter.HandleFunc("/nfl/requests/remove/{teamID}", controller.RemoveNFLUserFromNFLTeam).Methods("POST")
 
 	// Standings Controls
-	apiRouter.HandleFunc("/standings/cfb/season/{seasonID}/", controller.GetAllCollegeStandings).Methods("GET")
-	apiRouter.HandleFunc("/standings/cfb/{conferenceID}/{seasonID}/", controller.GetCollegeStandingsByConferenceIDAndSeasonID).Methods("GET")
-	apiRouter.HandleFunc("/standings/nfl/season/{seasonID}/", controller.GetAllNFLStandings).Methods("GET")
-	apiRouter.HandleFunc("/standings/nfl/{divisionID}/{seasonID}/", controller.GetNFLStandingsByDivisionIDAndSeasonID).Methods("GET")
-	apiRouter.HandleFunc("/standings/cfb/history/team/{teamID}/", controller.GetHistoricalRecordsByTeamID).Methods("GET")
+	cachedApiRouter.HandleFunc("/standings/cfb/season/{seasonID}/", controller.GetAllCollegeStandings).Methods("GET")
+	cachedApiRouter.HandleFunc("/standings/cfb/{conferenceID}/{seasonID}/", controller.GetCollegeStandingsByConferenceIDAndSeasonID).Methods("GET")
+	cachedApiRouter.HandleFunc("/standings/nfl/season/{seasonID}/", controller.GetAllNFLStandings).Methods("GET")
+	cachedApiRouter.HandleFunc("/standings/nfl/{divisionID}/{seasonID}/", controller.GetNFLStandingsByDivisionIDAndSeasonID).Methods("GET")
+	cachedApiRouter.HandleFunc("/standings/cfb/history/team/{teamID}/", controller.GetHistoricalRecordsByTeamID).Methods("GET")
 
 	// Stats Controls
-	apiRouter.HandleFunc("/stats/cfb/player/{playerID}/season/{seasonID}/", controller.GetCFBSeasonStatsRecord).Methods("GET")
-	apiRouter.HandleFunc("/statistics/export/cfb/", controller.ExportCFBStatisticsFromSim).Methods("POST")
+	cachedApiRouter.HandleFunc("/stats/cfb/player/{playerID}/season/{seasonID}/", controller.GetCFBSeasonStatsRecord).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/export/cfb/", controller.ExportCFBStatisticsFromSim).Methods("POST")
 	// apiRouter.HandleFunc("/statistics/export/nfl/", controller.ExportNFLStatisticsFromSim).Methods("POST")
-	apiRouter.HandleFunc("/statistics/export/players/", controller.ExportPlayerStatsToCSV).Methods("GET")
-	apiRouter.HandleFunc("/statistics/export/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.ExportStatsPageContentForSeason).Methods("GET")
-	apiRouter.HandleFunc("/statistics/export/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.ExportNFLStatsPageContent).Methods("GET")
-	apiRouter.HandleFunc("/statistics/cfb/export/play/by/play/{gameID}", controller.ExportPlayByPlayToCSV).Methods("GET")
-	apiRouter.HandleFunc("/statistics/nfl/export/play/by/play/{gameID}", controller.ExportNFLPlayByPlayToCSV).Methods("GET")
-	apiRouter.HandleFunc("/statistics/injured/players/", controller.GetInjuryReport).Methods("GET")
-	apiRouter.HandleFunc("/statistics/interface/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetStatsPageContentForSeason).Methods("GET")
-	apiRouter.HandleFunc("/statistics/interface/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetNFLStatsPageContent).Methods("GET")
-	apiRouter.HandleFunc("/statistics/interface/v2/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetCFBStatsPageContent).Methods("GET")
-	apiRouter.HandleFunc("/statistics/interface/v2/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetProStatsPageContent).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/export/players/", controller.ExportPlayerStatsToCSV).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/export/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.ExportStatsPageContentForSeason).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/export/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.ExportNFLStatsPageContent).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/cfb/export/play/by/play/{gameID}", controller.ExportPlayByPlayToCSV).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/nfl/export/play/by/play/{gameID}", controller.ExportNFLPlayByPlayToCSV).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/injured/players/", controller.GetInjuryReport).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/interface/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetStatsPageContentForSeason).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/interface/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetNFLStatsPageContent).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/interface/v2/cfb/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetCFBStatsPageContent).Methods("GET")
+	cachedApiRouter.HandleFunc("/statistics/interface/v2/nfl/{seasonID}/{weekID}/{viewType}/{gameType}", controller.GetProStatsPageContent).Methods("GET")
 	// apiRouter.HandleFunc("/statistics/reset/cfb/season/", controller.ResetCFBSeasonalStats).Methods("GET")
 	// apiRouter.HandleFunc("/statistics/reset/nfl/season/", controller.ResetNFLSeasonalStats).Methods("GET")
 
 	// Team Controls
-	apiRouter.HandleFunc("/teams/college/all/", controller.GetAllCollegeTeams).Methods("GET")
-	apiRouter.HandleFunc("/teams/college/data/all/", controller.GetAllCollegeTeamsForRosterPage).Methods("GET")
-	apiRouter.HandleFunc("/teams/nfl/all/", controller.GetAllNFLTeams).Methods("GET")
-	apiRouter.HandleFunc("/teams/cfb/dashboard/{teamID}/", controller.GetCFBDashboardByTeamID).Methods("GET")
-	apiRouter.HandleFunc("/teams/nfl/dashboard/{teamID}/", controller.GetNFLDashboardByTeamID).Methods("GET")
-	apiRouter.HandleFunc("/teams/nfl/roster/{teamID}/", controller.GetNFLRecordsForRosterPage).Methods("GET")
-	apiRouter.HandleFunc("/teams/college/active/", controller.GetAllActiveCollegeTeams).Methods("GET")
-	apiRouter.HandleFunc("/teams/college/available/", controller.GetAllAvailableCollegeTeams).Methods("GET")
-	apiRouter.HandleFunc("/teams/college/team/{teamID}/", controller.GetTeamByTeamID).Methods("GET")
-	apiRouter.HandleFunc("/teams/college/assign/grades/", controller.AssignCFBTeamGrades).Methods("GET")
-	apiRouter.HandleFunc("/teams/nfl/team/{teamID}/", controller.GetNFLTeamByTeamID).Methods("GET")
-	apiRouter.HandleFunc("/teams/college/conference/{conferenceID}/", controller.GetTeamsByConferenceID).Methods("GET")
-	apiRouter.HandleFunc("/teams/college/division/{divisionID}/", controller.GetTeamsByDivisionID).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/all/", controller.GetAllCollegeTeams).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/data/all/", controller.GetAllCollegeTeamsForRosterPage).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/nfl/all/", controller.GetAllNFLTeams).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/cfb/dashboard/{teamID}/", controller.GetCFBDashboardByTeamID).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/nfl/dashboard/{teamID}/", controller.GetNFLDashboardByTeamID).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/nfl/roster/{teamID}/", controller.GetNFLRecordsForRosterPage).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/active/", controller.GetAllActiveCollegeTeams).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/available/", controller.GetAllAvailableCollegeTeams).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/team/{teamID}/", controller.GetTeamByTeamID).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/assign/grades/", controller.AssignCFBTeamGrades).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/nfl/team/{teamID}/", controller.GetNFLTeamByTeamID).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/conference/{conferenceID}/", controller.GetTeamsByConferenceID).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/division/{divisionID}/", controller.GetTeamsByDivisionID).Methods("GET")
 	apiRouter.HandleFunc("/teams/college/update/jersey/", controller.UpdateCFBJersey).Methods("POST")
 	apiRouter.HandleFunc("/teams/nfl/update/jersey/", controller.UpdateNFLJersey).Methods("POST")
 
 	// ENGINE CONTROLS
-	apiRouter.HandleFunc("/teams/college/sim/{gameID}/", controller.GetHomeAndAwayTeamData).Methods("GET")
-	apiRouter.HandleFunc("/teams/nfl/sim/{gameID}/", controller.GetNFLHomeAndAwayTeamData).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/college/sim/{gameID}/", controller.GetHomeAndAwayTeamData).Methods("GET")
+	cachedApiRouter.HandleFunc("/teams/nfl/sim/{gameID}/", controller.GetNFLHomeAndAwayTeamData).Methods("GET")
 
 	// TEST Controls
 	apiRouter.HandleFunc("/simfba/team/test/{teamID}/{off}/{def}", controller.UpdateIndividualGameplanTEST).Methods("GET")
